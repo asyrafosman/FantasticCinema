@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2016 at 09:25 AM
+-- Generation Time: Nov 22, 2016 at 04:59 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -32,7 +32,7 @@ CREATE TABLE `booking` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `moviename` varchar(50) NOT NULL,
-  `showdate` datetime NOT NULL,
+  `showdate` date NOT NULL,
   `bookingdate` datetime NOT NULL,
   `status` int(11) NOT NULL DEFAULT '0' COMMENT '0 - in process | 1 - approved | 2 - cancelled | 3 - paid | 4 - done'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
