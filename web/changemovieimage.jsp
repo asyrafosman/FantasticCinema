@@ -43,7 +43,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li id="lihome"><a href="index.html" id="home">Home</a></li>
+            <li id="lihome"><a href="home.html" id="home">Home</a></li>
             <li id="libookings"><a href="ViewBookingServlet" id="about">Bookings</a></li>
             <li class="active" id="lidestination"><a href="#" id="destination">Destination</a></li>
             <li><a href="#contact">Contact</a></li>

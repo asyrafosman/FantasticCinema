@@ -51,7 +51,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li id="lihome"><a href="index.html" id="home">Home</a></li>
+            <li id="lihome"><a href="home.html" id="home">Home</a></li>
             <li class="active"  id="libookings"><a href="#" id="about">Bookings</a></li>
             <li id="lidestination"><a href="GetDestinationsServlet" id="about">Destination</a></li>
             <li><a href="#contact">Contact</a></li>
