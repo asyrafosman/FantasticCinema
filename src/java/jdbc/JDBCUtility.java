@@ -22,7 +22,9 @@ public class JDBCUtility
    PreparedStatement psSelectAllFromBooking = null;
    PreparedStatement psUpdateBookingViaIdApproved = null;
    PreparedStatement psDeleteBookingViaId = null;
-   PreparedStatement psSelectAllFromDestination = null;
+   PreparedStatement psSelectAllFromMovie = null;
+   PreparedStatement psSelectCustomerViaLoginPassword = null;
+   PreparedStatement psSelectAdminViaLoginPassword = null;
 
    //use this constructor if using ConnectionPool
    public JDBCUtility()
@@ -114,8 +116,15 @@ public class JDBCUtility
             psDeleteBookingViaId = con.prepareStatement(sqlDeleteBookingViaId); 
             
             //select all from destination
-            String sqlSelectAllFromDestination = "SELECT * FROM destinations";
-            psSelectAllFromDestination = con.prepareStatement(sqlSelectAllFromDestination);
+            String sqlSelectAllFromMovie = "SELECT * FROM destinations";
+            psSelectAllFromMovie = con.prepareStatement(sqlSelectAllFromMovie);
+            
+            String sqlSelectCustomerViaLoginPassword = "SELECT * FROM admin WHERE login = ? AND password = ?";
+            psSelectCustomerViaLoginPassword = con.prepareStatement(sqlSelectCustomerViaLoginPassword);
+            
+            String sqlSelectAdminViaLoginPassword = "SELECT * FROM admin WHERE login = ? AND password = ?";
+            psSelectAdminViaLoginPassword = con.prepareStatement(sqlSelectAdminViaLoginPassword);
+            
         }
 	catch (SQLException ex)
 	{
@@ -159,9 +168,18 @@ public class JDBCUtility
       return psDeleteBookingViaId;
     }
     
-    public PreparedStatement getPsSelectAllFromDestination()
+    public PreparedStatement getPsSelectAllFromMovie()
     {
-      return psSelectAllFromDestination;
+      return psSelectAllFromMovie;
     }   
 
+    public PreparedStatement getPsSelectCustomerViaLoginPassword()
+    {
+      return psSelectCustomerViaLoginPassword;
+    }
+    
+    public PreparedStatement getPsSelectAdminViaLoginPassword()
+    {
+      return psSelectAdminViaLoginPassword;
+    }
 }
