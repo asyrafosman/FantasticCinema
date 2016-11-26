@@ -82,13 +82,6 @@
     </nav>
 
     <div class="container">
-
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>Fixed to top navbar</p>
-      </div>
-
       <div class="well" id="wellhome">
         <h1>View Bookings</h1>
         <div class="row">

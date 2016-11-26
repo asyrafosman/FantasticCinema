@@ -23,6 +23,7 @@ public class JDBCUtility
    PreparedStatement psUpdateBookingViaIdApproved = null;
    PreparedStatement psDeleteBookingViaId = null;
    PreparedStatement psSelectAllFromMovie = null;
+   PreparedStatement psSelectAllFromMovieAvailable = null;
    PreparedStatement psSelectCustomerViaLoginPassword = null;
    PreparedStatement psSelectAdminViaLoginPassword = null;
 
@@ -115,9 +116,13 @@ public class JDBCUtility
             String sqlDeleteBookingViaId = "DELETE booking WHERE id = ?"; 
             psDeleteBookingViaId = con.prepareStatement(sqlDeleteBookingViaId); 
             
-            //select all from destination
-            String sqlSelectAllFromMovie = "SELECT * FROM destinations";
+            //select all from movie
+            String sqlSelectAllFromMovie = "SELECT * FROM movie";
             psSelectAllFromMovie = con.prepareStatement(sqlSelectAllFromMovie);
+            
+            //select all from movie available
+            String sqlSelectAllFromMovieAvalaible = "SELECT * FROM movie WHERE status = 1";
+            psSelectAllFromMovieAvailable = con.prepareStatement(sqlSelectAllFromMovieAvalaible);
             
             String sqlSelectCustomerViaLoginPassword = "SELECT * FROM admin WHERE login = ? AND password = ?";
             psSelectCustomerViaLoginPassword = con.prepareStatement(sqlSelectCustomerViaLoginPassword);
@@ -172,6 +177,11 @@ public class JDBCUtility
     {
       return psSelectAllFromMovie;
     }   
+    
+    public PreparedStatement getPsSelectAllFromMovieAvailable()
+    {
+      return psSelectAllFromMovieAvailable;
+    } 
 
     public PreparedStatement getPsSelectCustomerViaLoginPassword()
     {

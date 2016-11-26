@@ -248,93 +248,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		<!-- ********************************************** Quick Book ticket ********************************************** -->
 		<!--  QuickFilter  -->
-                <form action="InsertBookingServlet">
+                
                     <section id="QuickFilter">
 
                             <!--  Container  -->
                         <div class="container">
 
                             <!--  Select cinema  -->
-                            <div class="col-md-2 col-md-offset-1">
-                                <select name="cinema" onchange="javascript:setTimeout('__doPostBack(\'DLePaymentCinemas\',\'\')', 0)" id="DLePaymentCinemas" class="form-control">
-                                                    <option selected="selected" value="-">CINEMA</option>
-                                                    <option value="1 Utama"> 1 Utama</option>
-                                                    <option value="IOI Mall (Puchong)"> IOI Mall (Puchong)</option>
-                                                    <option value="Summit USJ"> Summit USJ</option>
-                                                    <option value="Setia City Mall"> Setia City Mall</option>
-                                                    <option value="Klang Parade"> Klang Parade</option>
-                                                    <option value="Alamanda"> Alamanda</option>
-                                                    <option value="Dataran Pahlawan"> Dataran Pahlawan</option>
-                                                    <option value="Aeon Bandaraya Melaka"> Aeon Bandaraya Melaka</option>
-                                                    <option value="East Coast Mall"> East Coast Mall</option>
-                                                    <option value="1Borneo"> 1Borneo</option>
-                                                    <option value="Suria Sabah Mall"> Suria Sabah Mall</option>
-                                                    <option value="CityONE Megamall (Kuching)"> CityONE Megamall (Kuching)</option>
-                                                    <option value="Bintang Megamall"> Bintang Megamall</option>
-                                            </select>
-                                    </div>&nbsp
-                                    <!--  //Select cinema  -->
-
-                                    <!--  Select movie  -->
-                                    <div class="col-md-2">
-                                         <select name="moviename" class="form-control">
-                                                    <option selected="selected" value="-">MOVIE</option>
-                                                    <option value="God’s Compass">God’s Compass</option>
-                                                    <option value="Jason Bourne">Jason Bourne</option>
-                                                    <option value="Rezort">Rezort</option>
-                                                    <option value="Peter">Peter</option>
-                                                    <option value="ISRA 88">ISRA 88</option>
-                                                    <option value="War Dogs">War Dogs</option>
-                                                    <option value="The Other Side">The Other Side</option>
-                                                    <option value="Civil War">Civil War</option>
-                                                    <option value="The Secret Life of Pets">The Secret Life of Pets</option>
-                                                    <option value="The Jungle Book">The Jungle Book</option>
-                                            </select>
-                                    </div>&nbsp
-                                    <!--  //Select movie  -->
-
-                                    <!--  Select Date  -->
-                                    <div class="col-md-2">
-                                            <div class="input-group date" data-provide="datepicker">
-                                                <input name="moviedate" type="text" class="form-control" value="DATE">
-                                                <div class="input-group-addon">
-                                                    <span class="fa fa-th"></span>
-                                                </div>
-                                            </div>
-                                        <!--<select name="DLePaymentDates" onchange="javascript:setTimeout('__doPostBack(\'DLePaymentDates\',\'\')', 0)" id="DLePaymentDates" class="form-control">
-                                                    <option selected="selected" value="-">DATE</option>
-                                            </select>-->
-                                    </div>&nbsp
-                                    <!--  //Select Date  -->
-
-                                    <!--  Select Time  -->
-                                    <div class="col-md-2">
-                                    <select name="movietime" class="form-control">
-                                                    <option value="-">TIME</option>
-                                                    <option value="10AM">10AM</option>
-                                                    <option value="12PM">12PM</option>
-                                                    <option value="2PM">2PM</option>
-                                                    <option value="4PM">4PM</option>
-                                                    <option value="6PM">6PM</option>
-                                                    <option value="8PM">8PM</option>
-                                                    <option value="10PM">10PM</option>
-                                                    <option value="12AM">12AM</option>
-                                            </select>
-                           </div>&nbsp
-                           <!--  //Select Time  -->
-
-                           <!--  Button buy tickets  -->
-                           <div class="col-md-2">
-                               <button type="submit" id="btnNext" class="btn btn-default">BUY TICKETS</button>
-                                <span id="lblMsg" class="ErrMsg"></span>
-                           </div>
+                            <div class="fc_sign_in_register">
+                                <a href="BookingMovieServlet" class="btn btn-info">BOOK TICKET</a>
+                            </div>
                            <!--  //Button buy tickets  -->
 
                        </div>	
                        <!--  //Container  -->
 
                     </section>
-                </form>
 		<!--  //QuickFilter  -->
 		<!-- ********************************************** //Quick Book ticket ********************************************** -->
 		<script type="text/javascript">

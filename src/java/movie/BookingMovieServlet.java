@@ -7,10 +7,13 @@ package movie;
 
 import bean.Movie;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,12 +25,11 @@ import jdbc.JDBCUtility;
 
 /**
  *
- * @author PCUSER
+ * @author admin
  */
-@WebServlet(name = "GetDestinationsServlet", urlPatterns = {"/GetDestinationsServlet"})
-public class GetMovieServlet extends HttpServlet {
-
-
+@WebServlet(name = "BookingMovieServlet", urlPatterns = {"/BookingMovieServlet"})
+public class BookingMovieServlet extends HttpServlet {
+    
     private JDBCUtility jdbcUtility;
     private Connection con;
     
@@ -48,8 +50,8 @@ public class GetMovieServlet extends HttpServlet {
         jdbcUtility.jdbcConnect();
         con = jdbcUtility.jdbcGetConnection();
         jdbcUtility.prepareSQLStatement();
-    }           
-    
+    }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -61,35 +63,29 @@ public class GetMovieServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        HttpSession session = request.getSession(true);
-        ArrayList movies;
-        movies = new ArrayList();
-        Movie movie = null;      
         
-        //select all from destinations
+        HttpSession session = request.getSession(true);
+        ArrayList movies = new ArrayList();
+        Movie movie = null;
+        
         try {                    
-            ResultSet rs = jdbcUtility.getPsSelectAllFromMovie().executeQuery();
+            ResultSet rs = jdbcUtility.getPsSelectAllFromMovieAvailable().executeQuery();
             
             while (rs.next()) {                
                 movie = new Movie();
-                movie.setId(rs.getInt("id"));
-                movie.setMoviename(rs.getString("moviename"));          
-                movie.setStatus(rs.getInt("status"));
+                //movie.setId(rs.getInt("id"));
+                movie.setMoviename(rs.getString("moviename"));
+                //movie.setStatus(rs.getInt("status"));
                 
-                //put into arraylist
                 movies.add(movie);
             }
         }
         catch (SQLException ex) 
         {            
-        }               
+        }
         
-        //put into sessions
         session.setAttribute("movies", movies);
-        
-        //redirect to managedestination.jsp
-        sendPage(request, response, "/managedestination.jsp");
+        sendPage(request, response, "/bookingmovie.jsp");
     }
     
     void sendPage(HttpServletRequest req, HttpServletResponse res, String fileName) throws ServletException, IOException
@@ -105,7 +101,7 @@ public class GetMovieServlet extends HttpServlet {
 	}
 	else
 	    dispatcher.forward(req, res);
-    }                
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2016 at 04:11 AM
+-- Generation Time: Nov 26, 2016 at 04:01 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -21,6 +21,24 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `fantasticcinema` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `fantasticcinema`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`username`, `password`) VALUES
+('fantastic', 'cinema');
 
 -- --------------------------------------------------------
 
@@ -49,7 +67,10 @@ INSERT INTO `booking` (`id`, `userid`, `cinema`, `moviename`, `moviedate`, `movi
 (3, '000', 'Dataran Pahlawan', 'War Dogs', '2016-11-24', '10PM', '2016-11-24 12:14:35', 0),
 (4, '000', 'Setia City Mall', 'Peter', '2016-11-24', '10PM', '2016-11-24 12:14:49', 0),
 (5, '000', '1Borneo', 'Civil War', '2016-11-24', '6PM', '2016-11-24 12:16:24', 0),
-(6, '000', 'Bintang Megamall', 'Civil War', '2016-11-24', '2PM', '2016-11-24 14:46:34', 0);
+(6, '000', 'Bintang Megamall', 'Civil War', '2016-11-24', '2PM', '2016-11-24 14:46:34', 0),
+(7, '000', 'Aeon Bandaraya Melaka', 'Civil War', '2016-11-26', '2PM', '2016-11-26 11:18:09', 0),
+(8, '000', 'Aeon Bandaraya Melaka', 'The Jungle Book', '2016-11-26', '10PM', '2016-11-26 11:21:15', 0),
+(9, '000', 'Aeon Bandaraya Melaka', 'JACK REACHER: NEVER GO BACK', '2016-11-26', '6PM', '2016-11-26 22:44:30', 0);
 
 -- --------------------------------------------------------
 
@@ -73,15 +94,28 @@ CREATE TABLE `customer` (
 
 CREATE TABLE `movie` (
   `id` int(11) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `description` varchar(100) NOT NULL,
-  `image` varchar(50) NOT NULL,
+  `moviename` varchar(50) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1' COMMENT '0 - deactivate | 1 - active'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `movie`
+--
+
+INSERT INTO `movie` (`id`, `moviename`, `status`) VALUES
+(1, 'Marvel’s Doctor Strange', 1),
+(2, 'JACK REACHER: NEVER GO BACK', 1),
+(3, 'FALLEN', 1);
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`username`);
 
 --
 -- Indexes for table `booking`
@@ -110,7 +144,7 @@ ALTER TABLE `movie`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
