@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2016 at 04:59 PM
+-- Generation Time: Nov 26, 2016 at 04:11 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -30,12 +30,26 @@ USE `fantasticcinema`;
 
 CREATE TABLE `booking` (
   `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `userid` varchar(11) NOT NULL DEFAULT '0',
+  `cinema` varchar(50) NOT NULL,
   `moviename` varchar(50) NOT NULL,
-  `showdate` date NOT NULL,
+  `moviedate` date NOT NULL,
+  `movietime` varchar(20) NOT NULL,
   `bookingdate` datetime NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '0' COMMENT '0 - in process | 1 - approved | 2 - cancelled | 3 - paid | 4 - done'
+  `status` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `userid`, `cinema`, `moviename`, `moviedate`, `movietime`, `bookingdate`, `status`) VALUES
+(1, '000', 'Dataran Pahlawan', 'War Dogs', '2016-11-24', '8PM', '2016-11-24 12:03:14', 0),
+(2, '000', 'Alamanda', 'War Dogs', '2016-11-24', '4PM', '2016-11-24 12:03:45', 0),
+(3, '000', 'Dataran Pahlawan', 'War Dogs', '2016-11-24', '10PM', '2016-11-24 12:14:35', 0),
+(4, '000', 'Setia City Mall', 'Peter', '2016-11-24', '10PM', '2016-11-24 12:14:49', 0),
+(5, '000', '1Borneo', 'Civil War', '2016-11-24', '6PM', '2016-11-24 12:16:24', 0),
+(6, '000', 'Bintang Megamall', 'Civil War', '2016-11-24', '2PM', '2016-11-24 14:46:34', 0);
 
 -- --------------------------------------------------------
 
@@ -73,7 +87,8 @@ CREATE TABLE `movie` (
 -- Indexes for table `booking`
 --
 ALTER TABLE `booking`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Indexes for table `customer`
@@ -95,7 +110,7 @@ ALTER TABLE `movie`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

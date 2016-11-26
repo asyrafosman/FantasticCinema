@@ -10,13 +10,15 @@ import java.io.Serializable;
 
 /**
  *
- * @author admin
+ * @author U
  */
 public class Booking implements Serializable {
     private int id;
-    private String username;
+    private String userid;
+    private String cinema;
     private String moviename;
-    private String showdate;
+    private String moviedate;
+    private String movietime;
     private String bookingdate;
     private int status;
 
@@ -35,17 +37,31 @@ public class Booking implements Serializable {
     }
 
     /**
-     * @return the username
+     * @return the userid
      */
-    public String getUsername() {
-        return username;
+    public String getUserid() {
+        return userid;
     }
 
     /**
-     * @param username the username to set
+     * @param userid the userid to set
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    /**
+     * @return the cinema
+     */
+    public String getCinema() {
+        return cinema;
+    }
+
+    /**
+     * @param cinema the cinema to set
+     */
+    public void setCinema(String cinema) {
+        this.cinema = cinema;
     }
 
     /**
@@ -63,17 +79,31 @@ public class Booking implements Serializable {
     }
 
     /**
-     * @return the showdate
+     * @return the moviedate
      */
-    public String getShowdate() {
-        return showdate;
+    public String getMoviedate() {
+        return moviedate;
     }
 
     /**
-     * @param showdate the showdate to set
+     * @param moviedate the moviedate to set
      */
-    public void setShowdate(String showdate) {
-        this.showdate = showdate;
+    public void setMoviedate(String moviedate) {
+        this.moviedate = moviedate;
+    }
+
+    /**
+     * @return the movietime
+     */
+    public String getMovietime() {
+        return movietime;
+    }
+
+    /**
+     * @param movietime the movietime to set
+     */
+    public void setMovietime(String movietime) {
+        this.movietime = movietime;
     }
 
     /**
@@ -103,4 +133,5 @@ public class Booking implements Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
+
 }

@@ -51,7 +51,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li id="lihome"><a href="home.html" id="home">Home</a></li>
+            <li id="lihome"><a href="index.html" id="home">Home</a></li>
             <li class="active"  id="libookings"><a href="#" id="about">Bookings</a></li>
             <li id="lidestination"><a href="GetDestinationsServlet" id="about">Destination</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -97,29 +97,32 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Login</th>
-                  <th>Travel Date</th>
+                  <th>UserID</th>
+                  <th>Cinema</th>
+                  <th>Movie Name</th>
+                  <th>Movie Date</th>
+                  <th>Movie Time</th>
                   <th>Booking Date</th>
-                  <th>Destination</th>
                   <th>Status</th>
-                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
                 <c:forEach items="${sessionScope.bookings}" var="currentbooking" varStatus="loop">
                   <tr>
                     <td><c:out value="${loop.index + 1}" /></td>
-                    <td><c:out value="${currentbooking.login}" /></td>
-                    <td><c:out value="${currentbooking.traveldate}" /></td>
+                    <td><c:out value="${currentbooking.userid}" /></td>
+                    <td><c:out value="${currentbooking.cinema}" /></td>
+                    <td><c:out value="${currentbooking.moviename}" /></td>
+                    <td><c:out value="${currentbooking.moviedate}" /></td>
+                    <td><c:out value="${currentbooking.movietime}" /></td>
                     <td><c:out value="${currentbooking.bookingdate}" /></td>
-                    <td><c:out value="${currentbooking.destination}" /></td>
 
                     <c:url value="ApprovedBookingServlet" var="ApprovedBookingServletURL">
                         <c:param name="id"   value="${currentbooking.id}" />
                     </c:url>                      
                     <c:choose>
                         <c:when test="${currentbooking.status == 0}">
-                            <td><a href="<c:out value='${ApprovedBookingServletURL}' />"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
+                            <td><c:out value="pending" /></td>
                         </c:when>
                             
                         <c:when test="${currentbooking.status == 1}">
@@ -141,8 +144,7 @@
                     
                     <c:url value="DeleteBookingServlet" var="DeleteBookingServletURL">
                         <c:param name="id"   value="${currentbooking.id}" />
-                    </c:url>        
-                    <td><a href="<c:out value='${DeleteBookingServletURL}' />"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+                    </c:url>
                   </tr>
                 </c:forEach>
               </tbody>

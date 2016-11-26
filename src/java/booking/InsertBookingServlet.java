@@ -22,7 +22,7 @@ import jdbc.JDBCUtility;
 
 /**
  *
- * @author admin
+ * @author U
  */
 @WebServlet(name = "InsertBookingServlet", urlPatterns = {"/InsertBookingServlet"})
 public class InsertBookingServlet extends HttpServlet {
@@ -61,38 +61,47 @@ public class InsertBookingServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String username = "user";
+        String userid = "000";
         
-        //String moviename = request.getParameter("moviename");
-        String moviename = "title";
+        String cinema = request.getParameter("cinema");   
         
-        String showdate = request.getParameter("showdate");   
+        String moviename = request.getParameter("moviename");  
         
+        String moviedate = request.getParameter("moviedate");  
+                
         //convert string to date
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Date date = new Date();
         try {
-            date = formatter.parse(showdate);
+            date = formatter.parse(moviedate);
         } catch (Exception ex) {            
         }
         
         //convert to mysql date
         formatter = new SimpleDateFormat("yyyy-MM-dd");
-        showdate = formatter.format(date);        
+        moviedate = formatter.format(date);        
+        
+        String movietime = request.getParameter("movietime");
         
         //bookingdate - now
         java.util.Date dt = new java.util.Date();
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String bookingdate = sdf.format(dt);
-                
+        
+        
+        
+        
+        
         response.setContentType("text/html;charset=UTF-8");        
         try {                    
             PreparedStatement preparedStatement = jdbcUtility.getPsInsertBooking();
             
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, moviename);
-            preparedStatement.setString(3, showdate);
-            preparedStatement.setString(4, bookingdate);
+            preparedStatement.setString(1, userid);
+            preparedStatement.setString(2, cinema);
+            preparedStatement.setString(3, moviename);
+            preparedStatement.setString(4, moviedate);
+            preparedStatement.setString(5, movietime);
+            preparedStatement.setString(6, bookingdate);
             
             preparedStatement.executeUpdate();
             

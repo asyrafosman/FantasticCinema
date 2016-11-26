@@ -19,13 +19,13 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponse; 
 import javax.servlet.http.HttpSession;
 import jdbc.JDBCUtility;
 
 /**
  *
- * @author admin
+ * @author U
  */
 @WebServlet(name = "ViewBookingServlet", urlPatterns = {"/ViewBookingServlet"})
 public class ViewBookingServlet extends HttpServlet {
@@ -72,23 +72,30 @@ public class ViewBookingServlet extends HttpServlet {
             while (rs.next()) {                
                 booking = new Booking();
                 booking.setId(rs.getInt("id"));
-                booking.setUsername(rs.getString("username"));
+                booking.setUserid(rs.getString("userid"));
+                
+                booking.setCinema(rs.getString("cinema"));
+                                
                 booking.setMoviename(rs.getString("moviename"));
                 
+                
+                
                 //yyyy-MM-dd
-                String showdate = rs.getString("showdate");
+                String moviedate = rs.getString("moviedate");
                 
                 //convert traveldate string to date (still mysql date)
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 Date date = new Date();
                 try {
-                   date = formatter.parse(showdate);
+                   date = formatter.parse(moviedate);
                 } catch (Exception ex) {}
                 
                 //convert mysql date to MY date
                 formatter = new SimpleDateFormat("dd-MM-yyyy");
-                showdate = formatter.format(date); 
-                booking.setShowdate(showdate);
+                moviedate = formatter.format(date); 
+                booking.setMoviedate(moviedate);
+                
+                booking.setMovietime(rs.getString("movietime"));
                 
                 //yyyy-MM-dd HH:mm:ss
                 //parse the date from string for date conversion
@@ -98,13 +105,14 @@ public class ViewBookingServlet extends HttpServlet {
                 try {
                    date = formatter.parse(bookingdate);
                 } catch (Exception ex) {}
-                
+                                
                 //convert to MY format dd-MM-yyyy
                 //formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss a");
                 //formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss a");
                 formatter = new SimpleDateFormat("dd MMMM, yyyy HH:mm:ss a");
                 bookingdate = formatter.format(date);
                 booking.setBookingdate(bookingdate);
+                
                 
                 booking.setStatus(rs.getInt("status"));
                     

@@ -22,8 +22,7 @@ public class JDBCUtility
    PreparedStatement psSelectAllFromBooking = null;
    PreparedStatement psUpdateBookingViaIdApproved = null;
    PreparedStatement psDeleteBookingViaId = null;
-   PreparedStatement psSelectAllFromMovie = null;
-   PreparedStatement psSelectAllFromAvailableMovie = null;
+   PreparedStatement psSelectAllFromDestination = null;
 
    //use this constructor if using ConnectionPool
    public JDBCUtility()
@@ -98,7 +97,9 @@ public class JDBCUtility
         try
         {
             //insert into booking
-            String sqlInsertBooking = "INSERT INTO booking(username, moviename, showdate, bookingdate) VALUES(?, ?, ?, ?)";
+            String sqlInsertBooking = "INSERT INTO booking(userid, cinema, moviename, moviedate, movietime, bookingdate) " +
+                                      "VALUES(?, ?, ?, ?, ?, ?)";
+            
             psInsertBooking = con.prepareStatement(sqlInsertBooking);
             
             //select all from booking
@@ -112,13 +113,9 @@ public class JDBCUtility
             String sqlDeleteBookingViaId = "DELETE booking WHERE id = ?"; 
             psDeleteBookingViaId = con.prepareStatement(sqlDeleteBookingViaId); 
             
-            //select all from movie
-            String sqlSelectAllFromMovie = "SELECT * FROM movie";
-            psSelectAllFromMovie = con.prepareStatement(sqlSelectAllFromMovie);
-            
-            //select all from available movie
-            String sqlSelectAllFromAvailableMovie = "SELECT * FROM movie WHERE status = 1";
-            psSelectAllFromAvailableMovie = con.prepareStatement(sqlSelectAllFromAvailableMovie);
+            //select all from destination
+            String sqlSelectAllFromDestination = "SELECT * FROM destinations";
+            psSelectAllFromDestination = con.prepareStatement(sqlSelectAllFromDestination);
         }
 	catch (SQLException ex)
 	{
@@ -162,14 +159,9 @@ public class JDBCUtility
       return psDeleteBookingViaId;
     }
     
-    public PreparedStatement getPsSelectAllFromMovie()
+    public PreparedStatement getPsSelectAllFromDestination()
     {
-      return psSelectAllFromMovie;
-    }
-    
-    public PreparedStatement getPsSelectAllFromAvailableMovie()
-    {
-      return psSelectAllFromAvailableMovie;
+      return psSelectAllFromDestination;
     }   
 
 }
