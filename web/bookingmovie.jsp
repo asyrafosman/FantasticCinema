@@ -43,10 +43,10 @@
                 <!--  //Fantastic Cinema Logo  -->
                 <!--  Sign in & sign up  -->
                 <div class="fc_sign_in_register">
-                        <ul>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i> (+06) 012 3456 789</li>
-                                <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
-                        </ul>
+                    <ul>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i> (+06) 012 3456 789</li>
+                        <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+                    </ul>
                 </div>
                 <!--  //Sign in & sign up  -->
                 <div class="clearfix"> </div>
@@ -59,8 +59,8 @@
                 <div class="modal-content">
                     <!--  Modal Header  -->
                     <div class="modal-header">
-                            Sign In & Sign Up
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
+                        Sign In & Sign Up
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
                     </div>
                     <!--  //Modal Header  -->
                     <section>
@@ -72,7 +72,7 @@
                                 <div class="module form-module">
                                     <!--  Toggle button  -->	
                                     <div class="toggle"><i class="fa fa-times fa-pencil"></i>
-                                          <div class="tooltip">Click Me</div>
+                                        <div class="tooltip">Click Me</div>
                                     </div>
                                     <!--  //Toggle button  -->	
                                     <!--  Sign in  -->
@@ -154,8 +154,8 @@
             </div>
             <!--  //Container  -->
         </div>
-        <div class="container">
-            <div class="jumbotron">
+        <section id="QuickFilter">
+            <div class="container">
                 <form class="form-horizontal" action="InsertBookingServlet">
                     <fieldset>
                         <legend>Book a ticket</legend>
@@ -227,7 +227,7 @@
                     </fieldset>
                 </form>
             </div>
-        </div>
+        </section>
         
         <script type="text/javascript">
             $('.date').datepicker({

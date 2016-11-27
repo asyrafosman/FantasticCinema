@@ -1,11 +1,11 @@
 <%-- 
-    Document   : managedestination
+    Document   : managemovie
     Created on : Nov 22, 2016, 9:12:03 AM
     Author     : PCUSER
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="bean.Destination" %>
+<%@ page import="bean.Movie" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -93,7 +93,7 @@
         <h1>View Destinations</h1>
         <div class="row">
           <div class="col-md-6">
-            <a href="addnewdestination.jsp" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Destinations</a> 
+            <a href="addnewmovie.jsp" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Destinations</a> 
             <p></p>
             <table class="table table-striped table-hover ">
               <thead>
