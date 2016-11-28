@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class Admin implements Serializable {
     private String username;
     private String password;
+    private String fullName;
 
     /**
      * @return the username
@@ -24,7 +25,7 @@ public class Admin implements Serializable {
     }
 
     /**
-     * @param username the username to set
+     * @param username the login to set
      */
     public void setUsername(String username) {
         this.username = username;
@@ -42,5 +43,19 @@ public class Admin implements Serializable {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return the fullName
+     */
+    public String getFullName() {
+        return fullName;
+    }
+
+    /**
+     * @param fullName the fullName to set
+     */
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 }

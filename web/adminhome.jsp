@@ -4,6 +4,19 @@ author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="bean.Admin" %>
+
+<%
+    Admin adminprofile = (Admin)session.getAttribute("adminprofile");
+    
+    if (adminprofile == null) {
+%>
+        <jsp:forward page="terminate.html" />
+<%        
+    }
+%>    
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -41,8 +54,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <!--  Sign in & sign up  -->
                 <div class="fc_sign_in_register">
                     <ul>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i> (+06) 012 3456 789</li>
-                        <li><a href="#">Logout</a></li>
+                        <li><i aria-hidden="true"></i>Hi, <jsp:getProperty name="adminprofile" property="fullName"/>!</li>
+                        <li><a href="adminlogin.html">Logout</a></li>
                     </ul>
                 </div>
                 <!--  //Sign in & sign up  -->
@@ -67,28 +80,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="movie">Movie Management<span class="caret"></span></a>
-                                        <ul class="dropdown-menu" aria-labelledby="themes">
-                                            <li><a href="addnewmovie.jsp">Add Movie</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="editmovie.jsp">Edit Movie</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="deletemovie.jsp">Delete Movie</a></li>
-                                            <li class="divider"></li>                                                               
-                                        </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="movie">Promotion & News Management<span class="caret"></span></a>
-                                    <ul class="dropdown-menu" aria-labelledby="themes">
-                                        <li><a href="addnewpromotion.jsp">Add Promotion & News</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="editpromotion.jsp">Edit Promotion & News</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="deletepromotion.jsp">Delete Promotion & News</a></li>
-                                        <li class="divider"></li>                                                               
-                                    </ul>
-                                </li>        																			
+                                <li><a href="moviemanagement.jsp">Movies</a></li>
+                                <li><a href="promotionnewsmanagement.jsp">Promotion & News</a></li>       																			
                                 <li><a href="locate.html">Locate Us</a></li>
                                 <li><a href="contact.html">Contact Us</a></li>
                                 <li><a href="faq.html">FAQ</a></li>
@@ -403,15 +396,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <!--  w3ls_footer_grid  -->
                 <div class="w3ls_footer_grid">
                     <div class="col-md-6 w3ls_footer_grid_left">
-                        <div class="w3ls_footer_grid_left1">
-                            <h2>Subscribe to us</h2>
-                            <div class="w3ls_footer_grid_left1_pos">
-                                <form action="#" method="post">
-                                    <input type="email" name="email" placeholder="Your email..." required="">
-                                    <input type="submit" value="Send">
-                                </form>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-md-6 w3ls_footer_grid_right">
                             <a href="index.html"><h2>Fantastic<span>Cinema</span></h2></a>

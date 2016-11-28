@@ -124,10 +124,10 @@ public class JDBCUtility
             String sqlSelectAllFromMovieAvalaible = "SELECT * FROM movie WHERE status = 1";
             psSelectAllFromMovieAvailable = con.prepareStatement(sqlSelectAllFromMovieAvalaible);
             
-            String sqlSelectCustomerViaLoginPassword = "SELECT * FROM admin WHERE login = ? AND password = ?";
+            String sqlSelectCustomerViaLoginPassword = "SELECT * FROM customer WHERE username = ? AND password = ?";
             psSelectCustomerViaLoginPassword = con.prepareStatement(sqlSelectCustomerViaLoginPassword);
             
-            String sqlSelectAdminViaLoginPassword = "SELECT * FROM admin WHERE login = ? AND password = ?";
+            String sqlSelectAdminViaLoginPassword = "SELECT * FROM admin WHERE username = ? AND password = ?";
             psSelectAdminViaLoginPassword = con.prepareStatement(sqlSelectAdminViaLoginPassword);
             
         }

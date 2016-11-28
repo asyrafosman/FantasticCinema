@@ -25,7 +25,7 @@ import jdbc.JDBCUtility;
  *
  * @author U
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
+@WebServlet(name = "AdminLoginServlet", urlPatterns = {"/AdminLoginServlet"})
 public class AdminLoginServlet extends HttpServlet {
 
     private JDBCUtility jdbcUtility;
@@ -68,12 +68,14 @@ public class AdminLoginServlet extends HttpServlet {
         
         String username = request.getParameter("username");
         String password = request.getParameter("password"); 
+        String fullName = "";
         
         try {
             PreparedStatement preparedStatement = jdbcUtility.getPsSelectAdminViaLoginPassword();
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             ResultSet rs = preparedStatement.executeQuery();
+            System.out.println("pass here");
             
             while (rs.next()) {
                 System.out.println("pass here");
@@ -81,6 +83,7 @@ public class AdminLoginServlet extends HttpServlet {
                 admin = new Admin();
                 admin.setUsername(username);
                 admin.setPassword(password);
+                admin.setFullName(fullName);
             }
         }
         catch (SQLException ex) {            
@@ -88,7 +91,7 @@ public class AdminLoginServlet extends HttpServlet {
         
         if (admin != null) {
             session.setAttribute("adminprofile", admin);
-            response.sendRedirect(request.getContextPath() + "/home.jsp");
+            response.sendRedirect(request.getContextPath() + "/adminhome.jsp");
         }
         else {
             response.sendRedirect(request.getContextPath() + "/not-exist.html");
