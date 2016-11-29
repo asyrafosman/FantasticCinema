@@ -79,6 +79,10 @@ public class CustomerLoginServlet extends HttpServlet {
             ResultSet rs = preparedStatement.executeQuery();
             
             while (rs.next()) {
+                fullName = rs.getString("fullName");
+                email = rs.getString("email");
+                mobileNum = rs.getString("mobileNum");
+                
                 customer = new Customer();
                 customer.setUsername(username);
                 customer.setPassword(password);

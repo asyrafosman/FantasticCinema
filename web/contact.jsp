@@ -48,11 +48,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <!--  Sign in & sign up  -->
                 <div class="fc_sign_in_register">
                     <ul>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i> (+06) 012 3456 789</li>
                         <% if (customerprofile == null) { %>
+                            <li><i aria-hidden="true"></i>Guest</li>
                             <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>                   
                         <% }
                         else { %>
+                            <li><i aria-hidden="true"></i><jsp:getProperty name="customerprofile" property="fullName"/></li>
                             <li><a href="CustomerLogoutServlet">Logout</a></li>
                         <% } %>
                     </ul>
@@ -165,7 +166,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <li><a href="showtimes.jsp">Showtimes</a></li>								
                                 <li><a href="newspromotion.jsp">News & Promotion</a></li>
                                 <li><a href="locate.jsp">Locate Us</a></li>
-                                <li><a href="contact.jsp">Contact Us</a></li>
+                                <li class="active"><a href="contact.jsp">Contact Us</a></li>
                                 <li><a href="faq.jsp">FAQ</a></li>
                             </ul>
                         </nav>
@@ -234,22 +235,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
         <!-- Map-JavaScript -->
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>        
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>      
         <script type="text/javascript">
-                google.maps.event.addDomListener(window, 'load', init);
-                function init() {
-                        var mapOptions = {
-                                zoom: 15,
-                                center: new google.maps.LatLng(1.558429, 103.638295),
-                                styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
-                        };
-                        var mapElement = document.getElementById('map');
-                        var map = new google.maps.Map(mapElement, mapOptions);
-                        var marker = new google.maps.Marker({
-                                position: new google.maps.LatLng(1.558429, 103.638295),
-                                map: map,
-                        });
-                }
+            google.maps.event.addDomListener(window, 'load', init);
+            function init() {
+                var mapOptions = {
+                    zoom: 15,
+                    center: new google.maps.LatLng(1.558429, 103.638295),
+                    styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
+                };
+                var mapElement = document.getElementById('map');
+                var map = new google.maps.Map(mapElement, mapOptions);
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(1.558429, 103.638295),
+                    map: map
+                });
+            }
         </script>
         <!-- //Map-JavaScript -->
         <!-- //contact -->

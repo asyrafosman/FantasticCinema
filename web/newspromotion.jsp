@@ -48,11 +48,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <!--  Sign in & sign up  -->
                 <div class="fc_sign_in_register">
                     <ul>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i> (+06) 012 3456 789</li>
                         <% if (customerprofile == null) { %>
+                            <li><i aria-hidden="true"></i>Guest</li>
                             <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>                   
                         <% }
                         else { %>
+                            <li><i aria-hidden="true"></i><jsp:getProperty name="customerprofile" property="fullName"/></li>
                             <li><a href="CustomerLogoutServlet">Logout</a></li>
                         <% } %>
                     </ul>
@@ -163,7 +164,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <ul class="nav navbar-nav">
                                 <li><a href="index.jsp">Movies</a></li>
                                 <li><a href="showtimes.jsp">Showtimes</a></li>								
-                                <li><a href="newspromotion.jsp">News & Promotion</a></li>
+                                <li class="active"><a href="newspromotion.jsp">News & Promotion</a></li>
                                 <li><a href="locate.jsp">Locate Us</a></li>
                                 <li><a href="contact.jsp">Contact Us</a></li>
                                 <li><a href="faq.jsp">FAQ</a></li>

@@ -47,11 +47,12 @@
                 <!--  Sign in & sign up  -->
                 <div class="fc_sign_in_register">
                     <ul>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i> (+06) 012 3456 789</li>
                         <% if (customerprofile == null) { %>
+                            <li><i aria-hidden="true"></i>Guest</li>
                             <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>                   
                         <% }
                         else { %>
+                            <li><i aria-hidden="true"></i><jsp:getProperty name="customerprofile" property="fullName"/></li>
                             <li><a href="CustomerLogoutServlet">Logout</a></li>
                         <% } %>
                     </ul>
