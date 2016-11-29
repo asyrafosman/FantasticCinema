@@ -1,17 +1,20 @@
 <%-- 
-    Document   : booking
-    Created on : Nov 26, 2016, 9:33:50 PM
+    Document   : locate
+    Created on : Nov 29, 2016, 1:59:58 PM
     Author     : admin
 --%>
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="bean.Movie" %>
 <%@ page import="bean.Customer" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% Customer customerprofile = (Customer)session.getAttribute("customerprofile"); %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <!-- Title -->
         <title>Fantastic Cinema</title>
@@ -22,14 +25,12 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
-
-        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
+        <link rel="stylesheet" href="css/contactstyle.css" type="text/css" media="all" />
         <!-- font-awesome icons -->
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> <!-- Wajib -->
         <!-- //font-awesome icons -->
         <!-- js -->
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
-        <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
         <!-- //js -->
         <!-- banner-bottom-plugin -->
         <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
@@ -142,6 +143,9 @@
         <!--  //javascript modal popup  -->
         <!--  ********************************************** //Wajib **********************************************  -->	
         <!-- ********************************************** //Modal pop-p sign in & sign up ********************************************** -->
+	
+        <!-- ********************************************** Navigation ********************************************** -->
+        <!--  movie navigation  -->	
         <div class="movies_nav">
             <!--  Container  -->
             <div class="container">
@@ -172,100 +176,71 @@
             </div>
             <!--  //Container  -->
         </div>
-        <section id="QuickFilter">
-            <div class="container">
-                <% if (customerprofile == null) { %>
-                    <div class="jumbotron">
-                        <h2>ONLINE TICKETING</h2>
-                        <h1>MEMBERS ONLY</h1>
-                        <p>Please login or sign up if you are not a member</p>
-                    </div>                    
-                <% }
-                else { %>
-                    <div class="jumbotron">
-                        <form class="form-horizontal" action="InsertBookingServlet">
-                            <fieldset>
-                                <legend>Book a ticket</legend>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Cinema</label>
-                                    <div class="col-lg-10">
-                                        <select name="cinema" class="form-control" id="cinema">
-                                            <option selected="selected" value="-">- Select Cinema -</option>
-                                            <option value="1 Utama"> 1 Utama</option>
-                                            <option value="IOI Mall (Puchong)"> IOI Mall (Puchong)</option>
-                                            <option value="Summit USJ"> Summit USJ</option>
-                                            <option value="Setia City Mall"> Setia City Mall</option>
-                                            <option value="Klang Parade"> Klang Parade</option>
-                                            <option value="Alamanda"> Alamanda</option>
-                                            <option value="Dataran Pahlawan"> Dataran Pahlawan</option>
-                                            <option value="Aeon Bandaraya Melaka"> Aeon Bandaraya Melaka</option>
-                                            <option value="East Coast Mall"> East Coast Mall</option>
-                                            <option value="1Borneo"> 1Borneo</option>
-                                            <option value="Suria Sabah Mall"> Suria Sabah Mall</option>
-                                            <option value="CityONE Megamall (Kuching)"> CityONE Megamall (Kuching)</option>
-                                            <option value="Bintang Megamall"> Bintang Megamall</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Movie</label>
-                                    <div class="col-lg-10">
-                                        <select name="moviename" class="form-control" id="moviename">
-                                            <option selected="selected" value="-">- Select Movie -</option>
-                                            <c:forEach items="${sessionScope.movies}" var="currentbooking" varStatus="loop">
-                                                <option><c:out value="${currentbooking.moviename}" /></option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Show Date</label>
-                                    <div class="col-lg-10">
-                                        <div class="input-group date" data-provide="datepicker">
-                                            <input name="moviedate" type="text" class="form-control" value="- Select Date -">
-                                            <div class="input-group-addon">
-                                                <span class="fa fa-th"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Show Time</label>
-                                    <div class="col-lg-10">
-                                        <select name="movietime" class="form-control" id="movietime">
-                                            <option value="-">- Select Time -</option>
-                                            <option value="10AM">10AM</option>
-                                            <option value="12PM">12PM</option>
-                                            <option value="2PM">2PM</option>
-                                            <option value="4PM">4PM</option>
-                                            <option value="6PM">6PM</option>
-                                            <option value="8PM">8PM</option>
-                                            <option value="10PM">10PM</option>
-                                            <option value="12AM">12AM</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-lg-10 col-lg-offset-2">
-                                        <button type="reset" class="btn btn-danger">Cancel</button>
-                                        <button type="submit" class="btn btn-success">Book</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                <% } %>
+        <!--  //movie navigation  -->	
+        <!-- ********************************************** //Navigation ********************************************** -->
+	<div class="container locate">
+            <div class="row">
+                <div class="col-md-7 col-md-offset-1">
+                    <h3>
+                        KSL CITY, JOHOR BAHRU
+                    </h3>
+                    <p>
+                        KSL CITY LEVEL 2, L2-128, KSL CITY, 33 JALAN SELADANG, TAMAN ABAD, 80250 JOHOR BAHRU <br>
+                        No of hall:8 <br>
+                        Seating capacity:1378
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/kslcityjb.jpg" width="100%">
+                </div>
             </div>
-        </section>
-        
-        <script type="text/javascript">
-            $('.date').datepicker({
-                autoclose: true,
-                format:	"dd/mm/yyyy",
-                todayHighlight: true,
-                orientation: "bottom"
-            });;
-        </script>
+            <div class="row">
+                <div class="col-md-7 col-md-offset-1">
+                    <h3>
+                        U MALL, SKUDAI
+                    </h3>
+                    <p>
+                        MBO U-MALL F36, 1ST FLOOR, U-MALL SHOPPING COMPLEX, 45 JALAN PULAI UTAMA, 20, TAMAN PULAI UTAMA, 81110 SKUDAI, JOHOR <br>
+                        No of hall:5 <br>
+                        Seating capacity:601
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/umallskudai.jpg" width="100%">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7 col-md-offset-1">
+                    <h3>
+                        SQUARE ONE SHOPPING MALL, BATU PAHAT
+                    </h3>
+                    <p>
+                        MBO SQUARE ONE LEVEL 3, SQUARE ONE SHOPPING MALL, JALAN FLORA UTAMA 4, TAMAN FLORA UTAMA, 83000 BATU PAHAT, JOHOR <br>
+                        No of hall:8 <br>
+                        Seating capacity:1189
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/squareone.jpg" width="100%">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7 col-md-offset-1">
+                    <h3>
+                        KLUANG MALL, KLUANG
+                    </h3>
+                    <p>
+                        KLUANG MALL LOT 2-10, 2ND FLOOR, KLUANG MALL, JALAN RAMBUTAN, 86000 KLUANG <br>
+                        No of hall:6 <br>
+                        Seating capacity:963
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/kluangmall.jpg" width="100%">
+                </div>
+            </div>
+        </div>
+        <!-- ********************************************** Footer ********************************************** -->
         <div class="footer">
             <!--  Container  -->
             <div class="container">
@@ -297,22 +272,22 @@
                 <div class="col-md-7 w3ls_footer_grid1_right">
                     <ul>
                         <li>
-                            <a href="index.html">Movies</a>
+                            <a href="index.jsp">Movies</a>
                         </li>
                         <li>
-                            <a href="showtimes.html">Showtimes</a>
+                            <a href="showtimes.jsp">Showtimes</a>
                         </li>
                         <li>
-                            <a href="newspromotion.html">News & Promotion</a>
+                            <a href="newspromotion.jsp">News & Promotion</a>
                         </li>
                         <li>
-                            <a href="locate.html">Locate Us</a>
+                            <a href="locate.jsp">Locate Us</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact Us</a>
+                            <a href="contact.jsp">Contact Us</a>
                         </li>
                         <li>
-                            <a href="faq.html">FAQ</a>
+                            <a href="faq.jsp">FAQ</a>
                         </li>
                     </ul>
                 </div>
@@ -321,6 +296,9 @@
             </div>
             <!--  //Container  -->
         </div>
+        <!-- ********************************************** //Footer ********************************************** -->
+        <!--  ********************************************** Wajib **********************************************  -->
+        <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
         <script>
         $(document).ready(function(){
@@ -336,5 +314,7 @@
             );
         });
         </script>
+        <!-- //Bootstrap Core JavaScript -->
+        <!--  ********************************************** //Wajib **********************************************  -->
     </body>
 </html>

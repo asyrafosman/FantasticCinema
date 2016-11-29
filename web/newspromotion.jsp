@@ -1,17 +1,20 @@
 <%-- 
-    Document   : booking
-    Created on : Nov 26, 2016, 9:33:50 PM
+    Document   : newspromotion
+    Created on : Nov 29, 2016, 2:00:53 PM
     Author     : admin
 --%>
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="bean.Movie" %>
 <%@ page import="bean.Customer" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% Customer customerprofile = (Customer)session.getAttribute("customerprofile"); %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <!-- Title -->
         <title>Fantastic Cinema</title>
@@ -22,14 +25,12 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
-
-        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
+        <link rel="stylesheet" href="css/contactstyle.css" type="text/css" media="all" />
         <!-- font-awesome icons -->
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> <!-- Wajib -->
         <!-- //font-awesome icons -->
         <!-- js -->
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
-        <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
         <!-- //js -->
         <!-- banner-bottom-plugin -->
         <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
@@ -142,6 +143,8 @@
         <!--  //javascript modal popup  -->
         <!--  ********************************************** //Wajib **********************************************  -->	
         <!-- ********************************************** //Modal pop-p sign in & sign up ********************************************** -->
+        <!-- ********************************************** Navigation ********************************************** -->
+        <!--  movie navigation  -->	
         <div class="movies_nav">
             <!--  Container  -->
             <div class="container">
@@ -172,100 +175,153 @@
             </div>
             <!--  //Container  -->
         </div>
-        <section id="QuickFilter">
+        <!--  //movie navigation  -->	
+        <!-- ********************************************** //Navigation ********************************************** -->
+
+        <!-- ********************************************** Tab panel movie list ********************************************** -->
+        <!--  Display movie list  -->
+        <div class="general">
+            <!--  Container  -->
             <div class="container">
-                <% if (customerprofile == null) { %>
-                    <div class="jumbotron">
-                        <h2>ONLINE TICKETING</h2>
-                        <h1>MEMBERS ONLY</h1>
-                        <p>Please login or sign up if you are not a member</p>
-                    </div>                    
-                <% }
-                else { %>
-                    <div class="jumbotron">
-                        <form class="form-horizontal" action="InsertBookingServlet">
-                            <fieldset>
-                                <legend>Book a ticket</legend>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Cinema</label>
-                                    <div class="col-lg-10">
-                                        <select name="cinema" class="form-control" id="cinema">
-                                            <option selected="selected" value="-">- Select Cinema -</option>
-                                            <option value="1 Utama"> 1 Utama</option>
-                                            <option value="IOI Mall (Puchong)"> IOI Mall (Puchong)</option>
-                                            <option value="Summit USJ"> Summit USJ</option>
-                                            <option value="Setia City Mall"> Setia City Mall</option>
-                                            <option value="Klang Parade"> Klang Parade</option>
-                                            <option value="Alamanda"> Alamanda</option>
-                                            <option value="Dataran Pahlawan"> Dataran Pahlawan</option>
-                                            <option value="Aeon Bandaraya Melaka"> Aeon Bandaraya Melaka</option>
-                                            <option value="East Coast Mall"> East Coast Mall</option>
-                                            <option value="1Borneo"> 1Borneo</option>
-                                            <option value="Suria Sabah Mall"> Suria Sabah Mall</option>
-                                            <option value="CityONE Megamall (Kuching)"> CityONE Megamall (Kuching)</option>
-                                            <option value="Bintang Megamall"> Bintang Megamall</option>
-                                        </select>
-                                    </div>
+                <!--  Tab panel  -->
+                <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                    <!--  nav-tabs list  -->
+                    <ul id="myTab" class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#news" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">News</a></li>
+                        <li role="presentation"><a href="#promotion" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">Promotion</a></li>
+                    </ul>
+                    <!--  //nav-tabs list  -->
+                    <!--  myTabContent  -->
+                    <div id="myTabContent" class="tab-content">
+                        <!--  ********************************************** nowshowing tab **********************************************  -->
+                        <div role="tabpanel" class="tab-pane fade active in" id="news" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-1">
+                                    <img src="images/blooddonation.png" width="100%">
                                 </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Movie</label>
-                                    <div class="col-lg-10">
-                                        <select name="moviename" class="form-control" id="moviename">
-                                            <option selected="selected" value="-">- Select Movie -</option>
-                                            <c:forEach items="${sessionScope.movies}" var="currentbooking" varStatus="loop">
-                                                <option><c:out value="${currentbooking.moviename}" /></option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
+                                <div class="col-md-7 col-md-offset-1">
+                                    <h3>
+                                        BLOOD DONATION 3.0 PRESS CONFERENCE
+                                    </h3>
+                                    <p>
+                                        MBO SJAM Blood Donation Drive 3.0 Press Conference @MBO Citta Mall
+                                    </p>
                                 </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Show Date</label>
-                                    <div class="col-lg-10">
-                                        <div class="input-group date" data-provide="datepicker">
-                                            <input name="moviedate" type="text" class="form-control" value="- Select Date -">
-                                            <div class="input-group-addon">
-                                                <span class="fa fa-th"></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-1">
+                                    <img src="images/blooddonation.jpg" width="100%">
                                 </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Show Time</label>
-                                    <div class="col-lg-10">
-                                        <select name="movietime" class="form-control" id="movietime">
-                                            <option value="-">- Select Time -</option>
-                                            <option value="10AM">10AM</option>
-                                            <option value="12PM">12PM</option>
-                                            <option value="2PM">2PM</option>
-                                            <option value="4PM">4PM</option>
-                                            <option value="6PM">6PM</option>
-                                            <option value="8PM">8PM</option>
-                                            <option value="10PM">10PM</option>
-                                            <option value="12AM">12AM</option>
-                                        </select>
-                                    </div>
+                                <div class="col-md-7 col-md-offset-1">
+                                    <h3>
+                                        BLOOD DONATION PRESS CONFERENCE (2014)
+                                    </h3>
+                                    <p>
+                                        Published on : 5 September 2014
+
+                                        Read from - http://www.nst.com.my/node/30173
+                                    </p>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-lg-10 col-lg-offset-2">
-                                        <button type="reset" class="btn btn-danger">Cancel</button>
-                                        <button type="submit" class="btn btn-success">Book</button>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-1">
+                                    <img src="images/kosmogaraj.jpg" width="100%">
                                 </div>
-                            </fieldset>
-                        </form>
+                                <div class="col-md-7 col-md-offset-1">
+                                    <h3>
+                                            KOSMO, GARAJ, SCRATCH WINS CONTEST NEWS ON 240514, PG 34
+                                    </h3>
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  ********************************************** //nowshowing tab **********************************************  -->
+
+                        <!--  ********************************************** promotion tab **********************************************  -->
+                        <div role="tabpanel" class="tab-pane fade" id="promotion" aria-labelledby="rating-tab">
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-1">
+                                    <img src="images/kslreborn.jpg" width="100%">
+                                </div>
+                                <div class="col-md-7 col-md-offset-1">
+                                    <h3>
+                                        MBO KSL REBORN
+                                    </h3>
+                                    <p>
+                                        Type:Promotion
+                                        Cinema:KSL CITY, JOHOR BAHRU
+                                        Period:25/11/2016 - 25/11/2016
+                                        The talented pop sweetie Jeryl Lee, finalist from Sing! China will be at MBO KSL JB for our grand re-opening! Join us on 25th Nov, 4PM - 7PM!
+
+                                        We have ALLSTAR signups, cosplay appearances, The Prodigal Son Charity Screening, voucher & merchandise giveaway and more.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-1">
+                                    <img src="images/moana.jpg" width="100%">
+                                </div>
+                                <div class="col-md-7 col-md-offset-1">
+                                    <h3>
+                                        MOANA COLOURING CONTEST
+                                    </h3>
+                                    <p>
+                                        Type:Promotion
+                                        Cinema:KSL CITY, JOHOR BAHRU,SUBANG PARADE, SUBANG JAYA,SETAPAK CENTRAL,THE SPRING SHOPPING MALL,KLUANG MALL, KLUANG,IMAGO MALL,CENTRAL SQUARE
+                                        Period:26/11/2016 - 11/12/2016
+                                        Join us at these MBO locations for Moana Colouring Contest! - happening from 26th November, check the dates and join to win STABILO and MBO merchandise.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-1">
+                                    <img src="images/2d3d.jpg" width="100%">
+                                </div>
+                                <div class="col-md-7 col-md-offset-1">
+                                    <h3>
+                                        2D & 3D SAME PRICE!
+                                    </h3>
+                                    <p>
+                                        Type:Promotion
+                                        Cinema:All cinemas
+                                        Period:
+                                         Same ticket price for 2D & 3D movies
+                                        *3D glasses sold separately & can be used for subsequent visits.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-1">
+                                    <img src="images/reasons.jpg" width="100%">
+                                </div>
+                                <div class="col-md-7 col-md-offset-1">
+                                    <h3>
+                                        10 REASONS TO WATCH MOVIES AT MBO CINEMAS
+                                    </h3>
+                                    <p>
+                                        Type:Promotion
+                                        Cinema:All cinemas
+                                        Period:01/01/2016
+                                        10 Reasons Why MBO Cinemas is the best choice to watch your favourite movies! 
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  ********************************************** //promotion tab **********************************************  -->
                     </div>
-                <% } %>
+                    <!--  //myTabContent  -->
+                </div>
+                <!--  //Tab panel  -->
             </div>
-        </section>
-        
-        <script type="text/javascript">
-            $('.date').datepicker({
-                autoclose: true,
-                format:	"dd/mm/yyyy",
-                todayHighlight: true,
-                orientation: "bottom"
-            });;
-        </script>
+            <!--  //Container  -->
+        </div>
+        <!--  //Display movie list  -->
+        <!-- ********************************************** //Tab panel movie list ********************************************** -->
+
+        <!-- ********************************************** Footer ********************************************** -->
         <div class="footer">
             <!--  Container  -->
             <div class="container">
@@ -297,22 +353,22 @@
                 <div class="col-md-7 w3ls_footer_grid1_right">
                     <ul>
                         <li>
-                            <a href="index.html">Movies</a>
+                            <a href="index.jsp">Movies</a>
                         </li>
                         <li>
-                            <a href="showtimes.html">Showtimes</a>
+                            <a href="showtimes.jsp">Showtimes</a>
                         </li>
                         <li>
-                            <a href="newspromotion.html">News & Promotion</a>
+                            <a href="newspromotion.jsp">News & Promotion</a>
                         </li>
                         <li>
-                            <a href="locate.html">Locate Us</a>
+                            <a href="locate.jsp">Locate Us</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact Us</a>
+                            <a href="contact.jsp">Contact Us</a>
                         </li>
                         <li>
-                            <a href="faq.html">FAQ</a>
+                            <a href="faq.jsp">FAQ</a>
                         </li>
                     </ul>
                 </div>
@@ -321,6 +377,9 @@
             </div>
             <!--  //Container  -->
         </div>
+        <!-- ********************************************** //Footer ********************************************** -->
+        <!--  ********************************************** Wajib **********************************************  -->
+        <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
         <script>
         $(document).ready(function(){
@@ -336,5 +395,8 @@
             );
         });
         </script>
+        <!-- //Bootstrap Core JavaScript -->
+        <!--  ********************************************** //Wajib **********************************************  -->
     </body>
 </html>
+

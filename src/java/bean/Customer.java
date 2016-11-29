@@ -15,8 +15,8 @@ import java.io.Serializable;
 public class Customer implements Serializable {
     private String username;
     private String password;
-    private String name;
-    private String icNum;
+    private String fullName;
+    private String email;
     private String mobileNum;
 
     /**
@@ -48,31 +48,31 @@ public class Customer implements Serializable {
     }
 
     /**
-     * @return the name
+     * @return the fullName
      */
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
     /**
-     * @param name the name to set
+     * @param fullName the fullName to set
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     /**
-     * @return the icNum
+     * @return the email
      */
-    public String getIcNum() {
-        return icNum;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * @param icNum the icNum to set
+     * @param email the email to set
      */
-    public void setIcNum(String icNum) {
-        this.icNum = icNum;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**

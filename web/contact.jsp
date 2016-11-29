@@ -1,17 +1,20 @@
 <%-- 
-    Document   : booking
-    Created on : Nov 26, 2016, 9:33:50 PM
+    Document   : contact
+    Created on : Nov 29, 2016, 1:56:47 PM
     Author     : admin
 --%>
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="bean.Movie" %>
 <%@ page import="bean.Customer" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% Customer customerprofile = (Customer)session.getAttribute("customerprofile"); %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <!-- Title -->
         <title>Fantastic Cinema</title>
@@ -22,19 +25,17 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
-
-        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
+        <link rel="stylesheet" href="css/contactstyle.css" type="text/css" media="all" />
         <!-- font-awesome icons -->
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> <!-- Wajib -->
         <!-- //font-awesome icons -->
         <!-- js -->
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
-        <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
         <!-- //js -->
         <!-- banner-bottom-plugin -->
         <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
         <script src="js/owl.carousel.js"></script> <!-- Wajib -->
-    </head>
+    </head>		
     <body>
         <!-- ********************************************** header ********************************************** -->
         <div class="header">
@@ -142,6 +143,8 @@
         <!--  //javascript modal popup  -->
         <!--  ********************************************** //Wajib **********************************************  -->	
         <!-- ********************************************** //Modal pop-p sign in & sign up ********************************************** -->
+        <!-- ********************************************** Navigation ********************************************** -->
+        <!--  movie navigation  -->	
         <div class="movies_nav">
             <!--  Container  -->
             <div class="container">
@@ -172,100 +175,85 @@
             </div>
             <!--  //Container  -->
         </div>
-        <section id="QuickFilter">
-            <div class="container">
-                <% if (customerprofile == null) { %>
-                    <div class="jumbotron">
-                        <h2>ONLINE TICKETING</h2>
-                        <h1>MEMBERS ONLY</h1>
-                        <p>Please login or sign up if you are not a member</p>
-                    </div>                    
-                <% }
-                else { %>
-                    <div class="jumbotron">
-                        <form class="form-horizontal" action="InsertBookingServlet">
-                            <fieldset>
-                                <legend>Book a ticket</legend>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Cinema</label>
-                                    <div class="col-lg-10">
-                                        <select name="cinema" class="form-control" id="cinema">
-                                            <option selected="selected" value="-">- Select Cinema -</option>
-                                            <option value="1 Utama"> 1 Utama</option>
-                                            <option value="IOI Mall (Puchong)"> IOI Mall (Puchong)</option>
-                                            <option value="Summit USJ"> Summit USJ</option>
-                                            <option value="Setia City Mall"> Setia City Mall</option>
-                                            <option value="Klang Parade"> Klang Parade</option>
-                                            <option value="Alamanda"> Alamanda</option>
-                                            <option value="Dataran Pahlawan"> Dataran Pahlawan</option>
-                                            <option value="Aeon Bandaraya Melaka"> Aeon Bandaraya Melaka</option>
-                                            <option value="East Coast Mall"> East Coast Mall</option>
-                                            <option value="1Borneo"> 1Borneo</option>
-                                            <option value="Suria Sabah Mall"> Suria Sabah Mall</option>
-                                            <option value="CityONE Megamall (Kuching)"> CityONE Megamall (Kuching)</option>
-                                            <option value="Bintang Megamall"> Bintang Megamall</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Movie</label>
-                                    <div class="col-lg-10">
-                                        <select name="moviename" class="form-control" id="moviename">
-                                            <option selected="selected" value="-">- Select Movie -</option>
-                                            <c:forEach items="${sessionScope.movies}" var="currentbooking" varStatus="loop">
-                                                <option><c:out value="${currentbooking.moviename}" /></option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Show Date</label>
-                                    <div class="col-lg-10">
-                                        <div class="input-group date" data-provide="datepicker">
-                                            <input name="moviedate" type="text" class="form-control" value="- Select Date -">
-                                            <div class="input-group-addon">
-                                                <span class="fa fa-th"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Show Time</label>
-                                    <div class="col-lg-10">
-                                        <select name="movietime" class="form-control" id="movietime">
-                                            <option value="-">- Select Time -</option>
-                                            <option value="10AM">10AM</option>
-                                            <option value="12PM">12PM</option>
-                                            <option value="2PM">2PM</option>
-                                            <option value="4PM">4PM</option>
-                                            <option value="6PM">6PM</option>
-                                            <option value="8PM">8PM</option>
-                                            <option value="10PM">10PM</option>
-                                            <option value="12AM">12AM</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-lg-10 col-lg-offset-2">
-                                        <button type="reset" class="btn btn-danger">Cancel</button>
-                                        <button type="submit" class="btn btn-success">Book</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
+        <!--  //movie navigation  -->	
+        <!-- ********************************************** //Navigation ********************************************** -->
+        <!-- contact -->
+        <div class="contact-agile">
+            <div id="map"></div>
+            <div class="faq">
+                <div class="container">
+                <h4 class="latest-text w3_latest_text contact_text">Contact Us</h4>
+                    <div class="col-md-3 location-agileinfo">
+                        <div class="icon-w3">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </div>
+                        <h3>Address</h3>
+                        <h4>Office of Corporate Affairs,</h4>
+                        <h4>Skudai, 81310 Skudai,</h4>
+                        <h4>Johor, Malaysia.</h4>
                     </div>
-                <% } %>
+                    <div class="col-md-3 call-agileits">
+                        <div class="icon-w3">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </div>
+                        <h3>Call</h3>
+                        <h4>+060123456789</h4>
+                        <h4>+060198765432</h4>
+                        <h4>+060174852963</h4>
+                    </div>
+                    <div class="col-md-3 mail-wthree">
+                        <div class="icon-w3">
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                        </div>
+                        <h3>Email</h3>
+                        <h4><a href="mailto:info@fantasticcinema.com">example1@fantasticcinema.com</a></h4>
+                        <h4><a href="mailto:info@fantasticcinema.com">example2@fantasticcinema.com</a></h4>
+                        <h4><a href="mailto:info@fantasticcinema.com">example3@fantasticcinema.com</a></h4>
+                    </div>
+                    <div class="col-md-3 social-w3l">
+                        <div class="icon-w3">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                        <h3>Social media</h3>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span class="text">Facebook</span></a></li>
+                            <li class="twt"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span class="text">Twitter</span></a></li>
+                            <li class="ggp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i><span class="text">Google+</span></a></li>	
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                    <form action="#" method="post">
+                        <input type="text" name="your name" placeholder="FIRST NAME" required="">
+                        <input type="text" name="your name" placeholder="LAST NAME" required="">
+                        <input type="text" name="your email" placeholder="EMAIL" required="">
+                        <input type="text" name="subject" placeholder="SUBJECT" required="">
+                        <textarea  name="your message" placeholder="YOUR MESSAGE" required=""></textarea>
+                        <input type="submit" value="SEND MESSAGE">
+                    </form>
+                </div>
             </div>
-        </section>
-        
+        </div>
+        <!-- Map-JavaScript -->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>        
         <script type="text/javascript">
-            $('.date').datepicker({
-                autoclose: true,
-                format:	"dd/mm/yyyy",
-                todayHighlight: true,
-                orientation: "bottom"
-            });;
+                google.maps.event.addDomListener(window, 'load', init);
+                function init() {
+                        var mapOptions = {
+                                zoom: 15,
+                                center: new google.maps.LatLng(1.558429, 103.638295),
+                                styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
+                        };
+                        var mapElement = document.getElementById('map');
+                        var map = new google.maps.Map(mapElement, mapOptions);
+                        var marker = new google.maps.Marker({
+                                position: new google.maps.LatLng(1.558429, 103.638295),
+                                map: map,
+                        });
+                }
         </script>
+        <!-- //Map-JavaScript -->
+        <!-- //contact -->
+        <!-- ********************************************** Footer ********************************************** -->
         <div class="footer">
             <!--  Container  -->
             <div class="container">
@@ -297,22 +285,22 @@
                 <div class="col-md-7 w3ls_footer_grid1_right">
                     <ul>
                         <li>
-                            <a href="index.html">Movies</a>
+                            <a href="index.jsp">Movies</a>
                         </li>
                         <li>
-                            <a href="showtimes.html">Showtimes</a>
+                            <a href="showtimes.jsp">Showtimes</a>
                         </li>
                         <li>
-                            <a href="newspromotion.html">News & Promotion</a>
+                            <a href="newspromotion.jsp">News & Promotion</a>
                         </li>
                         <li>
-                            <a href="locate.html">Locate Us</a>
+                            <a href="locate.jsp">Locate Us</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact Us</a>
+                            <a href="contact.jsp">Contact Us</a>
                         </li>
                         <li>
-                            <a href="faq.html">FAQ</a>
+                            <a href="faq.jsp">FAQ</a>
                         </li>
                     </ul>
                 </div>
@@ -321,6 +309,9 @@
             </div>
             <!--  //Container  -->
         </div>
+        <!-- ********************************************** //Footer ********************************************** -->
+        <!--  ********************************************** Wajib **********************************************  -->
+        <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
         <script>
         $(document).ready(function(){
@@ -336,5 +327,7 @@
             );
         });
         </script>
+        <!-- //Bootstrap Core JavaScript -->
+        <!--  ********************************************** //Wajib **********************************************  -->
     </body>
 </html>

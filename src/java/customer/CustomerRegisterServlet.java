@@ -3,30 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package customer;
 
-package booking;
+import bean.Customer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import jdbc.JDBCUtility;
 
+import jdbc.JDBCUtility;
 /**
  *
- * @author U
+ * @author peiyi
  */
-@WebServlet(name = "InsertBookingServlet", urlPatterns = {"/InsertBookingServlet"})
-public class InsertBookingServlet extends HttpServlet {
+
+
+@WebServlet(name = "CustomerRegisterServlet", urlPatterns = {"/CustomerRegisterServlet"})
+public class CustomerRegisterServlet extends HttpServlet {
     
     private JDBCUtility jdbcUtility;
     private Connection con;
@@ -48,7 +51,7 @@ public class InsertBookingServlet extends HttpServlet {
         jdbcUtility.jdbcConnect();
         con = jdbcUtility.jdbcGetConnection();
         jdbcUtility.prepareSQLStatement();
-    }            
+    }        
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -61,58 +64,36 @@ public class InsertBookingServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Customer customer= null;
+        response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession();
+       
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String fullName = request.getParameter("fullName");
+        String email = request.getParameter("email");
+        String mobileNum = request.getParameter("mobileNum");
         
-        String username = "000";
-        String cinema = request.getParameter("cinema");   
-        String moviename = request.getParameter("moviename");  
-        String moviedate = request.getParameter("moviedate");  
-                
-        //convert string to date
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        Date date = new Date();
-        try {
-            date = formatter.parse(moviedate);
-        } catch (Exception ex) {            
-        }
-        
-        //convert to mysql date
-        formatter = new SimpleDateFormat("yyyy-MM-dd");
-        moviedate = formatter.format(date);        
-        
-        String movietime = request.getParameter("movietime");
-        
-        //bookingdate - now
-        java.util.Date dt = new java.util.Date();
-        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String bookingdate = sdf.format(dt);
-        
-        response.setContentType("text/html;charset=UTF-8");        
         try {                    
-            PreparedStatement preparedStatement = jdbcUtility.getPsInsertBooking();
+            PreparedStatement preparedStatement = jdbcUtility.getPsInsertCustomer();
             
             preparedStatement.setString(1, username);
-            preparedStatement.setString(2, cinema);
-            preparedStatement.setString(3, moviename);
-            preparedStatement.setString(4, moviedate);
-            preparedStatement.setString(5, movietime);
-            preparedStatement.setString(6, bookingdate);
+            preparedStatement.setString(2, password);
+            preparedStatement.setString(3, fullName);
+            preparedStatement.setString(4, email);
+            preparedStatement.setString(5, mobileNum);
+            
             preparedStatement.executeUpdate();
             
             PrintWriter out = response.getWriter();
             
-            out.println("<script>");
-            out.println("    alert('Booking insert success');");
-            out.println("</script>");
-            
-            out.println("<p>Please click <a href='/FantasticCinema/ViewBookingServlet'>here</a> to view booking details</p>");
-            
-            formatter = new SimpleDateFormat("dd-MM-yyyy");
-            out.println("<br />" + formatter.format(date));
-            
-            formatter = new SimpleDateFormat("yyyy-MM-dd");
-            out.println("<br />" + formatter.format(date));
+            customer = new Customer();
+            customer.setUsername(username);
+            customer.setPassword(password);
+            customer.setFullName(fullName);
+            customer.setEmail(email);
+            customer.setMobileNum(mobileNum);
         }
 	catch (SQLException ex)
 	{
@@ -133,8 +114,26 @@ public class InsertBookingServlet extends HttpServlet {
 	catch (java.lang.Exception ex)
 	{
             ex.printStackTrace ();
-	} 
+	}       
+        
+        session.setAttribute("customerprofile", customer);
+        response.sendRedirect(request.getParameter("from"));
     }
+    
+    void sendPage(HttpServletRequest req, HttpServletResponse res, String fileName) throws ServletException, IOException
+    {
+        // Get the dispatcher; it gets the main page to the user
+	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(fileName);
+
+	if (dispatcher == null)
+	{
+            System.out.println("There was no dispatcher");
+	    // No dispatcher means the html file could not be found.
+	    res.sendError(res.SC_NO_CONTENT);
+	}
+	else
+	    dispatcher.forward(req, res);
+    }     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

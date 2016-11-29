@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2016 at 04:01 PM
+-- Generation Time: Nov 29, 2016 at 09:50 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -30,15 +30,16 @@ USE `fantasticcinema`;
 
 CREATE TABLE `admin` (
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `password` varchar(20) NOT NULL,
+  `fullName` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`username`, `password`) VALUES
-('fantastic', 'cinema');
+INSERT INTO `admin` (`username`, `password`, `fullName`) VALUES
+('fantastic', 'cinema', 'Miss Fantastic');
 
 -- --------------------------------------------------------
 
@@ -48,7 +49,7 @@ INSERT INTO `admin` (`username`, `password`) VALUES
 
 CREATE TABLE `booking` (
   `id` int(11) NOT NULL,
-  `userid` varchar(11) NOT NULL DEFAULT '0',
+  `username` varchar(50) NOT NULL DEFAULT '0',
   `cinema` varchar(50) NOT NULL,
   `moviename` varchar(50) NOT NULL,
   `moviedate` date NOT NULL,
@@ -61,7 +62,7 @@ CREATE TABLE `booking` (
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `userid`, `cinema`, `moviename`, `moviedate`, `movietime`, `bookingdate`, `status`) VALUES
+INSERT INTO `booking` (`id`, `username`, `cinema`, `moviename`, `moviedate`, `movietime`, `bookingdate`, `status`) VALUES
 (1, '000', 'Dataran Pahlawan', 'War Dogs', '2016-11-24', '8PM', '2016-11-24 12:03:14', 0),
 (2, '000', 'Alamanda', 'War Dogs', '2016-11-24', '4PM', '2016-11-24 12:03:45', 0),
 (3, '000', 'Dataran Pahlawan', 'War Dogs', '2016-11-24', '10PM', '2016-11-24 12:14:35', 0),
@@ -70,7 +71,8 @@ INSERT INTO `booking` (`id`, `userid`, `cinema`, `moviename`, `moviedate`, `movi
 (6, '000', 'Bintang Megamall', 'Civil War', '2016-11-24', '2PM', '2016-11-24 14:46:34', 0),
 (7, '000', 'Aeon Bandaraya Melaka', 'Civil War', '2016-11-26', '2PM', '2016-11-26 11:18:09', 0),
 (8, '000', 'Aeon Bandaraya Melaka', 'The Jungle Book', '2016-11-26', '10PM', '2016-11-26 11:21:15', 0),
-(9, '000', 'Aeon Bandaraya Melaka', 'JACK REACHER: NEVER GO BACK', '2016-11-26', '6PM', '2016-11-26 22:44:30', 0);
+(9, '000', 'Aeon Bandaraya Melaka', 'JACK REACHER: NEVER GO BACK', '2016-11-26', '6PM', '2016-11-26 22:44:30', 0),
+(10, '000', 'Alamanda', 'Marvelâ??s Doctor Strange', '2016-11-29', '2PM', '2016-11-29 16:33:54', 0);
 
 -- --------------------------------------------------------
 
@@ -81,8 +83,8 @@ INSERT INTO `booking` (`id`, `userid`, `cinema`, `moviename`, `moviedate`, `movi
 CREATE TABLE `customer` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `icNum` varchar(12) NOT NULL,
+  `fullName` varchar(100) NOT NULL,
+  `email` varchar(30) NOT NULL,
   `mobileNum` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

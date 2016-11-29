@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 public class Booking implements Serializable {
     private int id;
-    private String userid;
+    private String username;
     private String cinema;
     private String moviename;
     private String moviedate;
@@ -37,17 +37,17 @@ public class Booking implements Serializable {
     }
 
     /**
-     * @return the userid
+     * @return the username
      */
-    public String getUserid() {
-        return userid;
+    public String getUsername() {
+        return username;
     }
 
     /**
-     * @param userid the userid to set
+     * @param username the username to set
      */
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -133,5 +133,4 @@ public class Booking implements Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
-
 }

@@ -19,6 +19,7 @@ public class JDBCUtility
    String userName;
    String password;
    PreparedStatement psInsertBooking = null;
+   PreparedStatement psInsertCustomer = null;
    PreparedStatement psSelectAllFromBooking = null;
    PreparedStatement psUpdateBookingViaIdApproved = null;
    PreparedStatement psDeleteBookingViaId = null;
@@ -100,10 +101,14 @@ public class JDBCUtility
         try
         {
             //insert into booking
-            String sqlInsertBooking = "INSERT INTO booking(userid, cinema, moviename, moviedate, movietime, bookingdate) " +
+            String sqlInsertBooking = "INSERT INTO booking(username, cinema, moviename, moviedate, movietime, bookingdate) " +
                                       "VALUES(?, ?, ?, ?, ?, ?)";
-            
             psInsertBooking = con.prepareStatement(sqlInsertBooking);
+            
+            //insert into customers
+            String sqlInsertCustomer = "INSERT INTO customer(username, password, fullName, email, mobileNum) " +
+                                      "VALUES(?, ?, ?, ?, ?)";
+            psInsertCustomer = con.prepareStatement(sqlInsertCustomer);
             
             //select all from booking
             String sqlSelectAllFromBooking = "SELECT * FROM booking";
@@ -156,6 +161,11 @@ public class JDBCUtility
     public PreparedStatement getPsInsertBooking()
     {
       return psInsertBooking;
+    }
+    
+    public PreparedStatement getPsInsertCustomer()
+    {
+      return psInsertCustomer;
     }
     
     public PreparedStatement getPsSelectAllFromBooking()

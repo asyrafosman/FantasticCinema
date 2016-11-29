@@ -72,7 +72,7 @@ public class ViewBookingServlet extends HttpServlet {
             while (rs.next()) {                
                 booking = new Booking();
                 booking.setId(rs.getInt("id"));
-                booking.setUserid(rs.getString("userid"));
+                booking.setUsername(rs.getString("username"));
                 
                 booking.setCinema(rs.getString("cinema"));
                                 
