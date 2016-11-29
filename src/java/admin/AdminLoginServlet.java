@@ -68,17 +68,16 @@ public class AdminLoginServlet extends HttpServlet {
         
         String username = request.getParameter("username");
         String password = request.getParameter("password"); 
-        String fullName = "";
+        String fullName = null;
         
         try {
             PreparedStatement preparedStatement = jdbcUtility.getPsSelectAdminViaLoginPassword();
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             ResultSet rs = preparedStatement.executeQuery();
-            System.out.println("pass here");
             
             while (rs.next()) {
-                System.out.println("pass here");
+                fullName = rs.getString("fullName");
                 
                 admin = new Admin();
                 admin.setUsername(username);
@@ -91,10 +90,10 @@ public class AdminLoginServlet extends HttpServlet {
         
         if (admin != null) {
             session.setAttribute("adminprofile", admin);
-            response.sendRedirect(request.getContextPath() + "/adminhome.jsp");
+            response.sendRedirect(request.getContextPath() + "/admin/adminhome.jsp");
         }
         else {
-            response.sendRedirect(request.getContextPath() + "/adminloginerror.jsp");
+            response.sendRedirect(request.getContextPath() + "/admin/adminloginerror.jsp");
         }                    
     }
 

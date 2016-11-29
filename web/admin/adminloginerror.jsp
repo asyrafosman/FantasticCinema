@@ -56,7 +56,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="row" >
                     <div class="col-md-6 col-md-offset-3">
                         <div class="well bs-component" >
-                            <form class="form-horizontal" role="form" method="post" action="AdminLoginServlet">
+                            <form class="form-horizontal" role="form" method="post" action="/FantasticCinema/AdminLoginServlet">
                                 <fieldset>
                                     <h1>Admin Login</h1><br><br>
                                     <!--  Enter Username  -->
