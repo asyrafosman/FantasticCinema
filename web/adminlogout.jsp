@@ -4,6 +4,8 @@ author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% session.invalidate(); %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -48,7 +50,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
         <!-- ********************************************** //header ********************************************** -->
-        <!-- ********************************************** Modalsign in  ********************************************** -->
+        <!-- ********************************************** Modalsign in  ********************************************** -->                              
         <section id="QuickFilter">
             <div class="container">
                 <div class="row" >
@@ -59,7 +61,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <h1>Admin Login</h1><br><br>
                                     <!--  Enter Username  -->
                                     <div class="form-group"  >
-                                        <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+                                        <label for="username" class="col-lg-2 control-label">Username</label>
                                         <div class="col-lg-10">
                                             <input type="text" class="form-control" name="username" placeholder="Username">
                                         </div>
@@ -68,12 +70,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                     <!--  Enter Password  -->
                                     <div class="form-group"  >
-                                        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                                        <label for="password" class="col-lg-2 control-label">Password</label>
                                         <div class="col-lg-10">
                                             <input type="password" class="form-control" name="password" placeholder="Password">
                                         </div>
                                     </div>
-                                   <!--// Enter Password  -->
+                                    <!--// Enter Password  -->
 
                                     <!-- Cancel&Submit  --> 
                                     <div class="form-group">
@@ -82,6 +84,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         </div>
                                     </div>
                                     <!--//Cancel&Submit  --> 
+                                    <p class="text-success">Session terminated. Please login again.</p>
                                 </fieldset>
                             </form>
                         </div> 
@@ -89,16 +92,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
             </div>
         </section>
-        <!-- ********************************************** //Modal Sign In********************************************* -->	
+        <!-- ********************************************** //Modal Sign In********************************************* -->
         <!-- ********************************************** Footer ********************************************** -->
         <div class="footer">
             <!--  Container  -->
             <div class="container">
                 <!--  w3ls_footer_grid  -->
                 <div class="w3ls_footer_grid">
-                    <div class="col-md-6 w3ls_footer_grid_left"></div>
+                    <div class="col-md-6 w3ls_footer_grid_left">
+                    </div>
                     <div class="col-md-6 w3ls_footer_grid_right">
-                        <a href="index.html"><h2>Fantastic<span>Cinema</span></h2></a>
+                            <a href="index.html"><h2>Fantastic<span>Cinema</span></h2></a>
                     </div>
                     <div class="clearfix"> </div>
                 </div>

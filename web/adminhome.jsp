@@ -13,7 +13,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     
     if (adminprofile == null) {
 %>
-        <jsp:forward page="terminate.html" />
+        <jsp:forward page="adminlogout.jsp" />
 <%        
     }
 %>    
@@ -55,7 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="fc_sign_in_register">
                     <ul>
                         <li><i aria-hidden="true"></i>Hi, <jsp:getProperty name="adminprofile" property="fullName"/>!</li>
-                        <li><a href="adminlogin.html">Logout</a></li>
+                        <li><a href="adminlogout.jsp">Logout</a></li>
                     </ul>
                 </div>
                 <!--  //Sign in & sign up  -->

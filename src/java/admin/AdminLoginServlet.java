@@ -94,7 +94,7 @@ public class AdminLoginServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/adminhome.jsp");
         }
         else {
-            response.sendRedirect(request.getContextPath() + "/not-exist.html");
+            response.sendRedirect(request.getContextPath() + "/adminloginerror.jsp");
         }                    
     }
 
