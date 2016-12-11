@@ -6,10 +6,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="bean.Admin" %>
+<%@ page import="bean.User" %>
 
 <%
-    Admin adminprofile = (Admin)session.getAttribute("adminprofile");
+    User adminprofile = (User)session.getAttribute("adminprofile");
     
     if (adminprofile == null) {
 %>
@@ -22,21 +22,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <head>
         <!-- Title -->
         <title>Fantastic Cinema</title>
+
         <!-- for-mobile-apps -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <!-- //for-mobile-apps -->
+
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
         <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
+
         <!-- font-awesome icons -->
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> <!-- Wajib -->
         <!-- //font-awesome icons -->
+
         <!-- js -->
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
         <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
         <!-- //js -->
+
         <!-- banner-bottom-plugin -->
         <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
         <script src="js/owl.carousel.js"></script> <!-- Wajib -->
@@ -47,7 +52,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="container">
                 <!--  Fantastic Cinema Logo  -->
                 <div class="fc_logo">
-                    <a href="index.html"><h1>Fantastic <span>Cinema</span></h1></a>
+                    <a href="index.jsp"><h1>Fantastic <span>Cinema</span></h1></a>
                 </div>
                 <!--  //Fantastic Cinema Logo  -->
 
@@ -80,8 +85,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">
-                                <li><a href="moviemanagement.jsp">Movies</a></li>
-                                <li><a href="promotionnewsmanagement.jsp">Promotion & News</a></li>       																			
+                                <li class="active" id="lihome"><a href="admin/adminhome.jsp" id="home">Home</a></li>            
+                                <li id="limovies"><a href="/FantasticCinema/ViewMovieServlet" id="about">Movies</a></li>
+                                <li id="lipromotionnnews"><a href="promotionnewsmanagement.jsp">Promotion & News</a></li>       																			
                                 <li><a href="locate.html">Locate Us</a></li>
                                 <li><a href="contact.html">Contact Us</a></li>
                                 <li><a href="faq.html">FAQ</a></li>

@@ -12,9 +12,8 @@ import java.io.Serializable;
  * @author admin
  */
 public class Movie implements Serializable {
-    private int id;
-    private String moviename;
-    private int status;
+    private int id, status;
+    private String moviename, image;
 
     /**
      * @return the id
@@ -28,6 +27,20 @@ public class Movie implements Serializable {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * @return the status
+     */
+    public int getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     /**
@@ -45,16 +58,16 @@ public class Movie implements Serializable {
     }
 
     /**
-     * @return the status
+     * @return the image
      */
-    public int getStatus() {
-        return status;
+    public String getImage() {
+        return image;
     }
 
     /**
-     * @param status the status to set
+     * @param image the image to set
      */
-    public void setStatus(int status) {
-        this.status = status;
+    public void setImage(String image) {
+        this.image = image;
     }
 }

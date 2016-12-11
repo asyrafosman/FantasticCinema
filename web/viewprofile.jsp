@@ -1,15 +1,21 @@
 <%-- 
-    Document   : booking
-    Created on : Nov 26, 2016, 9:33:50 PM
-    Author     : admin
+    Document   : view
+profile
+    Created on : Nov 24, 2016, 10:53:30 PM
+    Author     : User
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="bean.Movie" %>
 <%@ page import="bean.User" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<% User customerprofile = (User)session.getAttribute("customerprofile"); %>
+<%
+    User customerprofile = (User)session.getAttribute("customerprofile");
+    if (customerprofile == null) {
+%>
+        <jsp:forward page="index.jsp" />
+<%        
+    }
+%>  
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,7 +30,6 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
-
         <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
 
         <!-- font-awesome icons -->
@@ -57,7 +62,7 @@
                             <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>                   
                         <% }
                         else { %>
-                            <li><i aria-hidden="true"></i><a href="viewprofile.jsp"><jsp:getProperty name="customerprofile" property="fullName"/></a></li>
+                            <li><i aria-hidden="true"></i><jsp:getProperty name="customerprofile" property="fullName"/></li>
                             <li><a href="CustomerLogoutServlet">Logout</a></li>
                         <% } %>
                     </ul>
@@ -67,7 +72,7 @@
             </div>
         </div>
         <!-- ********************************************** //header ********************************************** -->
-        <!-- ********************************************** Modal pop-p sign in & sign up ********************************************** -->
+	<!-- ********************************************** Modal pop-p sign in & sign up ********************************************** -->
         <div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
             <!--  Modal Dialog  -->
             <div class="modal-dialog" role="document">
@@ -180,98 +185,39 @@
         </div>
         <section id="QuickFilter">
             <div class="container">
-                <% if (customerprofile == null) { %>
-                    <div class="jumbotron">
-                        <h2>ONLINE TICKETING</h2>
-                        <h1>MEMBERS ONLY</h1>
-                        <p>Please login or sign up if you are not a member</p>
-                    </div>                    
-                <% }
-                else { %>
-                    <div class="jumbotron">
-                        <form class="form-horizontal" action="InsertBookingServlet">
-                            <fieldset>
-                                <legend>Book a ticket</legend>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Cinema</label>
-                                    <div class="col-lg-10">
-                                        <select name="cinema" class="form-control" id="cinema">
-                                            <option selected="selected" value="-">- Select Cinema -</option>
-                                            <option value="1 Utama"> 1 Utama</option>
-                                            <option value="IOI Mall (Puchong)"> IOI Mall (Puchong)</option>
-                                            <option value="Summit USJ"> Summit USJ</option>
-                                            <option value="Setia City Mall"> Setia City Mall</option>
-                                            <option value="Klang Parade"> Klang Parade</option>
-                                            <option value="Alamanda"> Alamanda</option>
-                                            <option value="Dataran Pahlawan"> Dataran Pahlawan</option>
-                                            <option value="Aeon Bandaraya Melaka"> Aeon Bandaraya Melaka</option>
-                                            <option value="East Coast Mall"> East Coast Mall</option>
-                                            <option value="1Borneo"> 1Borneo</option>
-                                            <option value="Suria Sabah Mall"> Suria Sabah Mall</option>
-                                            <option value="CityONE Megamall (Kuching)"> CityONE Megamall (Kuching)</option>
-                                            <option value="Bintang Megamall"> Bintang Megamall</option>
-                                        </select>
-                                    </div>
+                <div class="jumbotron">
+                    <form class="form-horizontal" action="UpdateProfileServlet">
+                        <fieldset>
+                            <legend>Customer Profile</legend>
+                            <div class="form-group">
+                                <label for="select" class="col-lg-2 control-label">Full Name</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" name="fullName" placeholder="Full Name" type="text" value="<jsp:getProperty name="customerprofile" property="fullName"/>">
                                 </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Movie</label>
-                                    <div class="col-lg-10">
-                                        <select name="moviename" class="form-control" id="moviename">
-                                            <option selected="selected" value="-">- Select Movie -</option>
-                                            <c:forEach items="${sessionScope.movies}" var="currentbooking" varStatus="loop">
-                                                <option><c:out value="${currentbooking.moviename}" /></option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="select" class="col-lg-2 control-label">Email Address</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" name="email" placeholder="Email Address" type="text" value="<jsp:getProperty name="customerprofile" property="email"/>">
                                 </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Show Date</label>
-                                    <div class="col-lg-10">
-                                        <div class="input-group date" data-provide="datepicker">
-                                            <input name="moviedate" type="text" class="form-control" value="- Select Date -">
-                                            <div class="input-group-addon">
-                                                <span class="fa fa-th"></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="select" class="col-lg-2 control-label">Phone Number</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" name="mobileNum" placeholder="Phone Number" type="text" value="<jsp:getProperty name="customerprofile" property="mobileNum"/>">
                                 </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Show Time</label>
-                                    <div class="col-lg-10">
-                                        <select name="movietime" class="form-control" id="movietime">
-                                            <option value="-">- Select Time -</option>
-                                            <option value="10AM">10AM</option>
-                                            <option value="12PM">12PM</option>
-                                            <option value="2PM">2PM</option>
-                                            <option value="4PM">4PM</option>
-                                            <option value="6PM">6PM</option>
-                                            <option value="8PM">8PM</option>
-                                            <option value="10PM">10PM</option>
-                                            <option value="12AM">12AM</option>
-                                        </select>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button type="submit" class="btn btn-success">Update</button>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-lg-10 col-lg-offset-2">
-                                        <button type="reset" class="btn btn-danger">Cancel</button>
-                                        <button type="submit" class="btn btn-success">Book</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                <% } %>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </section>
-        
-        <script type="text/javascript">
-            $('.date').datepicker({
-                autoclose: true,
-                format:	"dd/mm/yyyy",
-                todayHighlight: true,
-                orientation: "bottom"
-            });;
-        </script>
+                
         <div class="footer">
             <!--  Container  -->
             <div class="container">

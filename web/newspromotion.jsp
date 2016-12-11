@@ -11,27 +11,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="bean.Customer" %>
-<% Customer customerprofile = (Customer)session.getAttribute("customerprofile"); %>
+<%@ page import="bean.User" %>
+<% User customerprofile = (User)session.getAttribute("customerprofile"); %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <!-- Title -->
         <title>Fantastic Cinema</title>
+
         <!-- for-mobile-apps -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <!-- //for-mobile-apps -->
+
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
         <link rel="stylesheet" href="css/contactstyle.css" type="text/css" media="all" />
+
         <!-- font-awesome icons -->
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> <!-- Wajib -->
         <!-- //font-awesome icons -->
+
         <!-- js -->
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
         <!-- //js -->
+        
         <!-- banner-bottom-plugin -->
         <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
         <script src="js/owl.carousel.js"></script> <!-- Wajib -->
@@ -42,7 +47,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="container">
                 <!--  Fantastic Cinema Logo  -->
                 <div class="fc_logo">
-                    <a href="index.html"><h1>Fantastic <span>Cinema</span></h1></a>
+                    <a href="index.jsp"><h1>Fantastic <span>Cinema</span></h1></a>
                 </div>
                 <!--  //Fantastic Cinema Logo  -->
                 <!--  Sign in & sign up  -->
@@ -53,7 +58,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>                   
                         <% }
                         else { %>
-                            <li><i aria-hidden="true"></i><jsp:getProperty name="customerprofile" property="fullName"/></li>
+                            <li><i aria-hidden="true"></i><a href="viewprofile.jsp"><jsp:getProperty name="customerprofile" property="fullName"/></a></li>
                             <li><a href="CustomerLogoutServlet">Logout</a></li>
                         <% } %>
                     </ul>

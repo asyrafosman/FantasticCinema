@@ -8,24 +8,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <link rel="icon" href="img/favicon.ico">
+        <!-- Title -->
+        <title>Fantastic Cinema</title>
 
-    <title>Fantastic Cinema</title>
+        <!-- for-mobile-apps -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- //for-mobile-apps -->
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+        <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+        <!-- font-awesome icons -->
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> <!-- Wajib -->
+        <!-- //font-awesome icons -->
+
+        <!-- js -->
+        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
+        <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+        <!-- //js -->
+
+        <!-- banner-bottom-plugin -->
+        <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
+        <script src="js/owl.carousel.js"></script> <!-- Wajib -->
+    </head>
 
   <body>
 

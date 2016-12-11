@@ -24,7 +24,7 @@ import jdbc.JDBCUtility;
  *
  * @author PCUSER
  */
-@WebServlet(name = "GetDestinationsServlet", urlPatterns = {"/GetDestinationsServlet"})
+@WebServlet(name = "GetMovieServlet", urlPatterns = {"/GetMovieServlet"})
 public class GetMovieServlet extends HttpServlet {
 
 
@@ -75,8 +75,10 @@ public class GetMovieServlet extends HttpServlet {
                 movie = new Movie();
                 movie.setId(rs.getInt("id"));
                 movie.setMoviename(rs.getString("moviename"));          
-                movie.setStatus(rs.getInt("status"));
-                
+                movie.setMoviename(rs.getString("description"));
+                movie.setMoviename(rs.getString("showtime")); 
+                movie.setMoviename(rs.getString("startdate")); 
+                movie.setMoviename(rs.getString("enddate")); 
                 //put into arraylist
                 movies.add(movie);
             }

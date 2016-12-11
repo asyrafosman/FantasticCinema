@@ -27,6 +27,8 @@ public class JDBCUtility
    PreparedStatement psSelectAllFromMovieAvailable = null;
    PreparedStatement psSelectCustomerViaLoginPassword = null;
    PreparedStatement psSelectAdminViaLoginPassword = null;
+   PreparedStatement psInsertMovie = null;
+   PreparedStatement psUpdateCustomerViaUsername = null;
 
    //use this constructor if using ConnectionPool
    public JDBCUtility()
@@ -106,9 +108,12 @@ public class JDBCUtility
             psInsertBooking = con.prepareStatement(sqlInsertBooking);
             
             //insert into customers
-            String sqlInsertCustomer = "INSERT INTO customer(username, password, fullName, email, mobileNum) " +
-                                      "VALUES(?, ?, ?, ?, ?)";
+            String sqlInsertCustomer = "INSERT INTO user(username, password, userType, fullName, email, mobileNum) " +
+                                      "VALUES(?, ?, ?, ?, ?, ?)";
             psInsertCustomer = con.prepareStatement(sqlInsertCustomer);
+            
+            String sqlUpdateCustomerViaUsername = "UPDATE user SET fullName = ?, email = ?, mobileNum = ? WHERE username = ?";
+            psUpdateCustomerViaUsername = con.prepareStatement(sqlUpdateCustomerViaUsername);
             
             //select all from booking
             String sqlSelectAllFromBooking = "SELECT * FROM booking";
@@ -129,12 +134,16 @@ public class JDBCUtility
             String sqlSelectAllFromMovieAvalaible = "SELECT * FROM movie WHERE status = 1";
             psSelectAllFromMovieAvailable = con.prepareStatement(sqlSelectAllFromMovieAvalaible);
             
-            String sqlSelectCustomerViaLoginPassword = "SELECT * FROM customer WHERE username = ? AND password = ?";
+            String sqlSelectCustomerViaLoginPassword = "SELECT * FROM user WHERE username = ? AND password = ? AND userType = 'client'";
             psSelectCustomerViaLoginPassword = con.prepareStatement(sqlSelectCustomerViaLoginPassword);
             
-            String sqlSelectAdminViaLoginPassword = "SELECT * FROM admin WHERE username = ? AND password = ?";
+            String sqlSelectAdminViaLoginPassword = "SELECT * FROM user WHERE username = ? AND password = ? AND userType = 'admin'";
             psSelectAdminViaLoginPassword = con.prepareStatement(sqlSelectAdminViaLoginPassword);
             
+            
+            String sqlInsertMovie = "INSERT INTO movie(moviename, descrption, startdate, enddate) " +
+                                      "VALUES(?, ?, ?, ?)";
+            psInsertMovie = con.prepareStatement(sqlInsertMovie);
         }
 	catch (SQLException ex)
 	{
@@ -166,6 +175,11 @@ public class JDBCUtility
     public PreparedStatement getPsInsertCustomer()
     {
       return psInsertCustomer;
+    }
+    
+    public PreparedStatement getPsUpdateCustomerViaUsername()
+    {
+      return psUpdateCustomerViaUsername;
     }
     
     public PreparedStatement getPsSelectAllFromBooking()
@@ -201,5 +215,10 @@ public class JDBCUtility
     public PreparedStatement getPsSelectAdminViaLoginPassword()
     {
       return psSelectAdminViaLoginPassword;
+    }
+    
+    public PreparedStatement getPsInsertMovie()
+    {
+        return psInsertMovie;
     }
 }

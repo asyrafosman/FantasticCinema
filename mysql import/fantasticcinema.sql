@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2016 at 09:50 AM
+-- Generation Time: Dec 11, 2016 at 02:55 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -25,25 +25,6 @@ USE `fantasticcinema`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
---
-
-CREATE TABLE `admin` (
-  `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `fullName` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`username`, `password`, `fullName`) VALUES
-('fantastic', 'cinema', 'Miss Fantastic');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `booking`
 --
 
@@ -55,7 +36,7 @@ CREATE TABLE `booking` (
   `moviedate` date NOT NULL,
   `movietime` varchar(20) NOT NULL,
   `bookingdate` datetime NOT NULL,
-  `status` int(2) NOT NULL DEFAULT '0'
+  `status` int(2) NOT NULL DEFAULT '0' COMMENT '0 - in process | 1 - approved | 2 - cancelled | 3 - paid | 4 - done'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -77,26 +58,13 @@ INSERT INTO `booking` (`id`, `username`, `cinema`, `moviename`, `moviedate`, `mo
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
---
-
-CREATE TABLE `customer` (
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `fullName` varchar(100) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `mobileNum` varchar(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `movie`
 --
 
 CREATE TABLE `movie` (
   `id` int(11) NOT NULL,
-  `moviename` varchar(50) NOT NULL,
+  `moviename` varchar(100) NOT NULL,
+  `image` varchar(100) NOT NULL DEFAULT 'default.png',
   `status` int(11) NOT NULL DEFAULT '1' COMMENT '0 - deactivate | 1 - active'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -104,20 +72,37 @@ CREATE TABLE `movie` (
 -- Dumping data for table `movie`
 --
 
-INSERT INTO `movie` (`id`, `moviename`, `status`) VALUES
-(1, 'Marvel’s Doctor Strange', 1),
-(2, 'JACK REACHER: NEVER GO BACK', 1),
-(3, 'FALLEN', 1);
+INSERT INTO `movie` (`id`, `moviename`, `image`, `status`) VALUES
+(1, 'Marvel’s Doctor Strange', 'default.png', 1),
+(2, 'JACK REACHER: NEVER GO BACK', 'default.png', 1),
+(3, 'FALLEN', 'default.png', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `userType` varchar(10) NOT NULL,
+  `fullName` varchar(100) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `mobileNum` varchar(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`username`, `password`, `userType`, `fullName`, `email`, `mobileNum`) VALUES
+('asyraf', '1234', 'client', 'Mohamad Asyraf Osman', 'a@e.com', '1234'),
+('fantastic', 'cinema', 'admin', 'Miss Fantastic', '', '');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`username`);
 
 --
 -- Indexes for table `booking`
@@ -127,16 +112,16 @@ ALTER TABLE `booking`
   ADD UNIQUE KEY `id` (`id`);
 
 --
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`username`);
-
---
 -- Indexes for table `movie`
 --
 ALTER TABLE `movie`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables

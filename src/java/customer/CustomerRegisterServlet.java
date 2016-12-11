@@ -5,13 +5,12 @@
  */
 package customer;
 
-import bean.Customer;
+import bean.User;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,7 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import jdbc.JDBCUtility;
 /**
  *
@@ -64,13 +62,14 @@ public class CustomerRegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Customer customer= null;
+        User customer= null;
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession();
        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String userType = "client";
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String mobileNum = request.getParameter("mobileNum");
@@ -80,15 +79,16 @@ public class CustomerRegisterServlet extends HttpServlet {
             
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
-            preparedStatement.setString(3, fullName);
-            preparedStatement.setString(4, email);
-            preparedStatement.setString(5, mobileNum);
+            preparedStatement.setString(3, userType);
+            preparedStatement.setString(4, fullName);
+            preparedStatement.setString(5, email);
+            preparedStatement.setString(6, mobileNum);
             
             preparedStatement.executeUpdate();
             
             PrintWriter out = response.getWriter();
             
-            customer = new Customer();
+            customer = new User();
             customer.setUsername(username);
             customer.setPassword(password);
             customer.setFullName(fullName);

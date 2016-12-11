@@ -13,14 +13,8 @@ import java.io.Serializable;
  * @author U
  */
 public class Booking implements Serializable {
-    private int id;
-    private String username;
-    private String cinema;
-    private String moviename;
-    private String moviedate;
-    private String movietime;
-    private String bookingdate;
-    private int status;
+    private int id, status;
+    private String username, cinema, moviename, moviedate, movietime, bookingdate;
 
     /**
      * @return the id

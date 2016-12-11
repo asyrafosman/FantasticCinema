@@ -6,7 +6,7 @@
 
 package admin;
 
-import bean.Admin;
+import bean.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -61,7 +61,7 @@ public class AdminLoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Admin admin = null;
+        User admin = null;
         
         //Get the session object
 	HttpSession session = request.getSession();
@@ -79,7 +79,7 @@ public class AdminLoginServlet extends HttpServlet {
             while (rs.next()) {
                 fullName = rs.getString("fullName");
                 
-                admin = new Admin();
+                admin = new User();
                 admin.setUsername(username);
                 admin.setPassword(password);
                 admin.setFullName(fullName);

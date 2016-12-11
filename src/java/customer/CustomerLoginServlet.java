@@ -10,7 +10,7 @@ package customer;
  * @author peiyi
  */
 
-import bean.Customer;
+import bean.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -61,7 +61,7 @@ public class CustomerLoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Customer customer= null;
+        User customer= null;
         
         //Get the session object
 	HttpSession session = request.getSession();
@@ -83,7 +83,7 @@ public class CustomerLoginServlet extends HttpServlet {
                 email = rs.getString("email");
                 mobileNum = rs.getString("mobileNum");
                 
-                customer = new Customer();
+                customer = new User();
                 customer.setUsername(username);
                 customer.setPassword(password);
                 customer.setFullName(fullName);
@@ -99,7 +99,7 @@ public class CustomerLoginServlet extends HttpServlet {
             response.sendRedirect(request.getParameter("from"));
         }
         else {
-            response.sendRedirect(request.getContextPath() + "/not-exist.html");
+            response.sendRedirect(request.getParameter("from"));
         } 
     }
 
