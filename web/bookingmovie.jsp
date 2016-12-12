@@ -148,8 +148,7 @@
         <!--  //javascript modal popup  -->
         <!--  ********************************************** //Wajib **********************************************  -->	
         <!-- ********************************************** //Modal pop-p sign in & sign up ********************************************** -->
-        <div class="movies_nav">
-            <!--  Container  -->
+        <div class="general">
             <div class="container">
                 <nav class="navbar navbar-default">
                     <div class="navbar-header navbar-left">

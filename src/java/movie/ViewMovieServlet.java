@@ -83,7 +83,7 @@ public class ViewMovieServlet extends HttpServlet {
         {            
         }
         session.setAttribute("movies", movies);
-        sendPage(request, response, "/admin/viewmovies.jsp");
+        sendPage(request, response, "/admin/managemovies.jsp");
     }
     
     void sendPage(HttpServletRequest req, HttpServletResponse res, String fileName) throws ServletException, IOException

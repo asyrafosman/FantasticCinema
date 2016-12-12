@@ -29,6 +29,9 @@ public class JDBCUtility
    PreparedStatement psSelectAdminViaLoginPassword = null;
    PreparedStatement psInsertMovie = null;
    PreparedStatement psUpdateCustomerViaUsername = null;
+   PreparedStatement psDeleteMovieViaId = null;
+   PreparedStatement psUpdateMovieViaIdActive = null;
+   PreparedStatement psUpdateMovieName = null;
 
    //use this constructor if using ConnectionPool
    public JDBCUtility()
@@ -140,10 +143,21 @@ public class JDBCUtility
             String sqlSelectAdminViaLoginPassword = "SELECT * FROM user WHERE username = ? AND password = ? AND userType = 'admin'";
             psSelectAdminViaLoginPassword = con.prepareStatement(sqlSelectAdminViaLoginPassword);
             
-            
-            String sqlInsertMovie = "INSERT INTO movie(moviename, descrption, startdate, enddate) " +
-                                      "VALUES(?, ?, ?, ?)";
+            String sqlInsertMovie = "INSERT INTO movie(moviename) " +
+                                      "VALUES(?)";
             psInsertMovie = con.prepareStatement(sqlInsertMovie);
+            
+            //delete from table movie
+            String sqlDeleteMovieViaId = "DELETE from movie WHERE id = ?"; 
+            psDeleteMovieViaId = con.prepareStatement(sqlDeleteMovieViaId);
+            
+            //edit status
+            String sqlUpdateMovieViaIdActive = "UPDATE movie SET status = ? WHERE id = ?"; 
+            psUpdateMovieViaIdActive = con.prepareStatement(sqlUpdateMovieViaIdActive);
+            
+            //update moviename in database
+            String sqlUpdateMovieName = "UPDATE movie SET moviename = ? WHERE id = ?"; 
+            psUpdateMovieName = con.prepareStatement(sqlUpdateMovieName);
         }
 	catch (SQLException ex)
 	{
@@ -220,5 +234,20 @@ public class JDBCUtility
     public PreparedStatement getPsInsertMovie()
     {
         return psInsertMovie;
+    }
+    
+    public PreparedStatement getPsDeleteMovieViaId()
+    {
+        return psDeleteMovieViaId;
+    }
+    
+    public PreparedStatement getPsUpdateMovieViaIdActive()
+    {
+        return psUpdateMovieViaIdActive;
+    }
+    
+    public PreparedStatement getPsUpdateMovieName()
+    {
+        return psUpdateMovieName;
     }
 }

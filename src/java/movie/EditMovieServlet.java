@@ -10,8 +10,6 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,12 +19,11 @@ import jdbc.JDBCUtility;
 
 /**
  *
- * @author peiyi
+ * @author admin
  */
-@WebServlet(name = "InsertMovieServlet", urlPatterns = {"/InsertMovieServlet"})
-public class InsertMovieServlet extends HttpServlet {
-
-    private JDBCUtility jdbcUtility;
+@WebServlet(name = "EditMovieServlet", urlPatterns = {"/EditMovieServlet"})
+public class EditMovieServlet extends HttpServlet {
+private JDBCUtility jdbcUtility;
     private Connection con;
     
     public void init() throws ServletException
@@ -61,41 +58,13 @@ public class InsertMovieServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-      
-        String moviename = request.getParameter("moviename");  
-        /**String descrption = request.getParameter("description");  
-        String startdate = request.getParameter("startdate");
-        String enddate = request.getParameter("enddate");
-        
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        Date sdate = new Date();
-        try {
-            sdate = formatter.parse(startdate);
-        } catch (Exception ex) {            
-        }
-        
-        //convert to mysql date
-        formatter = new SimpleDateFormat("yyyy-MM-dd");
-        startdate = formatter.format(sdate);
-        
-        Date edate = new Date();
-        try {
-            edate = formatter.parse(startdate);
-        } catch (Exception ex) {            
-        }
-        
-        //convert to mysql date
-        formatter = new SimpleDateFormat("yyyy-MM-dd");
-        startdate = formatter.format(edate);**/
-        
+        int id = Integer.parseInt(request.getParameter("id"));
+        String moviename = request.getParameter("moviename");
         
         try{
-            PreparedStatement preparedStatement = jdbcUtility.getPsInsertMovie();
-            
+            PreparedStatement preparedStatement = jdbcUtility.getPsUpdateMovieName();
             preparedStatement.setString(1, moviename);
-            //preparedStatement.setString(2, descrption);
-            //preparedStatement.setString(3, startdate);
-            //preparedStatement.setString(4, enddate);
+            preparedStatement.setInt(2, id);
             preparedStatement.executeUpdate();
         }
         catch (SQLException ex)
