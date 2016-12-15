@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 import jdbc.JDBCUtility;
 /**
  *
- * @author peiyi
+ * @author FANTASTIC CINEMA
  */
 
 

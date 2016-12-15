@@ -26,7 +26,7 @@ import jdbc.JDBCUtility;
 
 /**
  *
- * @author admin
+ * @author FANTASTIC CINEMA
  */
 @WebServlet(name = "ViewHistoryServlet", urlPatterns = {"/ViewHistoryServlet"})
 public class ViewHistoryServlet extends HttpServlet {

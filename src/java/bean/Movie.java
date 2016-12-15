@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author admin
+ * @author FANTASTIC CINEMA
  */
 public class Movie implements Serializable {
     private int id, status;

@@ -19,9 +19,9 @@ import javax.servlet.http.Part;
 
 /**
  *
- * @author U
+ * @author FANTASTIC CINEMA
  */
-@WebServlet(name = "UploadDestinationImageServlet", urlPatterns = {"/UploadDestinationImageServlet"})
+@WebServlet(name = "UploadMovieImageServlet", urlPatterns = {"/UploadMovieImageServlet"})
 @MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
                  maxFileSize=1024*1024*10,      // 10MB
                  maxRequestSize=1024*1024*50)   // 50MB

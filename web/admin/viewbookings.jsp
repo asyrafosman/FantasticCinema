@@ -151,7 +151,10 @@
         <!--  //javascript modal popup  -->
         <!--  ********************************************** //Wajib **********************************************  -->	
         <!-- ********************************************** //Modal pop-p sign in & sign up ********************************************** -->
-        <div class="general">
+        <!-- ********************************************** Navigation ********************************************** -->
+        <!--  movie navigation  -->	
+        <div class="movies_nav">
+            <!--  Container  -->
             <div class="container">
                 <nav class="navbar navbar-default">
                     <div class="navbar-header navbar-left">
@@ -166,12 +169,9 @@
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">
-                                <li><a href="index.jsp">Movies</a></li>
-                                <li><a href="showtimes.jsp">Showtimes</a></li>								
-                                <li><a href="newspromotion.jsp">News & Promotion</a></li>
-                                <li><a href="locate.jsp">Locate Us</a></li>
-                                <li><a href="contact.jsp">Contact Us</a></li>
-                                <li><a href="faq.jsp">FAQ</a></li>
+                                <li id="lihome"><a href="admin/adminhome.jsp" id="home">Home</a></li>            
+                                <li id="limovies"><a href="/FantasticCinema/ViewMovieServlet">Movies</a></li>
+                                <li class="active"><a href="/FantasticCinema/ViewBookingServlet">Bookings</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -180,7 +180,8 @@
             </div>
             <!--  //Container  -->
         </div>
-        <section id="QuickFilter">
+        <!-- ********************************************** //Navigation ********************************************** -->
+        <div class="general">
             <div class="container">
                 <div class="well" id="wellhome">
                     <h1>View Bookings</h1>
@@ -213,16 +214,20 @@
                                             <td><c:out value="${currentbooking.bookingdate}" /></td>
                                             <td><c:out value="${currentbooking.seat}" /></td>
 
+                                            <c:url value="DeleteBookingServlet" var="DeleteBookingServletURL">
+                                                <c:param name="id"   value="${currentbooking.id}" />
+                                            </c:url>    
                                             <c:url value="ApprovedBookingServlet" var="ApprovedBookingServletURL">
                                                 <c:param name="id"   value="${currentbooking.id}" />
                                             </c:url>                      
+                                                               
                                             <c:choose>
                                                 <c:when test="${currentbooking.status == 0}">
-                                                    <td><c:out value="pending" /></td>
+                                                    <td><c:out value="in process" /></td>
                                                 </c:when>
 
                                                 <c:when test="${currentbooking.status == 1}">
-                                                    <td><img src="img/approved.png" width="30"></td>
+                                                    <td><c:out value="approved" /></td>
                                                 </c:when>
 
                                                 <c:when test="${currentbooking.status == 2}">
@@ -236,16 +241,12 @@
                                                 <c:when test="${currentbooking.status == 4}">
                                                     <td><c:out value="done" /></td>
                                                 </c:when>    
-                                            </c:choose>  
+                                            </c:choose>
 
                                             <td>
-                                                <a href="<c:out value='${ApprovedBookingServletURL}' />"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
-                                                &nbsp;
-                                                <a href="<c:out value='${CancelBookingServletURL}' />"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span></a>
-                                                &nbsp;
-                                                <a href="<c:out value='${DeleteBookingServletURL}' />"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                                                &nbsp;
-                                                <a href="<c:out value='${PaidBookingServletURL}' />"><span class="fa fa-cc-visa" aria-hidden="true"></span></a>
+                                                <a href="<c:out value='${ApprovedBookingServletURL}' />"><span class="glyphicon glyphicon-ok" aria-hidden="true" title="Approve"></span></a>
+                                                &nbsp;&nbsp;
+                                                <a href="<c:out value='${DeleteBookingServletURL}' />"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete"></span></a>
                                             </td>   
                                         </tr>
                                     </c:forEach>
@@ -255,7 +256,7 @@
                     </div> <!-- /row -->
                 </div> <!-- /well -->
             </div> <!-- /container -->
-        </section>
+        </div>
         <!-- ********************************************** Footer ********************************************** -->
         <div class="footer">
             <!--  Container  -->

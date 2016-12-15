@@ -197,6 +197,7 @@
                                         <th>Booking Date</th>
                                         <th>Seat</th>
                                         <th>Status</th>
+                                        <th>Operations</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -210,7 +211,10 @@
                                             <td><c:out value="${currentbooking.bookingdate}" /></td>
                                             <td><c:out value="${currentbooking.seat}" /></td>
 
-                                            <c:url value="ApprovedBookingServlet" var="ApprovedBookingServletURL">
+                                            <c:url value="CancelBookingServlet" var="CancelBookingServletURL">
+                                                <c:param name="id"   value="${currentbooking.id}" />
+                                            </c:url> 
+                                            <c:url value="PaidBookingServlet" var="PaidBookingServletURL">
                                                 <c:param name="id"   value="${currentbooking.id}" />
                                             </c:url>                      
                                             <c:choose>
@@ -235,9 +239,11 @@
                                                 </c:when>    
                                             </c:choose>  
 
-                                            <c:url value="DeleteBookingServlet" var="DeleteBookingServletURL">
-                                                <c:param name="id"   value="${currentbooking.id}" />
-                                            </c:url>
+                                            <td>
+                                                <a href="<c:out value='${CancelBookingServletURL}' />"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true" title="Cancel"></span></a>
+                                                &nbsp;&nbsp;
+                                                <a href="<c:out value='${PaidBookingServletURL}' />"><span class="fa fa-cc-visa" aria-hidden="true" title="Pay"></span></a>
+                                            </td> 
                                         </tr>
                                     </c:forEach>
                                 </tbody>

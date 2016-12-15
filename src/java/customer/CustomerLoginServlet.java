@@ -7,7 +7,7 @@ package customer;
 
 /**
  *
- * @author peiyi
+ * @author FANTASTIC CINEMA
  */
 
 import bean.User;

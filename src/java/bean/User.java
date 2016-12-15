@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author admin
+ * @author FANTASTIC CINEMA
  */
 public class User implements Serializable {
     private String username, password, userType, fullName, email, mobileNum;

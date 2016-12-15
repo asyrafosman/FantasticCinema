@@ -7,13 +7,10 @@ package movie;
 
 import bean.Movie;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +22,7 @@ import jdbc.JDBCUtility;
 
 /**
  *
- * @author admin
+ * @author FANTASTIC CINEMA
  */
 @WebServlet(name = "BookingMovieServlet", urlPatterns = {"/BookingMovieServlet"})
 public class BookingMovieServlet extends HttpServlet {

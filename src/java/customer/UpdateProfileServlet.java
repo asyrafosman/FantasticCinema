@@ -24,7 +24,7 @@ import jdbc.JDBCUtility;
 
 /**
  *
- * @author admin
+ * @author FANTASTIC CINEMA
  */
 @WebServlet(name = "UpdateProfileServlet", urlPatterns = {"/UpdateProfileServlet"})
 public class UpdateProfileServlet extends HttpServlet {

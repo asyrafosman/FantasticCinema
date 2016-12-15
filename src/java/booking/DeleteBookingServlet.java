@@ -7,19 +7,45 @@ package booking;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import jdbc.JDBCUtility;
 
 /**
  *
- * @author admin
+ * @author FANTASTIC CINEMA
  */
 @WebServlet(name = "DeleteBookingServlet", urlPatterns = {"/DeleteBookingServlet"})
 public class DeleteBookingServlet extends HttpServlet {
 
+    private JDBCUtility jdbcUtility;
+    private Connection con;
+    
+    public void init() throws ServletException
+    {
+        String driver = "com.mysql.jdbc.Driver";
+
+        String dbName = "fantasticcinema";
+        String url = "jdbc:mysql://localhost/" + dbName + "?";
+        String userName = "root";
+        String password = "";
+
+        jdbcUtility = new JDBCUtility(driver,
+                                      url,
+                                      userName,
+                                      password);
+
+        jdbcUtility.jdbcConnect();
+        con = jdbcUtility.jdbcGetConnection();
+        jdbcUtility.prepareSQLStatement();
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,19 +57,36 @@ public class DeleteBookingServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet DeleteBookingServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet DeleteBookingServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        try {
+            PreparedStatement preparedStatement = jdbcUtility.getPsDeleteBookingViaId();
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();  
         }
+        catch (SQLException ex)
+	{
+            while (ex != null)
+            {
+                System.out.println ("SQLState: " +
+                                 ex.getSQLState ());
+                System.out.println ("Message:  " +
+                                 ex.getMessage ());
+		System.out.println ("Vendor:   " +
+                                 ex.getErrorCode ());
+                ex = ex.getNextException ();
+		      System.out.println ("");
+            }
+            
+            System.out.println("Connection to the database error");
+	}
+	catch (java.lang.Exception ex)
+	{
+            ex.printStackTrace ();
+	} 
+        response.sendRedirect(request.getContextPath() + "/ViewBookingServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

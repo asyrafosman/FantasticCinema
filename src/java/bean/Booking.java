@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author U
+ * @author FANTASTIC CINEMA
  */
 public class Booking implements Serializable {
     private int id, status;

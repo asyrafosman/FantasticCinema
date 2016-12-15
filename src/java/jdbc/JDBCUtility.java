@@ -9,7 +9,7 @@ import java.sql.*;
 
 /**
  *
- * @author U
+ * @author FANTASTIC CINEMA
  */
 public class JDBCUtility 
 {
@@ -22,7 +22,7 @@ public class JDBCUtility
    PreparedStatement psInsertCustomer = null;
    PreparedStatement psSelectAllFromBooking = null;
    PreparedStatement psSelectAllFromBookingByUsername = null;
-   PreparedStatement psUpdateBookingViaIdApproved = null;
+   PreparedStatement psUpdateBookingViaId = null;
    PreparedStatement psDeleteBookingViaId = null;
    PreparedStatement psSelectAllFromMovie = null;
    PreparedStatement psSelectAllFromMovieAvailable = null;
@@ -128,8 +128,8 @@ public class JDBCUtility
             psSelectAllFromBookingByUsername = con.prepareStatement(sqlSelectAllFromBookingByUsername);
             
             
-            String sqlUpdateBookingViaIdApproved = "UPDATE booking SET status = 1 WHERE id = ?"; 
-            psUpdateBookingViaIdApproved = con.prepareStatement(sqlUpdateBookingViaIdApproved); 
+            String sqlUpdateBookingViaId = "UPDATE booking SET status = ? WHERE id = ?"; 
+            psUpdateBookingViaId = con.prepareStatement(sqlUpdateBookingViaId); 
             
             //psDeleteBookingViaId
             String sqlDeleteBookingViaId = "DELETE booking WHERE id = ?"; 
@@ -212,9 +212,9 @@ public class JDBCUtility
       return psSelectAllFromBookingByUsername;
     }
     
-    public PreparedStatement getPsUpdateBookingViaIdApproved()
+    public PreparedStatement getPsUpdateBookingViaId()
     {
-      return psUpdateBookingViaIdApproved;
+      return psUpdateBookingViaId;
     }
     
     public PreparedStatement getPsDeleteBookingViaId()

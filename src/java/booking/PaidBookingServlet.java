@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package movie;
+package booking;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import javax.servlet.ServletException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,9 +21,10 @@ import jdbc.JDBCUtility;
  *
  * @author FANTASTIC CINEMA
  */
-@WebServlet(name = "EditMovieServlet", urlPatterns = {"/EditMovieServlet"})
-public class EditMovieServlet extends HttpServlet {
-private JDBCUtility jdbcUtility;
+@WebServlet(name = "PaidBookingServlet", urlPatterns = {"/PaidBookingServlet"})
+public class PaidBookingServlet extends HttpServlet {
+
+    private JDBCUtility jdbcUtility;
     private Connection con;
     
     public void init() throws ServletException
@@ -44,7 +45,6 @@ private JDBCUtility jdbcUtility;
         con = jdbcUtility.jdbcGetConnection();
         jdbcUtility.prepareSQLStatement();
     }
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -55,15 +55,15 @@ private JDBCUtility jdbcUtility;
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
         int id = Integer.parseInt(request.getParameter("id"));
-        String moviename = request.getParameter("moviename");
+        int status = 3;
         
-        try{
-            PreparedStatement preparedStatement = jdbcUtility.getPsUpdateMovieName();
-            preparedStatement.setString(1, moviename);
+        try {
+            PreparedStatement preparedStatement = jdbcUtility.getPsUpdateBookingViaId();
+            preparedStatement.setInt(1, status);
             preparedStatement.setInt(2, id);
             preparedStatement.executeUpdate();
         }
@@ -86,8 +86,8 @@ private JDBCUtility jdbcUtility;
 	catch (java.lang.Exception ex)
 	{
             ex.printStackTrace ();
-	}
-        response.sendRedirect(request.getContextPath() + "/ViewMovieServlet");
+	} 
+        response.sendRedirect(request.getContextPath() + "/ViewBookingServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

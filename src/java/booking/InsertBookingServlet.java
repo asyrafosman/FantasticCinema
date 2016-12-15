@@ -23,7 +23,7 @@ import jdbc.JDBCUtility;
 
 /**
  *
- * @author U
+ * @author FANTASTIC CINEMA
  */
 @WebServlet(name = "InsertBookingServlet", urlPatterns = {"/InsertBookingServlet"})
 public class InsertBookingServlet extends HttpServlet {

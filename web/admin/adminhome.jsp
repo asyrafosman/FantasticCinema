@@ -86,11 +86,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <nav>
                             <ul class="nav navbar-nav">
                                 <li class="active" id="lihome"><a href="admin/adminhome.jsp" id="home">Home</a></li>            
-                                <li id="limovies"><a href="/FantasticCinema/ViewMovieServlet" id="about">Movies</a></li>
-                                <li id="lipromotionnnews"><a href="promotionnewsmanagement.jsp">Promotion & News</a></li>       																			
-                                <li><a href="locate.html">Locate Us</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
+                                <li id="limovies"><a href="/FantasticCinema/ViewMovieServlet">Movies</a></li>
+                                <li><a href="/FantasticCinema/ViewBookingServlet">Bookings</a></li>
                             </ul>
                         </nav>
                     </div>

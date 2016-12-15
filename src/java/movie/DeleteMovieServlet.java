@@ -19,7 +19,7 @@ import jdbc.JDBCUtility;
 
 /**
  *
- * @author PCUSER
+ * @author FANTASTIC CINEMA
  */
 @WebServlet(name = "DeleteMovieServlet", urlPatterns = {"/DeleteMovieServlet"})
 public class DeleteMovieServlet extends HttpServlet {

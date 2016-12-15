@@ -23,7 +23,7 @@ import jdbc.JDBCUtility;
 
 /**
  *
- * @author U
+ * @author FANTASTIC CINEMA
  */
 @WebServlet(name = "AdminLoginServlet", urlPatterns = {"/AdminLoginServlet"})
 public class AdminLoginServlet extends HttpServlet {
