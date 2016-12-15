@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -123,7 +124,9 @@ public class InsertBookingServlet extends HttpServlet {
 	{
             ex.printStackTrace ();
 	} 
-        response.sendRedirect(request.getContextPath() + "/ViewHistoryServlet");
+        request.setAttribute("username",username);
+        RequestDispatcher rd = request.getRequestDispatcher("/ViewHistoryServlet");
+        rd.forward(request,response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

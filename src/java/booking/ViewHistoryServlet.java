@@ -66,7 +66,7 @@ private JDBCUtility jdbcUtility;
         HttpSession session = request.getSession(true);
         ArrayList bookings = new ArrayList();
         Booking booking = null;
-        String username = "asyraf";//request.getParameter("username");   
+        String username = (String)request.getAttribute("username");
         
         try {                    
             PreparedStatement preparedStatement = jdbcUtility.getPsSelectAllFromBookingByUsername();
