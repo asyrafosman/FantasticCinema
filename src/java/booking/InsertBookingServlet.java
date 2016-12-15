@@ -64,7 +64,7 @@ public class InsertBookingServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         
-        String username = "000";
+        String username = request.getParameter("username");   
         String cinema = request.getParameter("cinema");   
         String moviename = request.getParameter("moviename");  
         String moviedate = request.getParameter("moviedate");  
@@ -88,6 +88,8 @@ public class InsertBookingServlet extends HttpServlet {
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String bookingdate = sdf.format(dt);
         
+        String seat = request.getParameter("seat");  
+        
         response.setContentType("text/html;charset=UTF-8");        
         try {                    
             PreparedStatement preparedStatement = jdbcUtility.getPsInsertBooking();
@@ -98,21 +100,8 @@ public class InsertBookingServlet extends HttpServlet {
             preparedStatement.setString(4, moviedate);
             preparedStatement.setString(5, movietime);
             preparedStatement.setString(6, bookingdate);
+            preparedStatement.setString(7, seat);
             preparedStatement.executeUpdate();
-            
-            PrintWriter out = response.getWriter();
-            
-            out.println("<script>");
-            out.println("    alert('Booking insert success');");
-            out.println("</script>");
-            
-            out.println("<p>Please click <a href='/FantasticCinema/ViewBookingServlet'>here</a> to view booking details</p>");
-            
-            formatter = new SimpleDateFormat("dd-MM-yyyy");
-            out.println("<br />" + formatter.format(date));
-            
-            formatter = new SimpleDateFormat("yyyy-MM-dd");
-            out.println("<br />" + formatter.format(date));
         }
 	catch (SQLException ex)
 	{
@@ -134,6 +123,7 @@ public class InsertBookingServlet extends HttpServlet {
 	{
             ex.printStackTrace ();
 	} 
+        response.sendRedirect(request.getContextPath() + "/ViewHistoryServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

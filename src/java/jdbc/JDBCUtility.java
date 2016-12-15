@@ -21,6 +21,7 @@ public class JDBCUtility
    PreparedStatement psInsertBooking = null;
    PreparedStatement psInsertCustomer = null;
    PreparedStatement psSelectAllFromBooking = null;
+   PreparedStatement psSelectAllFromBookingByUsername = null;
    PreparedStatement psUpdateBookingViaIdApproved = null;
    PreparedStatement psDeleteBookingViaId = null;
    PreparedStatement psSelectAllFromMovie = null;
@@ -106,8 +107,8 @@ public class JDBCUtility
         try
         {
             //insert into booking
-            String sqlInsertBooking = "INSERT INTO booking(username, cinema, moviename, moviedate, movietime, bookingdate) " +
-                                      "VALUES(?, ?, ?, ?, ?, ?)";
+            String sqlInsertBooking = "INSERT INTO booking(username, cinema, moviename, moviedate, movietime, bookingdate, seat) " +
+                                      "VALUES(?, ?, ?, ?, ?, ?, ?)";
             psInsertBooking = con.prepareStatement(sqlInsertBooking);
             
             //insert into customers
@@ -121,6 +122,11 @@ public class JDBCUtility
             //select all from booking
             String sqlSelectAllFromBooking = "SELECT * FROM booking";
             psSelectAllFromBooking = con.prepareStatement(sqlSelectAllFromBooking);
+            
+            //select all from booking by username
+            String sqlSelectAllFromBookingByUsername = "SELECT * FROM booking WHERE username = ?";
+            psSelectAllFromBookingByUsername = con.prepareStatement(sqlSelectAllFromBookingByUsername);
+            
             
             String sqlUpdateBookingViaIdApproved = "UPDATE booking SET status = 1 WHERE id = ?"; 
             psUpdateBookingViaIdApproved = con.prepareStatement(sqlUpdateBookingViaIdApproved); 
@@ -199,6 +205,11 @@ public class JDBCUtility
     public PreparedStatement getPsSelectAllFromBooking()
     {
       return psSelectAllFromBooking;
+    }
+    
+    public PreparedStatement getPsSelectAllFromBookingByUsername()
+    {
+      return psSelectAllFromBookingByUsername;
     }
     
     public PreparedStatement getPsUpdateBookingViaIdApproved()

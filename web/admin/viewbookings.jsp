@@ -1,17 +1,25 @@
 <%-- 
-    Document   : booking
-    Created on : Nov 26, 2016, 9:33:50 PM
-    Author     : admin
+    Document   : viewbookings
+    Created on : Nov 15, 2016, 1:49 AM
+    Author     : MSI
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="bean.Movie" %>
+<%@ page import="bean.Booking" %>
 <%@ page import="bean.User" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<% User customerprofile = (User)session.getAttribute("customerprofile"); %>
+<%
+    User adminprofile = (User)session.getAttribute("adminprofile");
+    
+    if (adminprofile == null) {
+%>
+        <jsp:forward page="adminlogout.jsp" />
+<%        
+    }
+%>  
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <!-- Title -->
         <title>Fantastic Cinema</title>
@@ -49,24 +57,19 @@
                     <a href="index.jsp"><h1>Fantastic <span>Cinema</span></h1></a>
                 </div>
                 <!--  //Fantastic Cinema Logo  -->
+
                 <!--  Sign in & sign up  -->
                 <div class="fc_sign_in_register">
                     <ul>
-                        <% if (customerprofile == null) { %>
-                            <li><i aria-hidden="true"></i>Guest</li>
-                            <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>                   
-                        <% }
-                        else { %>
-                            <li><i aria-hidden="true"></i><a href="viewprofile.jsp"><jsp:getProperty name="customerprofile" property="fullName"/></a></li>
-                            <li><a href="CustomerLogoutServlet">Logout</a></li>
-                        <% } %>
+                        <li><i aria-hidden="true"></i>Hi, <jsp:getProperty name="adminprofile" property="fullName"/>!</li>
+                        <li><a href="adminlogout.jsp">Logout</a></li>
                     </ul>
                 </div>
                 <!--  //Sign in & sign up  -->
                 <div class="clearfix"> </div>
             </div>
         </div>
-        <!-- ********************************************** //header ********************************************** -->
+	<!-- ********************************************** Navigation ********************************************** -->
         <!-- ********************************************** Modal pop-p sign in & sign up ********************************************** -->
         <div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
             <!--  Modal Dialog  -->
@@ -148,8 +151,7 @@
         <!--  //javascript modal popup  -->
         <!--  ********************************************** //Wajib **********************************************  -->	
         <!-- ********************************************** //Modal pop-p sign in & sign up ********************************************** -->
-        <div class="movies_nav">
-            <!--  Container  -->
+        <div class="general">
             <div class="container">
                 <nav class="navbar navbar-default">
                     <div class="navbar-header navbar-left">
@@ -164,7 +166,7 @@
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="index.jsp">Movies</a></li>
+                                <li><a href="index.jsp">Movies</a></li>
                                 <li><a href="showtimes.jsp">Showtimes</a></li>								
                                 <li><a href="newspromotion.jsp">News & Promotion</a></li>
                                 <li><a href="locate.jsp">Locate Us</a></li>
@@ -178,120 +180,92 @@
             </div>
             <!--  //Container  -->
         </div>
-        <!--  //movie navigation  -->	
-        <!-- ********************************************** //Navigation ********************************************** -->
-        <div class="general">
+        <section id="QuickFilter">
             <div class="container">
-                <% if (customerprofile == null) { %>
-                    <div class="jumbotron">
-                        <h2>ONLINE TICKETING</h2>
-                        <h1>MEMBERS ONLY</h1>
-                        <p>Please login or sign up if you are not a member</p>
-                    </div>                    
-                <% }
-                else { %>
-                    <div class="jumbotron">
-                        <form class="form-horizontal" method="get" action="chooseseat.jsp">
-                            <fieldset>
-                                <legend>Book a ticket</legend>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Cinema</label>
-                                    <div class="col-lg-10">
-                                        <select name="cinema" class="form-control" id="cinema">
-                                            <option selected="selected" value="-">- Select Cinema -</option>
-                                            <option value="1 Utama"> 1 Utama</option>
-                                            <option value="IOI Mall (Puchong)"> IOI Mall (Puchong)</option>
-                                            <option value="Summit USJ"> Summit USJ</option>
-                                            <option value="Setia City Mall"> Setia City Mall</option>
-                                            <option value="Klang Parade"> Klang Parade</option>
-                                            <option value="Alamanda"> Alamanda</option>
-                                            <option value="Dataran Pahlawan"> Dataran Pahlawan</option>
-                                            <option value="Aeon Bandaraya Melaka"> Aeon Bandaraya Melaka</option>
-                                            <option value="East Coast Mall"> East Coast Mall</option>
-                                            <option value="1Borneo"> 1Borneo</option>
-                                            <option value="Suria Sabah Mall"> Suria Sabah Mall</option>
-                                            <option value="CityONE Megamall (Kuching)"> CityONE Megamall (Kuching)</option>
-                                            <option value="Bintang Megamall"> Bintang Megamall</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Movie</label>
-                                    <div class="col-lg-10">
-                                        <select name="moviename" class="form-control" id="moviename">
-                                            <option selected="selected" value="-">- Select Movie -</option>
-                                            <c:forEach items="${sessionScope.movies}" var="currentbooking" varStatus="loop">
-                                                <option><c:out value="${currentbooking.moviename}" /></option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Show Date</label>
-                                    <div class="col-lg-10">
-                                        <div class="input-group date" data-provide="datepicker">
-                                            <input name="moviedate" type="text" class="form-control" value="- Select Date -">
-                                            <div class="input-group-addon">
-                                                <span class="fa fa-th"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Show Time</label>
-                                    <div class="col-lg-10">
-                                        <select name="movietime" class="form-control" id="movietime">
-                                            <option value="-">- Select Time -</option>
-                                            <option value="10AM">10AM</option>
-                                            <option value="12PM">12PM</option>
-                                            <option value="2PM">2PM</option>
-                                            <option value="4PM">4PM</option>
-                                            <option value="6PM">6PM</option>
-                                            <option value="8PM">8PM</option>
-                                            <option value="10PM">10PM</option>
-                                            <option value="12AM">12AM</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-lg-10 col-lg-offset-2">
-                                        <button type="reset" class="btn btn-danger">Cancel</button>
-                                        <button type="submit" class="btn btn-success">Book</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                <% } %>
-            </div>
-        </div>
-        
-        <script type="text/javascript">
-            $('.date').datepicker({
-                autoclose: true,
-                format:	"dd/mm/yyyy",
-                todayHighlight: true,
-                orientation: "bottom"
-            });;
-        </script>
+                <div class="well" id="wellhome">
+                    <h1>View Bookings</h1>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-striped table-hover ">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Username</th>
+                                        <th>Cinema</th>
+                                        <th>Movie Name</th>
+                                        <th>Movie Date</th>
+                                        <th>Movie Time</th>
+                                        <th>Booking Date</th>
+                                        <th>Seat</th>
+                                        <th>Status</th>
+                                        <th>Operations</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${sessionScope.bookings}" var="currentbooking" varStatus="loop">
+                                        <tr>
+                                            <td><c:out value="${loop.index + 1}" /></td>
+                                            <td><c:out value="${currentbooking.username}" /></td>
+                                            <td><c:out value="${currentbooking.cinema}" /></td>
+                                            <td><c:out value="${currentbooking.moviename}" /></td>
+                                            <td><c:out value="${currentbooking.moviedate}" /></td>
+                                            <td><c:out value="${currentbooking.movietime}" /></td>
+                                            <td><c:out value="${currentbooking.bookingdate}" /></td>
+                                            <td><c:out value="${currentbooking.seat}" /></td>
+
+                                            <c:url value="ApprovedBookingServlet" var="ApprovedBookingServletURL">
+                                                <c:param name="id"   value="${currentbooking.id}" />
+                                            </c:url>                      
+                                            <c:choose>
+                                                <c:when test="${currentbooking.status == 0}">
+                                                    <td><c:out value="pending" /></td>
+                                                </c:when>
+
+                                                <c:when test="${currentbooking.status == 1}">
+                                                    <td><img src="img/approved.png" width="30"></td>
+                                                </c:when>
+
+                                                <c:when test="${currentbooking.status == 2}">
+                                                    <td><c:out value="cancelled" /></td>
+                                                </c:when>
+
+                                                <c:when test="${currentbooking.status == 3}">
+                                                    <td><c:out value="paid" /></td>
+                                                </c:when>   
+
+                                                <c:when test="${currentbooking.status == 4}">
+                                                    <td><c:out value="done" /></td>
+                                                </c:when>    
+                                            </c:choose>  
+
+                                            <td>
+                                                <a href="<c:out value='${ApprovedBookingServletURL}' />"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+                                                &nbsp;
+                                                <a href="<c:out value='${CancelBookingServletURL}' />"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span></a>
+                                                &nbsp;
+                                                <a href="<c:out value='${DeleteBookingServletURL}' />"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                                                &nbsp;
+                                                <a href="<c:out value='${PaidBookingServletURL}' />"><span class="fa fa-cc-visa" aria-hidden="true"></span></a>
+                                            </td>   
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> <!-- /row -->
+                </div> <!-- /well -->
+            </div> <!-- /container -->
+        </section>
+        <!-- ********************************************** Footer ********************************************** -->
         <div class="footer">
             <!--  Container  -->
             <div class="container">
                 <!--  w3ls_footer_grid  -->
                 <div class="w3ls_footer_grid">
                     <div class="col-md-6 w3ls_footer_grid_left">
-                        <div class="w3ls_footer_grid_left1">
-                            <h2>Subscribe to us</h2>
-                            <div class="w3ls_footer_grid_left1_pos">
-                                <form action="#" method="post">
-                                    <input type="email" name="email" placeholder="Your email..." required="">
-                                    <input type="submit" value="Send">
-                                </form>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-md-6 w3ls_footer_grid_right">
-                        <a href="index.html"><h2>Fantastic<span>Cinema</span></h2></a>
+                            <a href="index.html"><h2>Fantastic<span>Cinema</span></h2></a>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
@@ -301,34 +275,11 @@
                     <p>All Content Copyright &copy; 2016 Fantastic Cinema. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
                 </div>
                 <!--  //w3ls_footer_grid1_left  -->
-                <!--  w3ls_footer_grid1_left  -->
-                <div class="col-md-7 w3ls_footer_grid1_right">
-                    <ul>
-                        <li>
-                            <a href="index.html">Movies</a>
-                        </li>
-                        <li>
-                            <a href="showtimes.html">Showtimes</a>
-                        </li>
-                        <li>
-                            <a href="newspromotion.html">News & Promotion</a>
-                        </li>
-                        <li>
-                            <a href="locate.html">Locate Us</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">Contact Us</a>
-                        </li>
-                        <li>
-                            <a href="faq.html">FAQ</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--  //w3ls_footer_grid1_left  -->
                 <div class="clearfix"> </div>
             </div>
             <!--  //Container  -->
         </div>
+        <!-- ********************************************** //Footer ********************************************** -->
         <script src="js/bootstrap.min.js"></script>
         <script>
         $(document).ready(function(){

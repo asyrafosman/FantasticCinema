@@ -73,12 +73,8 @@ public class ViewBookingServlet extends HttpServlet {
                 booking = new Booking();
                 booking.setId(rs.getInt("id"));
                 booking.setUsername(rs.getString("username"));
-                
-                booking.setCinema(rs.getString("cinema"));
-                                
+                booking.setCinema(rs.getString("cinema"));             
                 booking.setMoviename(rs.getString("moviename"));
-                
-                
                 
                 //yyyy-MM-dd
                 String moviedate = rs.getString("moviedate");
@@ -107,14 +103,12 @@ public class ViewBookingServlet extends HttpServlet {
                 } catch (Exception ex) {}
                                 
                 //convert to MY format dd-MM-yyyy
-                //formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss a");
-                //formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss a");
                 formatter = new SimpleDateFormat("dd MMMM, yyyy HH:mm:ss a");
                 bookingdate = formatter.format(date);
                 booking.setBookingdate(bookingdate);
                 
-                
                 booking.setStatus(rs.getInt("status"));
+                booking.setSeat(rs.getString("seat"));
                     
                 bookings.add(booking);
             }
@@ -122,9 +116,8 @@ public class ViewBookingServlet extends HttpServlet {
         catch (SQLException ex) 
         {            
         }
-        
         session.setAttribute("bookings", bookings);
-        sendPage(request, response, "/viewbookings.jsp");
+        sendPage(request, response, "/admin/viewbookings.jsp");
     }
     
     void sendPage(HttpServletRequest req, HttpServletResponse res, String fileName) throws ServletException, IOException

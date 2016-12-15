@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 public class Booking implements Serializable {
     private int id, status;
-    private String username, cinema, moviename, moviedate, movietime, bookingdate;
+    private String username, cinema, moviename, moviedate, movietime, bookingdate, seat;
 
     /**
      * @return the id
@@ -126,5 +126,19 @@ public class Booking implements Serializable {
      */
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    /**
+     * @return the seat
+     */
+    public String getSeat() {
+        return seat;
+    }
+
+    /**
+     * @param seat the seat to set
+     */
+    public void setSeat(String seat) {
+        this.seat = seat;
     }
 }

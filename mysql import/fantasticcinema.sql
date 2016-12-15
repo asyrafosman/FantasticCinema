@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2016 at 09:34 AM
+-- Generation Time: Dec 15, 2016 at 11:23 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -36,6 +36,7 @@ CREATE TABLE `booking` (
   `moviedate` date NOT NULL,
   `movietime` varchar(20) NOT NULL,
   `bookingdate` datetime NOT NULL,
+  `seat` varchar(10) NOT NULL,
   `status` int(2) NOT NULL DEFAULT '0' COMMENT '0 - in process | 1 - approved | 2 - cancelled | 3 - paid | 4 - done'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -43,17 +44,21 @@ CREATE TABLE `booking` (
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `username`, `cinema`, `moviename`, `moviedate`, `movietime`, `bookingdate`, `status`) VALUES
-(1, '000', 'Dataran Pahlawan', 'War Dogs', '2016-11-24', '8PM', '2016-11-24 12:03:14', 0),
-(2, '000', 'Alamanda', 'War Dogs', '2016-11-24', '4PM', '2016-11-24 12:03:45', 0),
-(3, '000', 'Dataran Pahlawan', 'War Dogs', '2016-11-24', '10PM', '2016-11-24 12:14:35', 0),
-(4, '000', 'Setia City Mall', 'Peter', '2016-11-24', '10PM', '2016-11-24 12:14:49', 0),
-(5, '000', '1Borneo', 'Civil War', '2016-11-24', '6PM', '2016-11-24 12:16:24', 0),
-(6, '000', 'Bintang Megamall', 'Civil War', '2016-11-24', '2PM', '2016-11-24 14:46:34', 0),
-(7, '000', 'Aeon Bandaraya Melaka', 'Civil War', '2016-11-26', '2PM', '2016-11-26 11:18:09', 0),
-(8, '000', 'Aeon Bandaraya Melaka', 'The Jungle Book', '2016-11-26', '10PM', '2016-11-26 11:21:15', 0),
-(9, '000', 'Aeon Bandaraya Melaka', 'JACK REACHER: NEVER GO BACK', '2016-11-26', '6PM', '2016-11-26 22:44:30', 0),
-(10, '000', 'Alamanda', 'Marvelâ??s Doctor Strange', '2016-11-29', '2PM', '2016-11-29 16:33:54', 0);
+INSERT INTO `booking` (`id`, `username`, `cinema`, `moviename`, `moviedate`, `movietime`, `bookingdate`, `seat`, `status`) VALUES
+(1, '000', 'Dataran Pahlawan', 'War Dogs', '2016-11-24', '8PM', '2016-11-24 12:03:14', '', 0),
+(2, '000', 'Alamanda', 'War Dogs', '2016-11-24', '4PM', '2016-11-24 12:03:45', '', 0),
+(3, '000', 'Dataran Pahlawan', 'War Dogs', '2016-11-24', '10PM', '2016-11-24 12:14:35', '', 0),
+(4, '000', 'Setia City Mall', 'Peter', '2016-11-24', '10PM', '2016-11-24 12:14:49', '', 0),
+(5, '000', '1Borneo', 'Civil War', '2016-11-24', '6PM', '2016-11-24 12:16:24', '', 0),
+(6, '000', 'Bintang Megamall', 'Civil War', '2016-11-24', '2PM', '2016-11-24 14:46:34', '', 0),
+(7, '000', 'Aeon Bandaraya Melaka', 'Civil War', '2016-11-26', '2PM', '2016-11-26 11:18:09', '', 0),
+(8, '000', 'Aeon Bandaraya Melaka', 'The Jungle Book', '2016-11-26', '10PM', '2016-11-26 11:21:15', '', 0),
+(9, '000', 'Aeon Bandaraya Melaka', 'JACK REACHER: NEVER GO BACK', '2016-11-26', '6PM', '2016-11-26 22:44:30', '', 0),
+(10, '000', 'Alamanda', 'Marvelâ??s Doctor Strange', '2016-11-29', '2PM', '2016-11-29 16:33:54', '', 0),
+(11, '000', 'Aeon Bandaraya Melaka', 'FALLEN', '2016-12-15', '4PM', '2016-12-15 10:49:55', '', 0),
+(13, '000', 'Aeon Bandaraya Melaka', 'FALLEN', '2016-12-15', '4PM', '2016-12-15 11:03:12', 'R4 S10', 0),
+(14, 'asyraf', '1Borneo', 'FALLEN', '2016-12-15', '6PM', '2016-12-15 17:12:47', 'R6 S10', 0),
+(15, 'asyraf', 'Alamanda', 'FALLEN', '2016-12-15', '4PM', '2016-12-15 17:40:33', 'R1 S10', 0);
 
 -- --------------------------------------------------------
 
@@ -131,12 +136,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
