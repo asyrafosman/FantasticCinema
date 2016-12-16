@@ -70,88 +70,6 @@
             </div>
         </div>
 	<!-- ********************************************** Navigation ********************************************** -->
-        <!-- ********************************************** Modal pop-p sign in & sign up ********************************************** -->
-        <div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
-            <!--  Modal Dialog  -->
-            <div class="modal-dialog" role="document">
-                <!--  Modal Content  -->
-                <div class="modal-content">
-                    <!--  Modal Header  -->
-                    <div class="modal-header">
-                        Sign In & Sign Up
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
-                    </div>
-                    <!--  //Modal Header  -->
-                    <section>
-                        <!--  Modal Body  -->
-                        <div class="modal-body">
-                            <!--  class w3_login_module  -->	
-                            <div class="w3_login_module">
-                                <!--  class module form-module  -->	
-                                <div class="module form-module">
-                                    <!--  Toggle button  -->	
-                                    <div class="toggle"><i class="fa fa-times fa-pencil"></i>
-                                        <div class="tooltip">Click Me</div>
-                                    </div>
-                                    <!--  //Toggle button  -->	
-                                    <!--  Sign in  -->
-                                    <div class="form">
-                                        <h3>Login to your account.</h3>
-                                        <form action="CustomerLoginServlet" method="post">
-                                            <input type="text" name="username" placeholder="Username" required="">
-                                            <input type="password" name="password" placeholder="Password" required="">
-                                            <input type="hidden" name="from" value="${pageContext.request.requestURI}">
-                                            <input type="submit" value="Login">
-                                        </form>
-                                    </div>
-                                    <!--  //Sign in  -->
-                                    <!--  Sign up  -->
-                                    <div class="form">
-                                        <h3>Create an account.</h3>
-                                        <form action="CustomerRegisterServlet" method="post">
-                                            <input type="text" name="username" placeholder="Username" required="">
-                                            <input type="password" name="password" placeholder="Password" required="">
-                                            <input type="text" name="fullName" placeholder="Full Name" required="">
-                                            <input type="email" name="email" placeholder="Email Address" required="">
-                                            <input type="text" name="mobileNum" placeholder="Phone Number" required="">
-                                            <input type="hidden" name="from" value="${pageContext.request.requestURI}">
-                                            <input type="submit" value="Register">
-                                        </form>
-                                    </div>
-                                    <!--  //Sign up  -->
-                                    <!--  Forget password  -->
-                                    <div class="cta"><a href="#">Forgot your password?</a></div>
-                                </div>
-                                <!--  //class module form-module  -->	
-                            </div>
-                            <!--  //class w3_login_module  -->
-                        </div>
-                        <!--  //Modal Body  -->
-                    </section>
-                </div>
-                <!--  //Modal Content  -->
-            </div>
-            <!--  //Modal Dialog  -->
-        </div>
-        <!--  ********************************************** Wajib **********************************************  -->
-        <!--  javascript modal popup  -->	
-        <script>
-            $('.toggle').click(function(){
-                // Switches the Icon
-                $(this).children('i').toggleClass('fa-pencil');
-                // Switches the forms  
-                $('.form').animate({
-                    height: "toggle",
-                    'padding-top': 'toggle',
-                    'padding-bottom': 'toggle',
-                    opacity: "toggle"
-                }, "slow");
-            });
-        </script>
-        <!--  //javascript modal popup  -->
-        <!--  ********************************************** //Wajib **********************************************  -->	
-        <!-- ********************************************** //Modal pop-p sign in & sign up ********************************************** -->
-        <!-- ********************************************** Navigation ********************************************** -->
         <!--  movie navigation  -->	
         <div class="movies_nav">
             <!--  Container  -->
@@ -169,9 +87,9 @@
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">
-                                <li id="lihome"><a href="admin/adminhome.jsp" id="home">Home</a></li>            
-                                <li id="limovies"><a href="/FantasticCinema/ViewMovieServlet">Movies</a></li>
-                                <li class="active"><a href="/FantasticCinema/ViewBookingServlet">Bookings</a></li>
+                                <li><a href="adminhome.jsp">Home</a></li>            
+                                <li><a href="ViewMovieServlet">Movies</a></li>
+                                <li class="active"><a>Bookings</a></li>
                             </ul>
                         </nav>
                     </div>

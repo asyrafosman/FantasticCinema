@@ -77,9 +77,9 @@
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">            
-                                <li id="lihome"><a href="admin/adminhome.jsp" id="home">Home</a></li>   
-                                <li class="active" id="limovies"><a>Movies</a></li>
-                                <li><a href="/FantasticCinema/ViewBookingServlet">Bookings</a></li>
+                                <li><a href="adminhome.jsp">Home</a></li>   
+                                <li class="active"><a>Movies</a></li>
+                                <li><a href="ViewBookingServlet">Bookings</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -94,7 +94,7 @@
             <div class="container">
                 <div class="well" id="wellhome">
                     <h1>View Movies</h1>
-                    <a href="admin/addnewmovie.jsp" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Movie</a> 
+                    <a href="addnewmovie.jsp" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Movie</a> 
                     <div class="row">
                         <div class="col-md-12">
                             <table class="table table-striped table-hover ">
@@ -112,13 +112,13 @@
                                     <tr>
                                         <td><c:out value="${loop.index + 1}" /></td>
 
-                                        <c:url value="admin/editmovie.jsp" var="editmoviesURL">
+                                        <c:url value="editmovie.jsp" var="editmoviesURL">
                                             <c:param name="id"   value="${currentmovie.id}" />
                                             <c:param name="moviename"   value="${currentmovie.moviename}" />
                                         </c:url>
                                         <td><a href="<c:out value='${editmoviesURL}' />"><c:out value="${currentmovie.moviename}" /></a></td>
 
-                                        <c:url value="admin/changemovieimage.jsp" var="changeImageURL">
+                                        <c:url value="changemovieimage.jsp" var="changeImageURL">
                                             <c:param name="id"   value="${currentmovie.id}" />
                                             <c:param name="image"   value="${currentmovie.image}" />
                                         </c:url>

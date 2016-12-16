@@ -85,9 +85,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">
-                                <li class="active" id="lihome"><a href="admin/adminhome.jsp" id="home">Home</a></li>            
-                                <li id="limovies"><a href="/FantasticCinema/ViewMovieServlet">Movies</a></li>
-                                <li><a href="/FantasticCinema/ViewBookingServlet">Bookings</a></li>
+                                <li class="active"><a>Home</a></li>            
+                                <li><a href="ViewMovieServlet">Movies</a></li>
+                                <li><a href="ViewBookingServlet">Bookings</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -107,9 +107,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <!--  nav-tabs list  -->
                     <ul id="myTab" class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#nowshowing" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Now Showing</a></li>
-                        <li role="presentation"><a href="#comingsoon" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">Coming Soon</a></li>
-                        <li role="presentation"><a href="#promotion" id="rating-tab" role="tab" data-toggle="tab" aria-controls="rating" aria-expanded="true">Promotion</a></li>
-                        <li role="presentation"><a href="#news" id="rating-tab" role="tab" data-toggle="tab" aria-controls="rating" aria-expanded="true">News</a></li>
                     </ul>
                     <!--  //nav-tabs list  -->
                     <!--  myTabContent  -->
@@ -229,160 +226,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <div class="clearfix"> </div>
                         </div>
                         <!--  ********************************************** //nowshowing tab **********************************************  -->
-                        <!--  ********************************************** comingsoon tab **********************************************  -->
-                        <div role="tabpanel" class="tab-pane fade" id="comingsoon" aria-labelledby="profile-tab">
-                            <!--  movie Assassin's Creed 3  -->
-                            <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m22.jpg" title="movie-name" class="img-responsive" alt=" " />
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="single.html">Assassin's Creed 3</a></h6>							
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  movie Bad Moms  -->
-                            <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m2.jpg" title="movie-name" class="img-responsive" alt=" " />
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="single.html">Bad Moms</a></h6>							
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  movie Central Intelligence  -->
-                            <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m9.jpg" title="movie-name" class="img-responsive" alt=" " />
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="single.html">Central Intelligence</a></h6>							
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                        <!--  ********************************************** //comingsoon tab **********************************************  -->
-                        <!--  ********************************************** promotion tab **********************************************  -->
-                        <div role="tabpanel" class="tab-pane fade" id="promotion" aria-labelledby="rating-tab">
-                            <div class="row">
-                                <div class="col-md-3 col-md-offset-1">
-                                    <img src="images/kslreborn.jpg" width="100%">
-                                </div>
-                                <div class="col-md-7 col-md-offset-1">
-                                    <h3>
-                                        MBO KSL REBORN
-                                    </h3>
-                                    <p>
-                                        Type:Promotion
-                                        Cinema:KSL CITY, JOHOR BAHRU
-                                        Period:25/11/2016 - 25/11/2016
-                                        The talented pop sweetie Jeryl Lee, finalist from Sing! China will be at MBO KSL JB for our grand re-opening! Join us on 25th Nov, 4PM - 7PM!
-
-                                        We have ALLSTAR signups, cosplay appearances, The Prodigal Son Charity Screening, voucher & merchandise giveaway and more.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3 col-md-offset-1">
-                                    <img src="images/moana.jpg" width="100%">
-                                </div>
-                                <div class="col-md-7 col-md-offset-1">
-                                    <h3>
-                                        MOANA COLOURING CONTEST
-                                    </h3>
-                                    <p>
-                                        Type:Promotion
-                                        Cinema:KSL CITY, JOHOR BAHRU,SUBANG PARADE, SUBANG JAYA,SETAPAK CENTRAL,THE SPRING SHOPPING MALL,KLUANG MALL, KLUANG,IMAGO MALL,CENTRAL SQUARE
-                                        Period:26/11/2016 - 11/12/2016
-                                        Join us at these MBO locations for Moana Colouring Contest! - happening from 26th November, check the dates and join to win STABILO and MBO merchandise.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3 col-md-offset-1">
-                                    <img src="images/2d3d.jpg" width="100%">
-                                </div>
-                                <div class="col-md-7 col-md-offset-1">
-                                    <h3>
-                                        2D & 3D SAME PRICE!
-                                    </h3>
-                                    <p>
-                                        Type:Promotion
-                                        Cinema:All cinemas
-                                        Period:
-                                         Same ticket price for 2D & 3D movies
-                                        *3D glasses sold separately & can be used for subsequent visits.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3 col-md-offset-1">
-                                    <img src="images/reasons.jpg" width="100%">
-                                </div>
-                                <div class="col-md-7 col-md-offset-1">
-                                    <h3>
-                                        10 REASONS TO WATCH MOVIES AT MBO CINEMAS
-                                    </h3>
-                                    <p>
-                                        Type:Promotion
-                                        Cinema:All cinemas
-                                        Period:01/01/2016
-                                        10 Reasons Why MBO Cinemas is the best choice to watch your favourite movies! 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--  ********************************************** //promotion tab **********************************************  -->
-                        <!--  ********************************************** news tab **********************************************  -->
-                        <div role="tabpanel" class="tab-pane fade" id="news" aria-labelledby="home-tab">
-                            <div class="row">
-                                <div class="col-md-3 col-md-offset-1">
-                                    <img src="images/blooddonation.png" width="100%">
-                                </div>
-                                <div class="col-md-7 col-md-offset-1">
-                                    <h3>
-                                        BLOOD DONATION 3.0 PRESS CONFERENCE
-                                    </h3>
-                                    <p>
-                                        MBO SJAM Blood Donation Drive 3.0 Press Conference @MBO Citta Mall
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3 col-md-offset-1">
-                                    <img src="images/blooddonation.jpg" width="100%">
-                                </div>
-                                <div class="col-md-7 col-md-offset-1">
-                                    <h3>
-                                        BLOOD DONATION PRESS CONFERENCE (2014)
-                                    </h3>
-                                    <p>
-                                        Published on : 5 September 2014
-
-                                        Read from - http://www.nst.com.my/node/30173
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3 col-md-offset-1">
-                                    <img src="images/kosmogaraj.jpg" width="100%">
-                                </div>
-                                <div class="col-md-7 col-md-offset-1">
-                                    <h3>
-                                        KOSMO, GARAJ, SCRATCH WINS CONTEST NEWS ON 240514, PG 34
-                                    </h3>
-                                    <p>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--  ********************************************** //news tab **********************************************  -->
                     </div>
                     <!--  //myTabContent  -->
                 </div>

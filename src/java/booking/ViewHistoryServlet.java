@@ -6,6 +6,7 @@
 package booking;
 
 import bean.Booking;
+import bean.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -64,9 +65,12 @@ private JDBCUtility jdbcUtility;
             throws ServletException, IOException {
         
         HttpSession session = request.getSession(true);
+        
+        User customer = (User)session.getAttribute("customerprofile");
+        String username = customer.getUsername();
+        
         ArrayList bookings = new ArrayList();
         Booking booking = null;
-        String username = (String)request.getAttribute("username");
         
         try {                    
             PreparedStatement preparedStatement = jdbcUtility.getPsSelectAllFromBookingByUsername();

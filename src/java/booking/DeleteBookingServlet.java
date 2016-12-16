@@ -22,7 +22,7 @@ import jdbc.JDBCUtility;
  *
  * @author FANTASTIC CINEMA
  */
-@WebServlet(name = "DeleteBookingServlet", urlPatterns = {"/DeleteBookingServlet"})
+@WebServlet(name = "DeleteBookingServlet", urlPatterns = {"/admin/DeleteBookingServlet"})
 public class DeleteBookingServlet extends HttpServlet {
 
     private JDBCUtility jdbcUtility;
@@ -86,7 +86,7 @@ public class DeleteBookingServlet extends HttpServlet {
 	{
             ex.printStackTrace ();
 	} 
-        response.sendRedirect(request.getContextPath() + "/ViewBookingServlet");
+        response.sendRedirect(request.getContextPath() + "/admin/ViewBookingServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

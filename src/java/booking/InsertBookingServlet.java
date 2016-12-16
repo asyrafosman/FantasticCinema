@@ -124,9 +124,7 @@ public class InsertBookingServlet extends HttpServlet {
 	{
             ex.printStackTrace ();
 	} 
-        request.setAttribute("username",username);
-        RequestDispatcher rd = request.getRequestDispatcher("/ViewHistoryServlet");
-        rd.forward(request,response);
+        response.sendRedirect(request.getContextPath() + "/ViewHistoryServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

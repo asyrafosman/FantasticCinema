@@ -77,9 +77,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">            
-                                <li id="lihome"><a href="admin/adminhome.jsp" id="home">Home</a></li>   
-                                <li class="active" id="limovies"><a>Movies</a></li>
-                                <li><a href="/FantasticCinema/ViewBookingServlet">Bookings</a></li>
+                                <li><a href="adminhome.jsp">Home</a></li>   
+                                <li class="active"><a>Movies</a></li>
+                                <li><a href="ViewBookingServlet">Bookings</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -93,7 +93,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="general">
             <div class="container">
                 <div class="well" id="wellhome">
-                    <form class="form-horizontal" action="/FantasticCinema/EditMovieServlet">
+                    <form class="form-horizontal" action="EditMovieServlet">
                         <fieldset>
                             <legend>Add New Movie</legend>
                             <div class="form-group">

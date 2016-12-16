@@ -27,7 +27,7 @@ import jdbc.JDBCUtility;
  *
  * @author FANTASTIC CINEMA
  */
-@WebServlet(name = "ViewBookingServlet", urlPatterns = {"/ViewBookingServlet"})
+@WebServlet(name = "ViewBookingServlet", urlPatterns = {"/admin/ViewBookingServlet"})
 public class ViewBookingServlet extends HttpServlet {
     private JDBCUtility jdbcUtility;
     private Connection con;

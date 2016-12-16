@@ -23,7 +23,7 @@ import jdbc.JDBCUtility;
  *
  * @author FANTASTIC CINEMA
  */
-@WebServlet(name = "InsertMovieServlet", urlPatterns = {"/InsertMovieServlet"})
+@WebServlet(name = "InsertMovieServlet", urlPatterns = {"/admin/InsertMovieServlet"})
 public class InsertMovieServlet extends HttpServlet {
 
     private JDBCUtility jdbcUtility;
@@ -118,7 +118,7 @@ public class InsertMovieServlet extends HttpServlet {
 	{
             ex.printStackTrace ();
 	}
-        response.sendRedirect(request.getContextPath() + "/ViewMovieServlet");
+        response.sendRedirect(request.getContextPath() + "/admin/ViewMovieServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
