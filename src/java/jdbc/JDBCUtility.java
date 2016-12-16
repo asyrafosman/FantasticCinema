@@ -26,13 +26,19 @@ public class JDBCUtility
    PreparedStatement psDeleteBookingViaId = null;
    PreparedStatement psSelectAllFromMovie = null;
    PreparedStatement psSelectAllFromMovieAvailable = null;
+   PreparedStatement psSelectAllFromCinema = null;
+   PreparedStatement psSelectAllFromCinemaAvailable = null;
    PreparedStatement psSelectCustomerViaLoginPassword = null;
    PreparedStatement psSelectAdminViaLoginPassword = null;
    PreparedStatement psInsertMovie = null;
+   PreparedStatement psInsertCinema = null;
    PreparedStatement psUpdateCustomerViaUsername = null;
    PreparedStatement psDeleteMovieViaId = null;
+   PreparedStatement psDeleteCinemaViaId = null;
    PreparedStatement psUpdateMovieViaIdActive = null;
+   PreparedStatement psUpdateCinemaViaIdActive = null;
    PreparedStatement psUpdateMovieName = null;
+   PreparedStatement psUpdateCinemaName = null;
 
    //use this constructor if using ConnectionPool
    public JDBCUtility()
@@ -127,7 +133,6 @@ public class JDBCUtility
             String sqlSelectAllFromBookingByUsername = "SELECT * FROM booking WHERE username = ?";
             psSelectAllFromBookingByUsername = con.prepareStatement(sqlSelectAllFromBookingByUsername);
             
-            
             String sqlUpdateBookingViaId = "UPDATE booking SET status = ? WHERE id = ?"; 
             psUpdateBookingViaId = con.prepareStatement(sqlUpdateBookingViaId); 
             
@@ -143,27 +148,49 @@ public class JDBCUtility
             String sqlSelectAllFromMovieAvalaible = "SELECT * FROM movie WHERE status = 1";
             psSelectAllFromMovieAvailable = con.prepareStatement(sqlSelectAllFromMovieAvalaible);
             
+            //select all from cinema
+            String sqlSelectAllFromCinema = "SELECT * FROM cinema";
+            psSelectAllFromCinema = con.prepareStatement(sqlSelectAllFromCinema);
+            
+            //select all from cinema available
+            String sqlSelectAllFromCinemaAvalaible = "SELECT * FROM cinema WHERE status = 1";
+            psSelectAllFromCinemaAvailable = con.prepareStatement(sqlSelectAllFromCinemaAvalaible);
+            
             String sqlSelectCustomerViaLoginPassword = "SELECT * FROM user WHERE username = ? AND password = ? AND userType = 'client'";
             psSelectCustomerViaLoginPassword = con.prepareStatement(sqlSelectCustomerViaLoginPassword);
             
             String sqlSelectAdminViaLoginPassword = "SELECT * FROM user WHERE username = ? AND password = ? AND userType = 'admin'";
             psSelectAdminViaLoginPassword = con.prepareStatement(sqlSelectAdminViaLoginPassword);
             
-            String sqlInsertMovie = "INSERT INTO movie(moviename) " +
-                                      "VALUES(?)";
+            String sqlInsertMovie = "INSERT INTO movie(moviename) VALUES(?)";
             psInsertMovie = con.prepareStatement(sqlInsertMovie);
+            
+            String sqlInsertCinema = "INSERT INTO cinema(cinemaname) VALUES(?)";
+            psInsertCinema = con.prepareStatement(sqlInsertCinema);
             
             //delete from table movie
             String sqlDeleteMovieViaId = "DELETE from movie WHERE id = ?"; 
             psDeleteMovieViaId = con.prepareStatement(sqlDeleteMovieViaId);
             
-            //edit status
+            //delete from table cinema
+            String sqlDeleteCinemaViaId = "DELETE from cinema WHERE id = ?"; 
+            psDeleteCinemaViaId = con.prepareStatement(sqlDeleteCinemaViaId);
+            
+            //edit movie status
             String sqlUpdateMovieViaIdActive = "UPDATE movie SET status = ? WHERE id = ?"; 
             psUpdateMovieViaIdActive = con.prepareStatement(sqlUpdateMovieViaIdActive);
+            
+            //edit cinema status
+            String sqlUpdateCinemaViaIdActive = "UPDATE cinema SET status = ? WHERE id = ?"; 
+            psUpdateCinemaViaIdActive = con.prepareStatement(sqlUpdateCinemaViaIdActive);
             
             //update moviename in database
             String sqlUpdateMovieName = "UPDATE movie SET moviename = ? WHERE id = ?"; 
             psUpdateMovieName = con.prepareStatement(sqlUpdateMovieName);
+            
+            //update cinemaname in database
+            String sqlUpdateCinemaName = "UPDATE cinema SET cinemaname = ? WHERE id = ?"; 
+            psUpdateCinemaName = con.prepareStatement(sqlUpdateCinemaName);
         }
 	catch (SQLException ex)
 	{
@@ -231,6 +258,16 @@ public class JDBCUtility
     {
       return psSelectAllFromMovieAvailable;
     } 
+    
+    public PreparedStatement getPsSelectAllFromCinema()
+    {
+      return psSelectAllFromCinema;
+    }
+    
+    public PreparedStatement getPsSelectAllFromCinemaAvailable()
+    {
+      return psSelectAllFromCinemaAvailable;
+    }
 
     public PreparedStatement getPsSelectCustomerViaLoginPassword()
     {
@@ -247,9 +284,19 @@ public class JDBCUtility
         return psInsertMovie;
     }
     
+    public PreparedStatement getPsInsertCinema()
+    {
+        return psInsertCinema;
+    }
+    
     public PreparedStatement getPsDeleteMovieViaId()
     {
         return psDeleteMovieViaId;
+    }
+    
+    public PreparedStatement getPsDeleteCinemaViaId()
+    {
+        return psDeleteCinemaViaId;
     }
     
     public PreparedStatement getPsUpdateMovieViaIdActive()
@@ -257,8 +304,18 @@ public class JDBCUtility
         return psUpdateMovieViaIdActive;
     }
     
+    public PreparedStatement getPsUpdateCinemaViaIdActive()
+    {
+        return psUpdateCinemaViaIdActive;
+    }
+    
     public PreparedStatement getPsUpdateMovieName()
     {
         return psUpdateMovieName;
+    }
+    
+    public PreparedStatement getPsUpdateCinemaName()
+    {
+        return psUpdateCinemaName;
     }
 }

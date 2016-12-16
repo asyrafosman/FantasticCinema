@@ -69,6 +69,8 @@ public class AdminLoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password"); 
         String fullName = null;
+        String email = null;
+        String mobileNum = null;
         
         try {
             PreparedStatement preparedStatement = jdbcUtility.getPsSelectAdminViaLoginPassword();
@@ -83,6 +85,8 @@ public class AdminLoginServlet extends HttpServlet {
                 admin.setUsername(username);
                 admin.setPassword(password);
                 admin.setFullName(fullName);
+                admin.setEmail(email);
+                admin.setMobileNum(mobileNum);
             }
         }
         catch (SQLException ex) {            

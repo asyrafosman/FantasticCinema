@@ -87,7 +87,8 @@
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">
-                                <li><a href="adminhome.jsp">Home</a></li>            
+                                <li><a href="adminhome.jsp">Home</a></li>
+                                <li><a href="ViewCinemaServlet">Cinemas</a></li>
                                 <li><a href="ViewMovieServlet">Movies</a></li>
                                 <li class="active"><a>Bookings</a></li>
                             </ul>

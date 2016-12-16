@@ -5,24 +5,28 @@
  */
 package movie;
 
+import bean.Movie;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import jdbc.JDBCUtility;
 
 /**
  *
  * @author FANTASTIC CINEMA
  */
-@WebServlet(name = "EditMovieServlet", urlPatterns = {"/admin/EditMovieServlet"})
-public class EditMovieServlet extends HttpServlet {
+@WebServlet(name = "GetMovieServlet", urlPatterns = {"/GetMovieServlet"})
+public class GetMovieServlet extends HttpServlet {
+    
     private JDBCUtility jdbcUtility;
     private Connection con;
     
@@ -44,7 +48,7 @@ public class EditMovieServlet extends HttpServlet {
         con = jdbcUtility.jdbcGetConnection();
         jdbcUtility.prepareSQLStatement();
     }
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -56,38 +60,43 @@ public class EditMovieServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         
-        int id = Integer.parseInt(request.getParameter("id"));
-        String moviename = request.getParameter("moviename");
+        HttpSession session = request.getSession(true);
+        ArrayList movies = new ArrayList();
+        Movie movie = null;
         
-        try{
-            PreparedStatement preparedStatement = jdbcUtility.getPsUpdateMovieName();
-            preparedStatement.setString(1, moviename);
-            preparedStatement.setInt(2, id);
-            preparedStatement.executeUpdate();
-        }
-        catch (SQLException ex)
-	{
-            while (ex != null)
-            {
-                System.out.println ("SQLState: " +
-                                 ex.getSQLState ());
-                System.out.println ("Message:  " +
-                                 ex.getMessage ());
-		System.out.println ("Vendor:   " +
-                                 ex.getErrorCode ());
-                ex = ex.getNextException ();
-		      System.out.println ("");
-            }
+        try {                    
+            ResultSet rs = jdbcUtility.getPsSelectAllFromMovieAvailable().executeQuery();
             
-            System.out.println("Connection to the database error");
-	}
-	catch (java.lang.Exception ex)
+            while (rs.next()) {                
+                movie = new Movie();
+                movie.setId(rs.getInt("id"));
+                movie.setMoviename(rs.getString("moviename"));
+                movie.setStatus(rs.getInt("status"));
+                
+                movies.add(movie);
+            }
+        }
+        catch (SQLException ex) 
+        {            
+        }
+        session.setAttribute("movies", movies);
+        sendPage(request, response, "/bookingmovie.jsp");
+    }
+    
+    void sendPage(HttpServletRequest req, HttpServletResponse res, String fileName) throws ServletException, IOException
+    {
+        // Get the dispatcher; it gets the main page to the user
+	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(fileName);
+
+	if (dispatcher == null)
 	{
-            ex.printStackTrace ();
+            System.out.println("There was no dispatcher");
+	    // No dispatcher means the html file could not be found.
+	    res.sendError(res.SC_NO_CONTENT);
 	}
-        response.sendRedirect(request.getContextPath() + "/admin/ViewMovieServlet");
+	else
+	    dispatcher.forward(req, res);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

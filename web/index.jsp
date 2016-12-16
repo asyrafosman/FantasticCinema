@@ -218,7 +218,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="container">
                 <!--  Select cinema  -->
                 <div class="fc_sign_in_register">
-                    <a href="BookingMovieServlet" class="btn btn-info">BOOK TICKET</a>
+                    <a href="GetCinemaServlet" class="btn btn-info">BOOK TICKET</a>
                 </div>
                 <!--  //Button buy tickets  -->
             </div>	

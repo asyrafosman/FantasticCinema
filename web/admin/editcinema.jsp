@@ -1,9 +1,10 @@
-<!--
-author: W3layouts
-author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<%-- 
+    Document   : editcinema
+    Created on : Dec 16, 2016, 3:05:37 PM
+    Author     : admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -35,7 +36,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         <% 
             session.setAttribute("id", request.getParameter("id"));
-            session.setAttribute("moviename", request.getParameter("moviename"));
+            session.setAttribute("cinemaname", request.getParameter("cinemaname"));
         %>
     </head>
     <body>
@@ -77,9 +78,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">            
-                                <li><a href="adminhome.jsp">Home</a></li>
-                                <li><a href="ViewCinemaServlet">Cinemas</a></li>
-                                <li class="active"><a>Movies</a></li>
+                                <li><a href="adminhome.jsp">Home</a></li>   
+                                <li class="active"><a>Cinemas</a></li>
+                                <li><a href="ViewMovieServlet">Movies</a></li>
                                 <li><a href="ViewBookingServlet">Bookings</a></li>
                             </ul>
                         </nav>
@@ -94,14 +95,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="general">
             <div class="container">
                 <div class="well" id="wellhome">
-                    <form class="form-horizontal" action="EditMovieServlet">
+                    <form class="form-horizontal" action="EditCinemaServlet">
                         <fieldset>
                             <legend>Add New Movie</legend>
                             <div class="form-group">
-                                <label for="moviename" class="col-lg-2 control-label">Movie Name</label>
+                                <label for="cinemaname" class="col-lg-2 control-label">Cinema Name</label>
                                 <div class="col-lg-10">
                                     <input type="hidden" class="form-control" id="id" name="id" value="${sessionScope.id}">
-                                    <input class="form-control" name="moviename" placeholder="- Movie Name -" type="text"  value="${sessionScope.moviename}">
+                                    <input class="form-control" name="cinemaname" placeholder="- Cinema Name -" type="text"  value="${sessionScope.cinemaname}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -162,4 +163,3 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!--  ********************************************** //Wajib **********************************************  -->
     </body>
 </html>
-

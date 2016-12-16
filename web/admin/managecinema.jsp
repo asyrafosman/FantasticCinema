@@ -1,9 +1,13 @@
-<!--
-author: W3layouts
-author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<%-- 
+    Document   : managecinema
+    Created on : Dec 16, 2016, 2:32:50 PM
+    Author     : admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="bean.Cinema" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,11 +36,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!-- banner-bottom-plugin -->
         <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
         <script src="js/owl.carousel.js"></script> <!-- Wajib -->
-
-        <% 
-            session.setAttribute("id", request.getParameter("id"));
-            session.setAttribute("moviename", request.getParameter("moviename"));
-        %>
     </head>
     <body>
         <!-- ********************************************** header ********************************************** -->
@@ -77,9 +76,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">            
-                                <li><a href="adminhome.jsp">Home</a></li>
-                                <li><a href="ViewCinemaServlet">Cinemas</a></li>
-                                <li class="active"><a>Movies</a></li>
+                                <li><a href="adminhome.jsp">Home</a></li>   
+                                <li class="active"><a>Cinemas</a></li>
+                                <li><a href="ViewMovieServlet">Movies</a></li>
                                 <li><a href="ViewBookingServlet">Bookings</a></li>
                             </ul>
                         </nav>
@@ -90,33 +89,61 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <!--  //Container  -->
         </div>
         <!-- ********************************************** //Navigation ********************************************** -->
-        <!-- ********************************************** Add New Movie Form ********************************************** -->
+        <!--  Display movie list  -->
         <div class="general">
             <div class="container">
                 <div class="well" id="wellhome">
-                    <form class="form-horizontal" action="EditMovieServlet">
-                        <fieldset>
-                            <legend>Add New Movie</legend>
-                            <div class="form-group">
-                                <label for="moviename" class="col-lg-2 control-label">Movie Name</label>
-                                <div class="col-lg-10">
-                                    <input type="hidden" class="form-control" id="id" name="id" value="${sessionScope.id}">
-                                    <input class="form-control" name="moviename" placeholder="- Movie Name -" type="text"  value="${sessionScope.moviename}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-lg-10 col-lg-offset-2">
-                                    <button type="reset" class="btn btn-danger">Cancel</button>
-                                    <button type="submit" class="btn btn-success">Submit</button>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
+                    <h1>View Cinemas</h1>
+                    <a href="addnewcinema.jsp" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Movie</a> 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-striped table-hover ">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Cinema Name</th>
+                                        <th>Delete</th>
+                                        <th>Enable/Disable</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${sessionScope.cinemas}" var="currentcinema" varStatus="loop">
+                                    <tr>
+                                        <td><c:out value="${loop.index + 1}" /></td>
+
+                                        <c:url value="editcinema.jsp" var="editCinemaURL">
+                                            <c:param name="id"   value="${currentcinema.id}" />
+                                            <c:param name="cinemaname"   value="${currentcinema.cinemaname}" />
+                                        </c:url>
+                                        <td><a href="<c:out value='${editCinemaURL}' />"><c:out value="${currentcinema.cinemaname}" /></a></td>
+
+                                        <c:url value="DeleteCinemaServlet" var="deleteCinemaURL">
+                                            <c:param name="id"   value="${currentcinema.id}" />
+                                        </c:url>
+                                        <td><a href="<c:out value='${deleteCinemaURL}' />"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+
+                                        <c:url value="CinemaActivationServlet" var="CinemaActivationURL">
+                                            <c:param name="id"   value="${currentcinema.id}" />
+                                            <c:param name="status"   value="${currentcinema.status}" />
+                                        </c:url>
+                                        <c:choose>
+                                            <c:when test="${currentcinema.status == 0}">
+                                                <td><a href="<c:out value='${CinemaActivationURL}' />"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>&nbsp;<c:out value="Deactivate" /></a></td>
+                                            </c:when>
+                                            <c:when test="${currentcinema.status == 1}">
+                                                <td><a href="<c:out value='${CinemaActivationURL}' />"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;<c:out value="Active" /></a></td>
+                                            </c:when>    
+                                        </c:choose>    
+                                    </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> <!-- /row -->
+                </div> <!-- /well -->
+            </div> <!-- /container -->
         </div>
-        <!-- ********************************************** //Add New Movie Form ********************************************** -->
-                
+
         <!-- ********************************************** Footer ********************************************** -->
         <div class="footer">
             <!--  Container  -->
@@ -162,4 +189,3 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!--  ********************************************** //Wajib **********************************************  -->
     </body>
 </html>
-

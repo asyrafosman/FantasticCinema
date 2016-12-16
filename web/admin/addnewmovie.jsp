@@ -72,7 +72,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">            
-                                <li><a href="adminhome.jsp">Home</a></li>   
+                                <li><a href="adminhome.jsp">Home</a></li>
+                                <li><a href="ViewCinemaServlet">Cinemas</a></li>
                                 <li class="active"><a>Movies</a></li>
                                 <li><a href="ViewBookingServlet">Bookings</a></li>
                             </ul>
@@ -99,7 +100,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <button type="reset" class="btn btn-danger">Cancel</button>
+                                    <button type="reset" class="btn btn-danger">Reset</button>
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
                             </div>

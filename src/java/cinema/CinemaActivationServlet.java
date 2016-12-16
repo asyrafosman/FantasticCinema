@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package movie;
+package cinema;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -21,8 +20,8 @@ import jdbc.JDBCUtility;
  *
  * @author FANTASTIC CINEMA
  */
-@WebServlet(name = "EditMovieServlet", urlPatterns = {"/admin/EditMovieServlet"})
-public class EditMovieServlet extends HttpServlet {
+@WebServlet(name = "CinemaActivationServlet", urlPatterns = {"/admin/CinemaActivationServlet"})
+public class CinemaActivationServlet extends HttpServlet {
     private JDBCUtility jdbcUtility;
     private Connection con;
     
@@ -44,7 +43,6 @@ public class EditMovieServlet extends HttpServlet {
         con = jdbcUtility.jdbcGetConnection();
         jdbcUtility.prepareSQLStatement();
     }
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -57,14 +55,16 @@ public class EditMovieServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         int id = Integer.parseInt(request.getParameter("id"));
-        String moviename = request.getParameter("moviename");
+        int status = Integer.parseInt(request.getParameter("status"));
+        int newStatus;
+        if(status == 0) newStatus = 1;
+        else newStatus = 0;
         
-        try{
-            PreparedStatement preparedStatement = jdbcUtility.getPsUpdateMovieName();
-            preparedStatement.setString(1, moviename);
+        try {                                  
+            PreparedStatement preparedStatement = jdbcUtility.getPsUpdateCinemaViaIdActive();
             preparedStatement.setInt(2, id);
+            preparedStatement.setInt(1, newStatus);
             preparedStatement.executeUpdate();
         }
         catch (SQLException ex)
@@ -86,8 +86,8 @@ public class EditMovieServlet extends HttpServlet {
 	catch (java.lang.Exception ex)
 	{
             ex.printStackTrace ();
-	}
-        response.sendRedirect(request.getContextPath() + "/admin/ViewMovieServlet");
+	} 
+        response.sendRedirect(request.getContextPath() + "/admin/ViewCinemaServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

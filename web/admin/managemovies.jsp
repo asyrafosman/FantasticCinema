@@ -78,6 +78,7 @@
                         <nav>
                             <ul class="nav navbar-nav">            
                                 <li><a href="adminhome.jsp">Home</a></li>   
+                                <li><a href="ViewCinemaServlet">Cinemas</a></li>
                                 <li class="active"><a>Movies</a></li>
                                 <li><a href="ViewBookingServlet">Bookings</a></li>
                             </ul>

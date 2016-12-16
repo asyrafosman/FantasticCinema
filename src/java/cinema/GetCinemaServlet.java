@@ -3,26 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package movie;
+package cinema;
 
+import bean.Cinema;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import jdbc.JDBCUtility;
 
 /**
  *
  * @author FANTASTIC CINEMA
  */
-@WebServlet(name = "EditMovieServlet", urlPatterns = {"/admin/EditMovieServlet"})
-public class EditMovieServlet extends HttpServlet {
+@WebServlet(name = "GetCinemaServlet", urlPatterns = {"/GetCinemaServlet"})
+public class GetCinemaServlet extends HttpServlet {
     private JDBCUtility jdbcUtility;
     private Connection con;
     
@@ -44,7 +46,7 @@ public class EditMovieServlet extends HttpServlet {
         con = jdbcUtility.jdbcGetConnection();
         jdbcUtility.prepareSQLStatement();
     }
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -56,38 +58,28 @@ public class EditMovieServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         
-        int id = Integer.parseInt(request.getParameter("id"));
-        String moviename = request.getParameter("moviename");
+        HttpSession session = request.getSession(true);
+        ArrayList cinemas = new ArrayList();
+        Cinema cinema = null;
         
-        try{
-            PreparedStatement preparedStatement = jdbcUtility.getPsUpdateMovieName();
-            preparedStatement.setString(1, moviename);
-            preparedStatement.setInt(2, id);
-            preparedStatement.executeUpdate();
-        }
-        catch (SQLException ex)
-	{
-            while (ex != null)
-            {
-                System.out.println ("SQLState: " +
-                                 ex.getSQLState ());
-                System.out.println ("Message:  " +
-                                 ex.getMessage ());
-		System.out.println ("Vendor:   " +
-                                 ex.getErrorCode ());
-                ex = ex.getNextException ();
-		      System.out.println ("");
-            }
+        try {                    
+            ResultSet rs = jdbcUtility.getPsSelectAllFromCinemaAvailable().executeQuery();
             
-            System.out.println("Connection to the database error");
-	}
-	catch (java.lang.Exception ex)
-	{
-            ex.printStackTrace ();
-	}
-        response.sendRedirect(request.getContextPath() + "/admin/ViewMovieServlet");
+            while (rs.next()) {                
+                cinema = new Cinema();
+                cinema.setId(rs.getInt("id"));
+                cinema.setCinemaname(rs.getString("cinemaname"));
+                cinema.setStatus(rs.getInt("status"));
+                
+                cinemas.add(cinema);
+            }
+        }
+        catch (SQLException ex) 
+        {            
+        }
+        session.setAttribute("cinemas", cinemas);
+        response.sendRedirect(request.getContextPath() + "/GetMovieServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

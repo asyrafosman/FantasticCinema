@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package movie;
+package cinema;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -21,8 +20,9 @@ import jdbc.JDBCUtility;
  *
  * @author FANTASTIC CINEMA
  */
-@WebServlet(name = "EditMovieServlet", urlPatterns = {"/admin/EditMovieServlet"})
-public class EditMovieServlet extends HttpServlet {
+@WebServlet(name = "InsertCinemaServlet", urlPatterns = {"/admin/InsertCinemaServlet"})
+public class InsertCinemaServlet extends HttpServlet {
+
     private JDBCUtility jdbcUtility;
     private Connection con;
     
@@ -58,13 +58,12 @@ public class EditMovieServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        int id = Integer.parseInt(request.getParameter("id"));
-        String moviename = request.getParameter("moviename");
-        
+        String cinemaname = request.getParameter("cinemaname");  
+       
         try{
-            PreparedStatement preparedStatement = jdbcUtility.getPsUpdateMovieName();
-            preparedStatement.setString(1, moviename);
-            preparedStatement.setInt(2, id);
+            PreparedStatement preparedStatement = jdbcUtility.getPsInsertCinema();
+            
+            preparedStatement.setString(1, cinemaname);
             preparedStatement.executeUpdate();
         }
         catch (SQLException ex)
@@ -87,7 +86,7 @@ public class EditMovieServlet extends HttpServlet {
 	{
             ex.printStackTrace ();
 	}
-        response.sendRedirect(request.getContextPath() + "/admin/ViewMovieServlet");
+        response.sendRedirect(request.getContextPath() + "/admin/ViewCinemaServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

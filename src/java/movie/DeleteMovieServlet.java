@@ -23,7 +23,7 @@ import jdbc.JDBCUtility;
  */
 @WebServlet(name = "DeleteMovieServlet", urlPatterns = {"/admin/DeleteMovieServlet"})
 public class DeleteMovieServlet extends HttpServlet {
-private JDBCUtility jdbcUtility;
+    private JDBCUtility jdbcUtility;
     private Connection con;
     
     public void init() throws ServletException

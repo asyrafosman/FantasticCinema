@@ -1,45 +1,41 @@
-<!--
-author: W3layouts
-author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<%-- 
+    Document   : addnewcinema
+    Created on : Dec 16, 2016, 2:37:08 PM
+    Author     : admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Title -->
-        <title>Fantastic Cinema</title>
+	<head>
+            <!-- Title -->
+            <title>Fantastic Cinema</title>
 
-        <!-- for-mobile-apps -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <!-- for-mobile-apps -->
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <!-- //for-mobile-apps -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
-        <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
-        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
+            <!-- //for-mobile-apps -->
+            <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+            <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+            <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
+            <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
 
-        <!-- font-awesome icons -->
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> <!-- Wajib -->
-        <!-- //font-awesome icons -->
+            <!-- font-awesome icons -->
+            <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> <!-- Wajib -->
+            <!-- //font-awesome icons -->
 
-        <!-- js -->
-        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
-        <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
-        <!-- //js -->
+            <!-- js -->
+            <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
+            <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+            <!-- //js -->
 
-        <!-- banner-bottom-plugin -->
-        <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
-        <script src="js/owl.carousel.js"></script> <!-- Wajib -->
-
-        <% 
-            session.setAttribute("id", request.getParameter("id"));
-            session.setAttribute("moviename", request.getParameter("moviename"));
-        %>
-    </head>
-    <body>
-        <!-- ********************************************** header ********************************************** -->
+            <!-- banner-bottom-plugin -->
+            <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
+            <script src="js/owl.carousel.js"></script> <!-- Wajib -->
+        </head>
+	<body>
+		<!-- ********************************************** header ********************************************** -->
         <div class="header">
             <div class="container">
                 <!--  Fantastic Cinema Logo  -->
@@ -77,9 +73,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">            
-                                <li><a href="adminhome.jsp">Home</a></li>
-                                <li><a href="ViewCinemaServlet">Cinemas</a></li>
-                                <li class="active"><a>Movies</a></li>
+                                <li><a href="adminhome.jsp">Home</a></li>   
+                                <li class="active"><a>Cinemas</a></li>
+                                <li><a href="ViewMovieServlet">Movies</a></li>
                                 <li><a href="ViewBookingServlet">Bookings</a></li>
                             </ul>
                         </nav>
@@ -94,19 +90,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="general">
             <div class="container">
                 <div class="well" id="wellhome">
-                    <form class="form-horizontal" action="EditMovieServlet">
+                    <form class="form-horizontal" action="InsertCinemaServlet">
                         <fieldset>
-                            <legend>Add New Movie</legend>
+                            <legend>Add New Cinema</legend>
                             <div class="form-group">
-                                <label for="moviename" class="col-lg-2 control-label">Movie Name</label>
+                                <label for="cinemaname" class="col-lg-2 control-label">Cinema Name</label>
                                 <div class="col-lg-10">
-                                    <input type="hidden" class="form-control" id="id" name="id" value="${sessionScope.id}">
-                                    <input class="form-control" name="moviename" placeholder="- Movie Name -" type="text"  value="${sessionScope.moviename}">
+                                    <input class="form-control" name="cinemaname" placeholder="- Cinema Name -" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <button type="reset" class="btn btn-danger">Cancel</button>
+                                    <button type="reset" class="btn btn-danger">Reset</button>
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
                             </div>
@@ -162,4 +157,3 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!--  ********************************************** //Wajib **********************************************  -->
     </body>
 </html>
-

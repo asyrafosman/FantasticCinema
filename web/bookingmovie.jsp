@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="bean.Cinema" %>
 <%@ page import="bean.Movie" %>
 <%@ page import="bean.User" %>
 <%@ page import="java.util.ArrayList" %>
@@ -199,19 +200,9 @@
                                     <div class="col-lg-10">
                                         <select name="cinema" class="form-control" id="cinema">
                                             <option selected="selected" value="-">- Select Cinema -</option>
-                                            <option value="1 Utama"> 1 Utama</option>
-                                            <option value="IOI Mall (Puchong)"> IOI Mall (Puchong)</option>
-                                            <option value="Summit USJ"> Summit USJ</option>
-                                            <option value="Setia City Mall"> Setia City Mall</option>
-                                            <option value="Klang Parade"> Klang Parade</option>
-                                            <option value="Alamanda"> Alamanda</option>
-                                            <option value="Dataran Pahlawan"> Dataran Pahlawan</option>
-                                            <option value="Aeon Bandaraya Melaka"> Aeon Bandaraya Melaka</option>
-                                            <option value="East Coast Mall"> East Coast Mall</option>
-                                            <option value="1Borneo"> 1Borneo</option>
-                                            <option value="Suria Sabah Mall"> Suria Sabah Mall</option>
-                                            <option value="CityONE Megamall (Kuching)"> CityONE Megamall (Kuching)</option>
-                                            <option value="Bintang Megamall"> Bintang Megamall</option>
+                                            <c:forEach items="${sessionScope.cinemas}" var="currentcinema" varStatus="loop">
+                                                <option><c:out value="${currentcinema.cinemaname}" /></option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -220,8 +211,8 @@
                                     <div class="col-lg-10">
                                         <select name="moviename" class="form-control" id="moviename">
                                             <option selected="selected" value="-">- Select Movie -</option>
-                                            <c:forEach items="${sessionScope.movies}" var="currentbooking" varStatus="loop">
-                                                <option><c:out value="${currentbooking.moviename}" /></option>
+                                            <c:forEach items="${sessionScope.movies}" var="currentmovie" varStatus="loop">
+                                                <option><c:out value="${currentmovie.moviename}" /></option>
                                             </c:forEach>
                                         </select>
                                     </div>
