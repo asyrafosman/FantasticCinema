@@ -1,10 +1,16 @@
-<%-- 
-    Document   : changedestinationimage
-    Created on : Nov 22, 2016, 12:13:13 AM
-    Author     : U
---%>
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% 
+    String id = request.getParameter("id");
+    String oldImage = request.getParameter("image");
+    session.setAttribute("id", id); 
+%>  
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,8 +20,8 @@
         <!-- for-mobile-apps -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <!-- //for-mobile-apps -->
 
+        <!-- //for-mobile-apps -->
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
         <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
@@ -33,91 +39,137 @@
         <!-- banner-bottom-plugin -->
         <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
         <script src="js/owl.carousel.js"></script> <!-- Wajib -->
+
+        <% 
+            session.setAttribute("id", request.getParameter("id"));
+            session.setAttribute("moviename", request.getParameter("moviename"));
+        %>
     </head>
+    <body>
+        <!-- ********************************************** header ********************************************** -->
+        <div class="header">
+            <div class="container">
+                <!--  Fantastic Cinema Logo  -->
+                <div class="fc_logo">
+                    <a href="index.jsp"><h1>Fantastic <span>Cinema</span></h1></a>
+                </div>
+                <!--  //Fantastic Cinema Logo  -->
 
-  <body>
-
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
+                <!--  Sign in & sign up  -->
+                <div class="fc_sign_in_register">
+                    <ul>
+                        <li><i aria-hidden="true"></i>Hi, <jsp:getProperty name="adminprofile" property="fullName"/>!</li>
+                        <li><a href="adminlogout.jsp">Logout</a></li>
+                    </ul>
+                </div>
+                <!--  //Sign in & sign up  -->
+                <div class="clearfix"> </div>
+            </div>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li id="lihome"><a href="home.html" id="home">Home</a></li>
-            <li id="libookings"><a href="ViewBookingServlet" id="about">Bookings</a></li>
-            <li class="active" id="lidestination"><a href="#" id="destination">Destination</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
+	<!-- ********************************************** Navigation ********************************************** -->
+        <!--  movie navigation  -->	
+        <div class="movies_nav">
+            <!--  Container  -->
+            <div class="container">
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header navbar-left">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!--  Collect the nav links, forms, and other content for toggling  -->
+                    <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                        <nav>
+                            <ul class="nav navbar-nav">            
+                                <li><a href="adminhome.jsp">Home</a></li>
+                                <li><a href="ViewCinemaServlet">Cinemas</a></li>
+                                <li class="active"><a>Movies</a></li>
+                                <li><a href="ViewBookingServlet">Bookings</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--  //Collect the nav links, forms, and other content for toggling  -->
+                </nav>
             </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-    <div class="container">
-
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>Fixed to top navbar</p>
-      </div>
-
-      <div class="well">
-        <h1>Change Destination's Image</h1>
+            <!--  //Container  -->
+        </div>
+        <!-- ********************************************** //Navigation ********************************************** -->
+        <div class="general">
+            <div class="container">
+                <div class="well">
+                    <h1>Change Movie's Image</h1>
+                    <form class="form-horizontal"
+                        action="UploadMovieImageServlet" method="post"
+                        enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Current Image</label>
+                            <div class="col-lg-10">
+                                <div class="alert alert-dismissible alert-success">
+                                    <img src="img/<%= oldImage %>" width="200"/>
+                                </div>
+                            </div>
+                        </div>            
+                        <div class="form-group">
+                            <label for="filetoupload" class="col-lg-2 control-label">Choose File to Upload</label>
+                            <div class="col-lg-10">
+                                <input type="file" name="filetoupload" id="filetoupload" size="50" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>  
+                </div> <!-- /well -->
+            </div> <!-- /container -->
+        </div>
         
-        <form class="form-horizontal"
-              action="UploadDestinationImageServlet" method="post"
-              enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="filetoupload" class="col-lg-2 control-label">Choose File to Upload</label>
-              <div class="col-lg-10">
-                <input type="file" name="filetoupload" id="filetoupload" size="50" />
-              </div>
+        <!-- ********************************************** Footer ********************************************** -->
+        <div class="footer">
+            <!--  Container  -->
+            <div class="container">
+                <!--  w3ls_footer_grid  -->
+                <div class="w3ls_footer_grid">
+                    <div class="col-md-6 w3ls_footer_grid_left">
+                    </div>
+                    <div class="col-md-6 w3ls_footer_grid_right">
+                            <a href="index.html"><h2>Fantastic<span>Cinema</span></h2></a>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <!--  //w3ls_footer_grid  -->
+                <!--  w3ls_footer_grid1_left  -->
+                <div class="col-md-5 w3ls_footer_grid1_left">
+                    <p>All Content Copyright &copy; 2016 Fantastic Cinema. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+                </div>
+                <!--  //w3ls_footer_grid1_left  -->
+                <div class="clearfix"> </div>
             </div>
-            <div class="form-group">
-              <div class="col-lg-10 col-lg-offset-2">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </div>
-        </form>        
-      </div> <!-- /well -->
-
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/moment.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-datetimepicker.min.js"></script> 
-  </body>
+            <!--  //Container  -->
+        </div>
+        <!-- ********************************************** //Footer ********************************************** -->
+        <!--  ********************************************** Wajib **********************************************  -->
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $(".dropdown").hover(            
+                function() {
+                    $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+                    $(this).toggleClass('open');        
+                },
+                function() {
+                    $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+                    $(this).toggleClass('open');       
+                }
+            );
+        });
+        </script>
+        <!-- //Bootstrap Core JavaScript -->
+        <!--  ********************************************** //Wajib **********************************************  -->
+    </body>
 </html>

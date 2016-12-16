@@ -39,6 +39,7 @@ public class JDBCUtility
    PreparedStatement psUpdateCinemaViaIdActive = null;
    PreparedStatement psUpdateMovieName = null;
    PreparedStatement psUpdateCinemaName = null;
+   PreparedStatement psUpdateMovieImage = null;
 
    //use this constructor if using ConnectionPool
    public JDBCUtility()
@@ -191,6 +192,10 @@ public class JDBCUtility
             //update cinemaname in database
             String sqlUpdateCinemaName = "UPDATE cinema SET cinemaname = ? WHERE id = ?"; 
             psUpdateCinemaName = con.prepareStatement(sqlUpdateCinemaName);
+            
+            //update movie image
+            String sqlUpdateMovieImage = "UPDATE movie SET image = ? WHERE id = ?"; 
+            psUpdateMovieImage = con.prepareStatement(sqlUpdateMovieImage);
         }
 	catch (SQLException ex)
 	{
@@ -317,5 +322,10 @@ public class JDBCUtility
     public PreparedStatement getPsUpdateCinemaName()
     {
         return psUpdateCinemaName;
+    }
+    
+    public PreparedStatement getPsUpdateMovieImage()
+    {
+        return psUpdateMovieImage;
     }
 }
