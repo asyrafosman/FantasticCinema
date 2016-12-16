@@ -183,7 +183,7 @@ profile
             </div>
             <!--  //Container  -->
         </div>
-        <section id="QuickFilter">
+        <div class="general">
             <div class="container">
                 <div class="jumbotron">
                     <form class="form-horizontal" action="UpdateProfileServlet">
@@ -216,7 +216,7 @@ profile
                     </form>
                 </div>
             </div>
-        </section>
+        </div>
                 
         <div class="footer">
             <!--  Container  -->

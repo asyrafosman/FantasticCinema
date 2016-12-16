@@ -87,7 +87,7 @@ public class CancelBookingServlet extends HttpServlet {
 	{
             ex.printStackTrace ();
 	}
-        response.sendRedirect(request.getContextPath() + "/ViewHistoryServlet");
+        response.sendRedirect(request.getContextPath() + "/ViewProfileServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

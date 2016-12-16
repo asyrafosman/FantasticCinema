@@ -5,6 +5,18 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="bean.User" %>
+
+<%
+    User adminprofile = (User)session.getAttribute("adminprofile");
+    
+    if (adminprofile == null) {
+%>
+        <jsp:forward page="adminlogout.jsp" />
+<%        
+    }
+%>   
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,9 +28,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
         <!-- //for-mobile-apps -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
-        <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+        <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+        <link href="../css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
         <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
 
         <!-- font-awesome icons -->
@@ -26,13 +38,13 @@
         <!-- //font-awesome icons -->
 
         <!-- js -->
-        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
-        <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
+        <script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
         <!-- //js -->
 
         <!-- banner-bottom-plugin -->
-        <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
-        <script src="js/owl.carousel.js"></script> <!-- Wajib -->
+        <link href="../css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
+        <script src="../js/owl.carousel.js"></script> <!-- Wajib -->
 
         <% 
             session.setAttribute("id", request.getParameter("id"));
@@ -97,7 +109,7 @@
                 <div class="well" id="wellhome">
                     <form class="form-horizontal" action="EditCinemaServlet">
                         <fieldset>
-                            <legend>Add New Movie</legend>
+                            <legend>Update Cinema's Name</legend>
                             <div class="form-group">
                                 <label for="cinemaname" class="col-lg-2 control-label">Cinema Name</label>
                                 <div class="col-lg-10">
@@ -107,8 +119,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <button type="reset" class="btn btn-danger">Cancel</button>
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                    <button type="submit" class="btn btn-success">Update</button>
                                 </div>
                             </div>
                         </fieldset>

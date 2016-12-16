@@ -6,6 +6,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="bean.User" %>
+
+<%
+    User adminprofile = (User)session.getAttribute("adminprofile");
+    
+    if (adminprofile == null) {
+%>
+        <jsp:forward page="adminlogout.jsp" />
+<%        
+    }
+%>   
 <% 
     String id = request.getParameter("id");
     String oldImage = request.getParameter("image");
@@ -22,9 +34,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
         <!-- //for-mobile-apps -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
-        <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+        <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+        <link href="../css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
         <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
 
         <!-- font-awesome icons -->
@@ -32,13 +44,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!-- //font-awesome icons -->
 
         <!-- js -->
-        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
-        <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
+        <script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
         <!-- //js -->
 
         <!-- banner-bottom-plugin -->
-        <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
-        <script src="js/owl.carousel.js"></script> <!-- Wajib -->
+        <link href="../css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
+        <script src="../js/owl.carousel.js"></script> <!-- Wajib -->
 
         <% 
             session.setAttribute("id", request.getParameter("id"));
@@ -108,7 +120,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <label class="col-lg-2 control-label">Current Image</label>
                             <div class="col-lg-10">
                                 <div class="alert alert-dismissible alert-success">
-                                    <img src="img/<%= oldImage %>" width="200"/>
+                                    <img src="../images/<%= oldImage %>" width="200"/>
                                 </div>
                             </div>
                         </div>            
@@ -120,7 +132,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-success">Update</button>
                             </div>
                         </div>
                     </form>  

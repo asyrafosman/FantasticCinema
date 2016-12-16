@@ -183,7 +183,7 @@
         <section class='general'>
             <div class="container">
                 <div class="well" id="wellhome">
-                    <h1>View Bookings' History</h1>
+                    <h3>View Bookings' History</h3>
                     <div class="row">
                         <div class="col-md-12">
                             <table class="table table-striped table-hover ">
@@ -219,11 +219,11 @@
                                             </c:url>                      
                                             <c:choose>
                                                 <c:when test="${currentbooking.status == 0}">
-                                                    <td><c:out value="pending" /></td>
+                                                    <td><c:out value="unpaid" /></td>
                                                 </c:when>
 
                                                 <c:when test="${currentbooking.status == 1}">
-                                                    <td><img src="img/approved.png" width="30"></td>
+                                                    <td><c:out value="approved" /></td>
                                                 </c:when>
 
                                                 <c:when test="${currentbooking.status == 2}">
@@ -240,9 +240,26 @@
                                             </c:choose>  
 
                                             <td>
-                                                <a href="<c:out value='${CancelBookingServletURL}' />"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true" title="Cancel"></span></a>
+                                                <c:choose>
+                                                    <c:when test="${currentbooking.status == 2}">
+                                                        <a><span class="glyphicon glyphicon-ban-circle" aria-hidden="true" title="cancelled" style="color:red;"></span></a>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <a href="<c:out value='${CancelBookingServletURL}' />"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true" title="Cancel"></span></a>
+                                                    </c:otherwise> 
+                                                </c:choose>
                                                 &nbsp;&nbsp;
-                                                <a href="<c:out value='${PaidBookingServletURL}' />"><span class="fa fa-cc-visa" aria-hidden="true" title="Pay"></span></a>
+                                                <c:choose>
+                                                    <c:when test="${currentbooking.status == 3}">
+                                                        <a><span class="fa fa-cc-visa" aria-hidden="true" title="Paid" style="color:blue;"></span>
+                                                    </c:when>
+                                                    <c:when test="${currentbooking.status == 2}">
+                                                        <a><span class="fa fa-cc-visa" aria-hidden="true" style="color:red;"></span>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <a href="<c:out value='${PaidBookingServletURL}' />"><span class="fa fa-cc-visa" aria-hidden="true" title="Pay"></span></a>
+                                                    </c:otherwise> 
+                                                </c:choose>
                                             </td> 
                                         </tr>
                                     </c:forEach>

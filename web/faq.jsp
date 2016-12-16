@@ -58,8 +58,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>                   
                         <% }
                         else { %>
-                            <li><i aria-hidden="true"></i><a href="viewprofile.jsp"><jsp:getProperty name="customerprofile" property="fullName"/></a></li>
-                            <li><a href="CustomerLogoutServlet">Logout</a></li>
+                            <li><i aria-hidden="true"></i><jsp:getProperty name="customerprofile" property="fullName"/></li>
+                            <li><a href="viewprofile.jsp"><span class="glyphicon glyphicon-user"></span></a></li>
+                            <li><a href="ViewHistoryServlet"><span class="glyphicon glyphicon-time"></span></a></li>
+                            <li><a href="CustomerLogoutServlet"><span class="glyphicon glyphicon-log-out"></span></a></li>
                         <% } %>
                     </ul>
                 </div>

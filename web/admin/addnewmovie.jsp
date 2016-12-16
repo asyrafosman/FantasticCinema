@@ -4,37 +4,50 @@ author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="bean.User" %>
+
+<%
+    User adminprofile = (User)session.getAttribute("adminprofile");
+    
+    if (adminprofile == null) {
+%>
+        <jsp:forward page="adminlogout.jsp" />
+<%        
+    }
+%>   
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-            <!-- Title -->
-            <title>Fantastic Cinema</title>
+    <head>
+        <!-- Title -->
+        <title>Fantastic Cinema</title>
 
-            <!-- for-mobile-apps -->
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- for-mobile-apps -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-            <!-- //for-mobile-apps -->
-            <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
-            <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
-            <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
-            <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
+        <!-- //for-mobile-apps -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+        <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+        <link href="../css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
 
-            <!-- font-awesome icons -->
-            <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> <!-- Wajib -->
-            <!-- //font-awesome icons -->
+        <!-- font-awesome icons -->
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> <!-- Wajib -->
+        <!-- //font-awesome icons -->
 
-            <!-- js -->
-            <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
-            <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
-            <!-- //js -->
+        <!-- js -->
+        <script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
+        <script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
+        <!-- //js -->
 
-            <!-- banner-bottom-plugin -->
-            <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
-            <script src="js/owl.carousel.js"></script> <!-- Wajib -->
-        </head>
-	<body>
-		<!-- ********************************************** header ********************************************** -->
+        <!-- banner-bottom-plugin -->
+        <link href="../css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
+        <script src="../js/owl.carousel.js"></script> <!-- Wajib -->
+    </head>
+    <body>
+        <!-- ********************************************** header ********************************************** -->
         <div class="header">
             <div class="container">
                 <!--  Fantastic Cinema Logo  -->

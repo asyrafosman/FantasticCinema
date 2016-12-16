@@ -58,7 +58,7 @@
                             <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>                   
                         <% }
                         else { %>
-                            <li><i aria-hidden="true"></i><a href="viewprofile.jsp"><jsp:getProperty name="customerprofile" property="fullName"/></a></li>
+                            <li><i aria-hidden="true"></i><a href="ViewProfileServlet"><jsp:getProperty name="customerprofile" property="fullName"/></a></li>
                             <li><a href="CustomerLogoutServlet">Logout</a></li>
                         <% } %>
                     </ul>

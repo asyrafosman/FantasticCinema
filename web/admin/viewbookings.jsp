@@ -27,12 +27,11 @@
         <!-- for-mobile-apps -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
         <!-- //for-mobile-apps -->
-
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
-        <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
-
+        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+        <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+        <link href="../css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
         <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
 
         <!-- font-awesome icons -->
@@ -40,13 +39,13 @@
         <!-- //font-awesome icons -->
 
         <!-- js -->
-        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
-        <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
+        <script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
         <!-- //js -->
-        
+
         <!-- banner-bottom-plugin -->
-        <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
-        <script src="js/owl.carousel.js"></script> <!-- Wajib -->
+        <link href="../css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
+        <script src="../js/owl.carousel.js"></script> <!-- Wajib -->
     </head>
     <body>
         <!-- ********************************************** header ********************************************** -->
@@ -163,7 +162,17 @@
                                             </c:choose>
 
                                             <td>
-                                                <a href="<c:out value='${ApprovedBookingServletURL}' />"><span class="glyphicon glyphicon-ok" aria-hidden="true" title="Approve"></span></a>
+                                                <c:choose>
+                                                    <c:when test="${currentbooking.status == 3}">
+                                                        <a href="<c:out value='${ApprovedBookingServletURL}' />"><span class="glyphicon glyphicon-ok" aria-hidden="true" title="Approve"></span></a>
+                                                    </c:when>
+                                                    <c:when test="${currentbooking.status == 1}">
+                                                        <a><span class="glyphicon glyphicon-ok" aria-hidden="true" title="Done Approved"  style="color:blue;"></span></a>
+                                                    </c:when> 
+                                                    <c:otherwise>
+                                                        <a><span class="glyphicon glyphicon-ok" aria-hidden="true" title="Disable"  style="color:red;"></span></a>
+                                                    </c:otherwise> 
+                                                </c:choose>
                                                 &nbsp;&nbsp;
                                                 <a href="<c:out value='${DeleteBookingServletURL}' />"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete"></span></a>
                                             </td>   

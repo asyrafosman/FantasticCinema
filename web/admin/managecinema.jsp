@@ -5,9 +5,19 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="bean.User" %>
 <%@ page import="bean.Cinema" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+    User adminprofile = (User)session.getAttribute("adminprofile");
+    
+    if (adminprofile == null) {
+%>
+        <jsp:forward page="adminlogout.jsp" />
+<%        
+    }
+%>  
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,9 +29,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
         <!-- //for-mobile-apps -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
-        <link href="css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+        <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" /> <!-- Wajib -->
+        <link href="../css/medile.css" rel='stylesheet' type='text/css' /> <!-- Wajib -->
         <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.css">
 
         <!-- font-awesome icons -->
@@ -29,13 +39,13 @@
         <!-- //font-awesome icons -->
 
         <!-- js -->
-        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
-        <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script> <!-- Wajib -->
+        <script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
         <!-- //js -->
 
         <!-- banner-bottom-plugin -->
-        <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
-        <script src="js/owl.carousel.js"></script> <!-- Wajib -->
+        <link href="../css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- Wajib -->
+        <script src="../js/owl.carousel.js"></script> <!-- Wajib -->
     </head>
     <body>
         <!-- ********************************************** header ********************************************** -->

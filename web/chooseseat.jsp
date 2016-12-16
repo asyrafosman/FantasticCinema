@@ -68,7 +68,7 @@
                             <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>                   
                         <% }
                         else { %>
-                            <li><i aria-hidden="true"></i><a href="viewprofile.jsp"><jsp:getProperty name="customerprofile" property="fullName"/></a></li>
+                            <li><i aria-hidden="true"></i><a href="ViewProfileServlet"><jsp:getProperty name="customerprofile" property="fullName"/></a></li>
                             <li><a href="CustomerLogoutServlet">Logout</a></li>
                         <% } %>
                     </ul>
@@ -233,7 +233,7 @@
                 <div class="jumbotron">
                     <div class="demo">
                         <div id="seat-map">
-                            <div class="front">SCREEN</div>					
+                            <div class="front">SCREEN</div>
                         </div>
                         <div class="booking-details">
                             <form class="form-horizontal" action="InsertBookingServlet">
