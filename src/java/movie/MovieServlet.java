@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,11 +21,11 @@ import jdbc.JDBCUtility;
 
 /**
  *
- * @author FANTASTIC CINEMA
+ * @author admin
  */
-@WebServlet(name = "GetMovieServlet", urlPatterns = {"/GetMovieServlet"})
-public class GetMovieServlet extends HttpServlet {
-    
+@WebServlet("/index.jsp")
+public class MovieServlet extends HttpServlet {
+
     private JDBCUtility jdbcUtility;
     private Connection con;
     
@@ -72,6 +71,8 @@ public class GetMovieServlet extends HttpServlet {
                 movie = new Movie();
                 movie.setId(rs.getInt("id"));
                 movie.setMoviename(rs.getString("moviename"));
+                movie.setImage(rs.getString("image"));
+                movie.setStatus(rs.getInt("status"));
                 
                 movies.add(movie);
             }
@@ -80,22 +81,7 @@ public class GetMovieServlet extends HttpServlet {
         {            
         }
         session.setAttribute("movies", movies);
-        sendPage(request, response, "/bookingmovie.jsp");
-    }
-    
-    void sendPage(HttpServletRequest req, HttpServletResponse res, String fileName) throws ServletException, IOException
-    {
-        // Get the dispatcher; it gets the main page to the user
-	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(fileName);
-
-	if (dispatcher == null)
-	{
-            System.out.println("There was no dispatcher");
-	    // No dispatcher means the html file could not be found.
-	    res.sendError(res.SC_NO_CONTENT);
-	}
-	else
-	    dispatcher.forward(req, res);
+        request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
