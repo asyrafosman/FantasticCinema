@@ -124,7 +124,7 @@ public class InsertBookingServlet extends HttpServlet {
 	{
             ex.printStackTrace ();
 	} 
-        response.sendRedirect(request.getContextPath() + "/ViewProfileServlet");
+        response.sendRedirect(request.getContextPath() + "/ViewHistoryServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

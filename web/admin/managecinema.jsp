@@ -130,7 +130,7 @@
                                         <c:url value="DeleteCinemaServlet" var="deleteCinemaURL">
                                             <c:param name="id"   value="${currentcinema.id}" />
                                         </c:url>
-                                        <td><a href="<c:out value='${deleteCinemaURL}' />"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                                        <td><a href="<c:out value='${deleteCinemaURL}' />"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete"></span></a></td>
 
                                         <c:url value="CinemaActivationServlet" var="CinemaActivationURL">
                                             <c:param name="id"   value="${currentcinema.id}" />

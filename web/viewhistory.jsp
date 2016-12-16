@@ -57,8 +57,10 @@
                             <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>                   
                         <% }
                         else { %>
-                            <li><i aria-hidden="true"></i><a href="viewprofile.jsp"><jsp:getProperty name="customerprofile" property="fullName"/></a></li>
-                            <li><a href="CustomerLogoutServlet">Logout</a></li>
+                            <li><i aria-hidden="true"></i><jsp:getProperty name="customerprofile" property="fullName"/></li>
+                            <li><a href="viewprofile.jsp" title="User Profile"><span class="glyphicon glyphicon-user"></span></a></li>
+                            <li class="active"><a title="History"><span class="glyphicon glyphicon-time"></span></a></li>
+                            <li><a href="CustomerLogoutServlet" title="Logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
                         <% } %>
                     </ul>
                 </div>
@@ -164,8 +166,7 @@
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="index.jsp">Movies</a></li>
-                                <li><a href="showtimes.jsp">Showtimes</a></li>								
+                                <li><a href="index.jsp">Movies</a></li>
                                 <li><a href="newspromotion.jsp">News & Promotion</a></li>
                                 <li><a href="locate.jsp">Locate Us</a></li>
                                 <li><a href="contact.jsp">Contact Us</a></li>
@@ -183,7 +184,7 @@
         <section class='general'>
             <div class="container">
                 <div class="well" id="wellhome">
-                    <h3>View Bookings' History</h3>
+                    <h3>Bookings' History</h3>
                     <div class="row">
                         <div class="col-md-12">
                             <table class="table table-striped table-hover ">
@@ -242,7 +243,7 @@
                                             <td>
                                                 <c:choose>
                                                     <c:when test="${currentbooking.status == 2}">
-                                                        <a><span class="glyphicon glyphicon-ban-circle" aria-hidden="true" title="cancelled" style="color:red;"></span></a>
+                                                        <a><span class="glyphicon glyphicon-ban-circle" aria-hidden="true" style="color:red;"></span></a>
                                                     </c:when>
                                                     <c:otherwise>
                                                         <a href="<c:out value='${CancelBookingServletURL}' />"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true" title="Cancel"></span></a>
@@ -251,7 +252,7 @@
                                                 &nbsp;&nbsp;
                                                 <c:choose>
                                                     <c:when test="${currentbooking.status == 3}">
-                                                        <a><span class="fa fa-cc-visa" aria-hidden="true" title="Paid" style="color:blue;"></span>
+                                                        <a><span class="fa fa-cc-visa" aria-hidden="true" style="color:blue;"></span>
                                                     </c:when>
                                                     <c:when test="${currentbooking.status == 2}">
                                                         <a><span class="fa fa-cc-visa" aria-hidden="true" style="color:red;"></span>

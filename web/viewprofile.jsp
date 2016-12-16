@@ -63,7 +63,9 @@ profile
                         <% }
                         else { %>
                             <li><i aria-hidden="true"></i><jsp:getProperty name="customerprofile" property="fullName"/></li>
-                            <li><a href="CustomerLogoutServlet">Logout</a></li>
+                            <li class="active"><a title="User Profile"><span class="glyphicon glyphicon-user"></span></a></li>
+                            <li><a href="ViewHistoryServlet" title="History"><span class="glyphicon glyphicon-time"></span></a></li>
+                            <li><a href="CustomerLogoutServlet" title="Logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
                         <% } %>
                     </ul>
                 </div>
@@ -170,7 +172,6 @@ profile
                         <nav>
                             <ul class="nav navbar-nav">
                                 <li><a href="index.jsp">Movies</a></li>
-                                <li><a href="showtimes.jsp">Showtimes</a></li>								
                                 <li><a href="newspromotion.jsp">News & Promotion</a></li>
                                 <li><a href="locate.jsp">Locate Us</a></li>
                                 <li><a href="contact.jsp">Contact Us</a></li>

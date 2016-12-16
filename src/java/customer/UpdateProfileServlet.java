@@ -8,7 +8,6 @@ package customer;
 import bean.User;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -63,31 +62,31 @@ public class UpdateProfileServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //Customer customer= null;
+        
+        //Get the session object
         HttpSession session = request.getSession();
-        String username = (String)session.getAttribute("username");
-        String password = (String)session.getAttribute("password");
+        User customer = (User)session.getAttribute("customerprofile");
+        String username = customer.getUsername();
+        String password = customer.getPassword();
+        
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String mobileNum = request.getParameter("mobileNum");
-        
+                
         try {                    
             PreparedStatement preparedStatement = jdbcUtility.getPsUpdateCustomerViaUsername();
             preparedStatement.setString(1, fullName);
             preparedStatement.setString(2, email);
             preparedStatement.setString(3, mobileNum);
             preparedStatement.setString(4, username);
-            
             preparedStatement.executeUpdate();
             
-            PrintWriter out = response.getWriter();
-            
-            //customer = new Customer();
-            //customer.setUsername(username);
-            //customer.setPassword(password);
-            //customer.setFullName(fullName);
-            //customer.setEmail(email);
-            //customer.setMobileNum(mobileNum);
+            customer = new User();
+            customer.setUsername(username);
+            customer.setPassword(password);
+            customer.setFullName(fullName);
+            customer.setEmail(email);
+            customer.setMobileNum(mobileNum);
         }
 	catch (SQLException ex)
 	{
@@ -109,8 +108,8 @@ public class UpdateProfileServlet extends HttpServlet {
 	{
             ex.printStackTrace ();
 	}
-        //session.setAttribute("customerprofile", customer);
-        //response.sendRedirect(request.getParameter("viewprofile.jsp"));
+        session.setAttribute("customerprofile", customer);
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
     
     

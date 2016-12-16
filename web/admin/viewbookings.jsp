@@ -167,10 +167,10 @@
                                                         <a href="<c:out value='${ApprovedBookingServletURL}' />"><span class="glyphicon glyphicon-ok" aria-hidden="true" title="Approve"></span></a>
                                                     </c:when>
                                                     <c:when test="${currentbooking.status == 1}">
-                                                        <a><span class="glyphicon glyphicon-ok" aria-hidden="true" title="Done Approved"  style="color:blue;"></span></a>
+                                                        <a><span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:blue;"></span></a>
                                                     </c:when> 
                                                     <c:otherwise>
-                                                        <a><span class="glyphicon glyphicon-ok" aria-hidden="true" title="Disable"  style="color:red;"></span></a>
+                                                        <a><span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:red;"></span></a>
                                                     </c:otherwise> 
                                                 </c:choose>
                                                 &nbsp;&nbsp;
