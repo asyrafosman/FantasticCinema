@@ -61,7 +61,7 @@
                 <div class="fc_sign_in_register">
                     <ul>
                         <li><i aria-hidden="true"></i>Hi, <jsp:getProperty name="adminprofile" property="fullName"/>!</li>
-                        <li><a href="adminlogout.jsp">Logout</a></li>
+                        <li><a href="adminlogout.jsp" title="Logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
                     </ul>
                 </div>
                 <!--  //Sign in & sign up  -->
@@ -86,7 +86,6 @@
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">            
-                                <li><a href="adminhome.jsp">Home</a></li>   
                                 <li class="active"><a>Cinemas</a></li>
                                 <li><a href="ViewMovieServlet">Movies</a></li>
                                 <li><a href="ViewBookingServlet">Bookings</a></li>

@@ -86,7 +86,6 @@
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">
-                                <li><a href="adminhome.jsp">Home</a></li>
                                 <li><a href="ViewCinemaServlet">Cinemas</a></li>
                                 <li><a href="ViewMovieServlet">Movies</a></li>
                                 <li class="active"><a>Bookings</a></li>
@@ -174,7 +173,14 @@
                                                     </c:otherwise> 
                                                 </c:choose>
                                                 &nbsp;&nbsp;
-                                                <a href="<c:out value='${DeleteBookingServletURL}' />"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete"></span></a>
+                                                <c:choose>
+                                                    <c:when test="${currentbooking.status == 2}">
+                                                        <a href="<c:out value='${DeleteBookingServletURL}' />"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete"></span></a>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <a><span class="glyphicon glyphicon-trash" aria-hidden="true" style="color:red;"></span></a>
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </td>   
                                         </tr>
                                     </c:forEach>

@@ -60,7 +60,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="fc_sign_in_register">
                     <ul>
                         <li><i aria-hidden="true"></i>Hi, <jsp:getProperty name="adminprofile" property="fullName"/>!</li>
-                        <li><a href="adminlogout.jsp">Logout</a></li>
+                        <li><a href="adminlogout.jsp" title="Logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
                     </ul>
                 </div>
                 <!--  //Sign in & sign up  -->
@@ -85,7 +85,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">
-                                <li class="active"><a>Home</a></li>
                                 <li><a href="ViewCinemaServlet">Cinemas</a></li>
                                 <li><a href="ViewMovieServlet">Movies</a></li>
                                 <li><a href="ViewBookingServlet">Bookings</a></li>
@@ -104,131 +103,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <!--  Container  -->
             <div class="container">
                 <!--  Tab panel  -->
-                <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-                    <!--  nav-tabs list  -->
-                    <ul id="myTab" class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#nowshowing" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Now Showing</a></li>
-                    </ul>
-                    <!--  //nav-tabs list  -->
-                    <!--  myTabContent  -->
-                    <div id="myTabContent" class="tab-content">
-                        <!--  ********************************************** nowshowing tab **********************************************  -->
-                        <div role="tabpanel" class="tab-pane fade active in" id="nowshowing" aria-labelledby="home-tab">
-                            <!--  movie God?s Compass  -->
-                            <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m15.jpg" title="movie-name" class="img-responsive" alt=" " />
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="single.html">God?s Compass</a></h6>							
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  movie Jason Bourne  -->
-                            <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m5.jpg" title="movie-name" class="img-responsive" alt=" " />
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="single.html">Jason Bourne</a></h6>							
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  movie Rezort  -->
-                            <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m16.jpg" title="movie-name" class="img-responsive" alt=" " />
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="single.html">Rezort</a></h6>							
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  movie Peter  -->
-                            <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m17.jpg" title="movie-name" class="img-responsive" alt=" " />
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="single.html">Peter</a></h6>							
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  movie ISRA 88  -->
-                            <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m18.jpg" title="movie-name" class="img-responsive" alt=" " />
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="single.html">ISRA 88</a></h6>							
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  movie War Dogs  -->
-                            <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m1.jpg" title="movie-name" class="img-responsive" alt=" " />
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="single.html">War Dogs</a></h6>							
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  movie The Other Side  -->
-                            <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m14.jpg" title="movie-name" class="img-responsive" alt=" " />
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="single.html">The Other Side</a></h6>							
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  movie Civil War  -->
-                            <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m19.jpg" title="movie-name" class="img-responsive" alt=" " />
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="single.html">Civil War</a></h6>							
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  movie The Secret Life of Pets  -->
-                            <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m20.jpg" title="movie-name" class="img-responsive" alt=" " />
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="single.html">The Secret Life of Pets</a></h6>							
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  movie The Jungle Book  -->
-                            <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m21.jpg" title="movie-name" class="img-responsive" alt=" " />
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="single.html">The Jungle Book</a></h6>							
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                        <!--  ********************************************** //nowshowing tab **********************************************  -->
-                    </div>
-                    <!--  //myTabContent  -->
+                <div class="jumbotron">
+                    <h1>Hello, <b><jsp:getProperty name="adminprofile" property="fullName"/></b>!</h1>
+                    <h2>Welcome to the <b>Fantastic Cinema</b></h2>
                 </div>
                 <!--  //Tab panel  -->
             </div>
