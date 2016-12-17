@@ -117,7 +117,7 @@ public class CustomerRegisterServlet extends HttpServlet {
 	}       
         
         session.setAttribute("customerprofile", customer);
-        response.sendRedirect(request.getParameter("from"));
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
     
     void sendPage(HttpServletRequest req, HttpServletResponse res, String fileName) throws ServletException, IOException

@@ -110,7 +110,6 @@
                                         <form action="CustomerLoginServlet" method="post">
                                             <input type="text" name="username" placeholder="Username" required="">
                                             <input type="password" name="password" placeholder="Password" required="">
-                                            <input type="hidden" name="from" value="${pageContext.request.requestURI}">
                                             <input type="submit" value="Login">
                                         </form>
                                     </div>
@@ -124,7 +123,6 @@
                                             <input type="text" name="fullName" placeholder="Full Name" required="">
                                             <input type="email" name="email" placeholder="Email Address" required="">
                                             <input type="text" name="mobileNum" placeholder="Phone Number" required="">
-                                            <input type="hidden" name="from" value="${pageContext.request.requestURI}">
                                             <input type="submit" value="Register">
                                         </form>
                                     </div>

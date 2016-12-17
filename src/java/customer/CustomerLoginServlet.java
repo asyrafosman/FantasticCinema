@@ -96,10 +96,10 @@ public class CustomerLoginServlet extends HttpServlet {
         
         if (customer != null) {
             session.setAttribute("customerprofile", customer);
-            response.sendRedirect(request.getParameter("from"));
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
         }
         else {
-            response.sendRedirect(request.getParameter("from"));
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
         } 
     }
 
