@@ -105,6 +105,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!-- ********************************************** Add New Movie Form ********************************************** -->
         <div class="general">
             <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="ViewMovieServlet">Movies</a></li>
+                    <li class="active">Edit Movie</li>
+                </ol>
                 <div class="well" id="wellhome">
                     <form class="form-horizontal" action="EditMovieServlet">
                         <fieldset>

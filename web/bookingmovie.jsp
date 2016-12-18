@@ -190,6 +190,10 @@
                     </div>                    
                 <% }
                 else { %>
+                    <ol class="breadcrumb">
+                        <li><a href="index.jsp">Movies</a></li>
+                        <li class="active">Ticket Booking</li>
+                    </ol>
                     <div class="jumbotron">
                         <form class="form-horizontal" method="get" action="chooseseat.jsp">
                             <fieldset>

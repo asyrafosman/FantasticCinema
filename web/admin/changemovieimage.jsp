@@ -110,6 +110,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!-- ********************************************** //Navigation ********************************************** -->
         <div class="general">
             <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="ViewMovieServlet">Movies</a></li>
+                    <li class="active">Change Movie's Image</li>
+                </ol>
                 <div class="well">
                     <h1>Change Movie's Image</h1>
                     <form class="form-horizontal"

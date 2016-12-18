@@ -229,6 +229,11 @@
         </style>
         <div class="general">
             <div class="container">
+                <ol class="breadcrumb">
+                        <li><a href="index.jsp">Movies</a></li>
+                        <li><a href="GetCinemaServlet">Ticket Booking</a></li>
+                        <li class="active">Choose Seating</li>
+                    </ol>
                 <div class="jumbotron">
                     <div class="demo">
                         <div id="seat-map">

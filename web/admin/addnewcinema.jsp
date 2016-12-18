@@ -98,6 +98,10 @@
         <!-- ********************************************** Add New Movie Form ********************************************** -->
         <div class="general">
             <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="ViewCinemaServlet">Cinemas</a></li>
+                    <li class="active">Add New Cinema</li>
+                </ol>
                 <div class="well" id="wellhome">
                     <form class="form-horizontal" action="InsertCinemaServlet">
                         <fieldset>

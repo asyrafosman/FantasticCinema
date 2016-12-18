@@ -241,7 +241,7 @@
                                             <td>
                                                 <c:choose>
                                                     <c:when test="${currentbooking.status == 2}">
-                                                        <a><span class="glyphicon glyphicon-ban-circle" aria-hidden="true" style="color:red;"></span></a>
+                                                        <a><span class="glyphicon glyphicon-ban-circle" aria-hidden="true" style="color:greenyellow;"></span></a>
                                                     </c:when>
                                                     <c:otherwise>
                                                         <a href="<c:out value='${CancelBookingServletURL}' />"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true" title="Cancel"></span></a>
@@ -249,14 +249,14 @@
                                                 </c:choose>
                                                 &nbsp;&nbsp;
                                                 <c:choose>
-                                                    <c:when test="${currentbooking.status == 3}">
-                                                        <a><span class="fa fa-cc-visa" aria-hidden="true" style="color:blue;"></span>
+                                                    <c:when test="${currentbooking.status == 0}">
+                                                        <a href="<c:out value='${PaidBookingServletURL}' />"><span class="fa fa-cc-visa" aria-hidden="true" title="Pay"></span></a>
                                                     </c:when>
                                                     <c:when test="${currentbooking.status == 2}">
-                                                        <a><span class="fa fa-cc-visa" aria-hidden="true" style="color:red;"></span>
-                                                    </c:when>
+                                                        <a><span class="fa fa-cc-visa" aria-hidden="true" style="color:grey;"></span>
+                                                    </c:when>  
                                                     <c:otherwise>
-                                                        <a href="<c:out value='${PaidBookingServletURL}' />"><span class="fa fa-cc-visa" aria-hidden="true" title="Pay"></span></a>
+                                                        <a><span class="fa fa-cc-visa" aria-hidden="true" style="color:greenyellow;"></span>
                                                     </c:otherwise> 
                                                 </c:choose>
                                             </td> 

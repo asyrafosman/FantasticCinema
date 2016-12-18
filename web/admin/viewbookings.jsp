@@ -166,10 +166,10 @@
                                                         <a href="<c:out value='${ApprovedBookingServletURL}' />"><span class="glyphicon glyphicon-ok" aria-hidden="true" title="Approve"></span></a>
                                                     </c:when>
                                                     <c:when test="${currentbooking.status == 1}">
-                                                        <a><span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:blue;"></span></a>
+                                                        <a><span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:greenyellow;"></span></a>
                                                     </c:when> 
                                                     <c:otherwise>
-                                                        <a><span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:red;"></span></a>
+                                                        <a><span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:grey;"></span></a>
                                                     </c:otherwise> 
                                                 </c:choose>
                                                 &nbsp;&nbsp;
@@ -178,7 +178,7 @@
                                                         <a href="<c:out value='${DeleteBookingServletURL}' />"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete"></span></a>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <a><span class="glyphicon glyphicon-trash" aria-hidden="true" style="color:red;"></span></a>
+                                                        <a><span class="glyphicon glyphicon-trash" aria-hidden="true" style="color:grey;"></span></a>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </td>   
