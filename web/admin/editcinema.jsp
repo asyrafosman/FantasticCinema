@@ -117,7 +117,7 @@
                                 <label for="cinemaname" class="col-lg-2 control-label">Cinema Name</label>
                                 <div class="col-lg-10">
                                     <input type="hidden" class="form-control" id="id" name="id" value="${sessionScope.id}">
-                                    <input class="form-control" name="cinemaname" placeholder="- Cinema Name -" type="text"  value="${sessionScope.cinemaname}">
+                                    <input class="form-control" name="cinemaname" placeholder="- Cinema Name -" type="text"  value="${sessionScope.cinemaname}" required="">
                                 </div>
                             </div>
                             <div class="form-group">

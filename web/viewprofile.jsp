@@ -191,23 +191,24 @@ profile
                             <div class="form-group">
                                 <label for="select" class="col-lg-2 control-label">Full Name</label>
                                 <div class="col-lg-10">
-                                    <input class="form-control" name="fullName" placeholder="Full Name" type="text" value="<jsp:getProperty name="customerprofile" property="fullName"/>">
+                                    <input class="form-control" name="fullName" placeholder="Full Name" type="text" value="<jsp:getProperty name="customerprofile" property="fullName"/>" required="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="select" class="col-lg-2 control-label">Email Address</label>
                                 <div class="col-lg-10">
-                                    <input class="form-control" name="email" placeholder="Email Address" type="text" value="<jsp:getProperty name="customerprofile" property="email"/>">
+                                    <input class="form-control" name="email" placeholder="Email Address" type="text" value="<jsp:getProperty name="customerprofile" property="email"/>" required="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="select" class="col-lg-2 control-label">Phone Number</label>
                                 <div class="col-lg-10">
-                                    <input class="form-control" name="mobileNum" placeholder="Phone Number" type="text" value="<jsp:getProperty name="customerprofile" property="mobileNum"/>">
+                                    <input class="form-control" name="mobileNum" placeholder="Phone Number" type="text" value="<jsp:getProperty name="customerprofile" property="mobileNum"/>" required="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
+                                    <button type="reset" class="btn btn-danger">Reset</button>
                                     <button type="submit" class="btn btn-success">Update</button>
                                 </div>
                             </div>

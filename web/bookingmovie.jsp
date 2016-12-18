@@ -201,8 +201,8 @@
                                 <div class="form-group">
                                     <label for="select" class="col-lg-2 control-label">Cinema</label>
                                     <div class="col-lg-10">
-                                        <select name="cinema" class="form-control" id="cinema">
-                                            <option selected="selected" value="-">- Select Cinema -</option>
+                                        <select name="cinema" class="form-control" id="cinema" required>
+                                            <option selected="selected" value="">- Select Cinema -</option>
                                             <c:forEach items="${sessionScope.cinemas}" var="currentcinema" varStatus="loop">
                                                 <option><c:out value="${currentcinema.cinemaname}" /></option>
                                             </c:forEach>
@@ -212,8 +212,8 @@
                                 <div class="form-group">
                                     <label for="select" class="col-lg-2 control-label">Movie</label>
                                     <div class="col-lg-10">
-                                        <select name="moviename" class="form-control" id="moviename">
-                                            <option selected="selected" value="-">- Select Movie -</option>
+                                        <select name="moviename" class="form-control" id="moviename" required>
+                                            <option selected="selected" value="">- Select Movie -</option>
                                             <c:forEach items="${sessionScope.movies}" var="currentmovie" varStatus="loop">
                                                 <option><c:out value="${currentmovie.moviename}" /></option>
                                             </c:forEach>
@@ -224,7 +224,7 @@
                                     <label for="select" class="col-lg-2 control-label">Show Date</label>
                                     <div class="col-lg-10">
                                         <div class="input-group date" data-provide="datepicker">
-                                            <input name="moviedate" type="text" class="form-control" value="- Select Date -">
+                                            <input name="moviedate" type="text" class="form-control" placeholder="- Select Date -" required="">
                                             <div class="input-group-addon">
                                                 <span class="fa fa-th"></span>
                                             </div>
@@ -234,8 +234,8 @@
                                 <div class="form-group">
                                     <label for="select" class="col-lg-2 control-label">Show Time</label>
                                     <div class="col-lg-10">
-                                        <select name="movietime" class="form-control" id="movietime">
-                                            <option value="-">- Select Time -</option>
+                                        <select name="movietime" class="form-control" id="movietime" required>
+                                            <option value="">- Select Time -</option>
                                             <option value="10AM">10AM</option>
                                             <option value="12PM">12PM</option>
                                             <option value="2PM">2PM</option>
@@ -249,7 +249,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-10 col-lg-offset-2">
-                                        <button type="reset" class="btn btn-danger">Cancel</button>
+                                        <button type="reset" class="btn btn-danger">Reset</button>
                                         <button type="submit" class="btn btn-success">Book</button>
                                     </div>
                                 </div>

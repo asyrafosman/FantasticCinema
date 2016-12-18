@@ -109,7 +109,7 @@
                             <div class="form-group">
                                 <label for="cinemaname" class="col-lg-2 control-label">Cinema Name</label>
                                 <div class="col-lg-10">
-                                    <input class="form-control" name="cinemaname" placeholder="- Cinema Name -" type="text">
+                                    <input class="form-control" name="cinemaname" placeholder="- Cinema Name -" type="text" required="">
                                 </div>
                             </div>
                             <div class="form-group">

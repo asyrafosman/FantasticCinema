@@ -130,7 +130,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="form-group">
                             <label for="filetoupload" class="col-lg-2 control-label">Choose File to Upload</label>
                             <div class="col-lg-10">
-                                <input type="file" name="filetoupload" id="filetoupload" size="50" />
+                                <input type="file" name="filetoupload" id="filetoupload" size="50" required=""/>
                             </div>
                         </div>
                         <div class="form-group">

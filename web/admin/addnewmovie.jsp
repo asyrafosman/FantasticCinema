@@ -111,7 +111,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <div class="form-group">
                                 <label for="moviename" class="col-lg-2 control-label">Movie Name</label>
                                 <div class="col-lg-10">
-                                    <input class="form-control" name="moviename" placeholder="- Movie Name -" type="text">
+                                    <input class="form-control" name="moviename" placeholder="- Movie Name -" type="text" required="">
                                 </div>
                             </div>
                             <div class="form-group">

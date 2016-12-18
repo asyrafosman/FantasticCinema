@@ -9,7 +9,14 @@
 <%@ page import="bean.User" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<% User customerprofile = (User)session.getAttribute("customerprofile"); %>
+<%
+    User customerprofile = (User)session.getAttribute("customerprofile");
+    if (customerprofile == null) {
+%>
+        <jsp:forward page="index.jsp" />
+<%        
+    }
+%>  
 <!DOCTYPE html>
 <html lang="en">
     <head>
