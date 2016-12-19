@@ -22,6 +22,7 @@
 <html lang="en">
     <head>
         <!-- Title -->
+        <link rel="icon" href="../images/favicon.png">
         <title>Fantastic Cinema</title>
 
         <!-- for-mobile-apps -->
@@ -53,7 +54,7 @@
             <div class="container">
                 <!--  Fantastic Cinema Logo  -->
                 <div class="fc_logo">
-                    <a href="index.jsp"><h1>Fantastic <span>Cinema</span></h1></a>
+                    <a><h1>Fantastic <span>Cinema</span></h1></a>
                 </div>
                 <!--  //Fantastic Cinema Logo  -->
 
@@ -103,7 +104,7 @@
             <div class="container">
                 <div class="well" id="wellhome">
                     <h1>View Cinemas</h1>
-                    <a href="addnewcinema.jsp" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Movie</a> 
+                    <a href="addnewcinema.jsp" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Cinema</a> 
                     <div class="row">
                         <div class="col-md-12">
                             <table class="table table-striped table-hover ">
@@ -162,7 +163,7 @@
                     <div class="col-md-6 w3ls_footer_grid_left">
                     </div>
                     <div class="col-md-6 w3ls_footer_grid_right">
-                            <a href="index.html"><h2>Fantastic<span>Cinema</span></h2></a>
+                        <a><h2>Fantastic<span>Cinema</span></h2></a>
                     </div>
                     <div class="clearfix"> </div>
                 </div>

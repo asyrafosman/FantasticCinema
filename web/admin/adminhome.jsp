@@ -21,6 +21,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html lang="en">
     <head>
         <!-- Title -->
+        <link rel="icon" href="../images/favicon.png">
         <title>Fantastic Cinema</title>
 
         <!-- for-mobile-apps -->
@@ -52,7 +53,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="container">
                 <!--  Fantastic Cinema Logo  -->
                 <div class="fc_logo">
-                    <a href="index.jsp"><h1>Fantastic <span>Cinema</span></h1></a>
+                    <a><h1>Fantastic <span>Cinema</span></h1></a>
                 </div>
                 <!--  //Fantastic Cinema Logo  -->
 
@@ -122,7 +123,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="col-md-6 w3ls_footer_grid_left">
                     </div>
                     <div class="col-md-6 w3ls_footer_grid_right">
-                            <a href="index.html"><h2>Fantastic<span>Cinema</span></h2></a>
+                        <a><h2>Fantastic<span>Cinema</span></h2></a>
                     </div>
                     <div class="clearfix"> </div>
                 </div>

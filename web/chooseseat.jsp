@@ -16,8 +16,9 @@
 %>  
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
         <!-- Title -->
+        <link rel="icon" href="images/favicon.png">
         <title>Fantastic Cinema</title>
 
         <!-- for-mobile-apps -->
@@ -361,7 +362,7 @@
                             }
                     });
                         //sold seat
-                        sc.get(['1_2', '4_4','4_5','6_6','6_7','8_5','8_6','8_7','8_8', '10_1', '10_2']).status('unavailable');
+                        sc.get(['1_2', '4_4','4_5','6_6','6_7','8_5','8_6','8_7','8_8', '10_1', '10_2',]).status('unavailable');
                 });
                 //sum total money
                 function recalculateTotal(sc) {
@@ -403,7 +404,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 w3ls_footer_grid_right">
-                            <a href="index.html"><h2>Fantastic<span>Cinema</span></h2></a>
+                            <a href="index.jsp"><h2>Fantastic<span>Cinema</span></h2></a>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
@@ -417,22 +418,19 @@
                     <div class="col-md-7 w3ls_footer_grid1_right">
                         <ul>
                             <li>
-                                <a href="index.html">Movies</a>
+                                <a href="index.jsp">Movies</a>
                             </li>
                             <li>
-                                <a href="showtimes.html">Showtimes</a>
+                                <a href="newspromotion.jsp">News & Promotion</a>
                             </li>
                             <li>
-                                <a href="newspromotion.html">News & Promotion</a>
+                                <a href="locate.jsp">Locate Us</a>
                             </li>
                             <li>
-                                <a href="locate.html">Locate Us</a>
+                                <a href="contact.jsp">Contact Us</a>
                             </li>
                             <li>
-                                <a href="contact.html">Contact Us</a>
-                            </li>
-                            <li>
-                                <a href="faq.html">FAQ</a>
+                                <a href="faq.jsp">FAQ</a>
                             </li>
                         </ul>
                     </div>

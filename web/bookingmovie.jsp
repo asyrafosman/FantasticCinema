@@ -15,6 +15,7 @@
 <html>
     <head>
         <!-- Title -->
+        <link rel="icon" href="images/favicon.png">
         <title>Fantastic Cinema</title>
 
         <!-- for-mobile-apps -->
@@ -285,7 +286,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 w3ls_footer_grid_right">
-                        <a href="index.html"><h2>Fantastic<span>Cinema</span></h2></a>
+                        <a href="index.jsp"><h2>Fantastic<span>Cinema</span></h2></a>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
@@ -299,22 +300,19 @@
                 <div class="col-md-7 w3ls_footer_grid1_right">
                     <ul>
                         <li>
-                            <a href="index.html">Movies</a>
+                            <a href="index.jsp">Movies</a>
                         </li>
                         <li>
-                            <a href="showtimes.html">Showtimes</a>
+                            <a href="newspromotion.jsp">News & Promotion</a>
                         </li>
                         <li>
-                            <a href="newspromotion.html">News & Promotion</a>
+                            <a href="locate.jsp">Locate Us</a>
                         </li>
                         <li>
-                            <a href="locate.html">Locate Us</a>
+                            <a href="contact.jsp">Contact Us</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact Us</a>
-                        </li>
-                        <li>
-                            <a href="faq.html">FAQ</a>
+                            <a href="faq.jsp">FAQ</a>
                         </li>
                     </ul>
                 </div>
