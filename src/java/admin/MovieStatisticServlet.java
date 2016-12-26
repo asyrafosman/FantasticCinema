@@ -67,7 +67,7 @@ public class MovieStatisticServlet extends HttpServlet {
         Movie movie = null;
         
         try {                    
-            ResultSet rs = jdbcUtility.getPsSelectAllFromMovieAvailable().executeQuery();
+            ResultSet rs = jdbcUtility.getPsSelectAllFromMovie().executeQuery();
             
             while (rs.next()) {                
                 movie = new Movie();

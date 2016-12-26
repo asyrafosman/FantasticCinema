@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2016 at 10:10 AM
+-- Generation Time: Dec 26, 2016 at 03:17 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -45,7 +45,6 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`id`, `username`, `cinema`, `moviename`, `moviedate`, `movietime`, `bookingdate`, `seat`, `status`) VALUES
-(13, '000', 'Aeon Bandaraya Melaka', 'FALLEN', '2016-12-15', '4PM', '2016-12-15 11:03:12', 'R4 S10', 0),
 (14, 'asyraf', '1Borneo', 'FALLEN', '2016-12-15', '6PM', '2016-12-15 17:12:47', 'R6 S10', 3),
 (15, 'asyraf', 'Alamanda', 'FALLEN', '2016-12-15', '4PM', '2016-12-15 17:40:33', 'R1 S10', 2),
 (16, 'asyraf', 'Klang Parade', 'FALLEN', '2016-12-15', '8PM', '2016-12-15 22:22:26', 'R4 S10', 1),
@@ -70,7 +69,11 @@ CREATE TABLE `cinema` (
 
 INSERT INTO `cinema` (`id`, `cinemaname`, `status`) VALUES
 (2, 'UMall', 1),
-(3, 'AEON Bukit Indah', 1);
+(3, 'AEON Bukit Indah', 1),
+(4, 'AEON Bandaraya Melaka', 1),
+(5, 'Dataran Pahlawan', 1),
+(6, 'Alamanda', 1),
+(7, 'IOI City Mall (Putrajaya)', 1);
 
 -- --------------------------------------------------------
 
@@ -93,7 +96,8 @@ INSERT INTO `movie` (`id`, `moviename`, `image`, `status`) VALUES
 (1, 'Central Intelligence', 'm9.jpg', 1),
 (3, 'Mechanic: Resurrection', 'm6.jpg', 1),
 (4, 'Moana', 'c1.jpg', 1),
-(5, 'Captain America: Civil War', 'm19.jpg', 1);
+(5, 'Captain America: Civil War', 'm19.jpg', 1),
+(6, 'Ice Age: Collision Course', 'c6.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -161,12 +165,12 @@ ALTER TABLE `booking`
 -- AUTO_INCREMENT for table `cinema`
 --
 ALTER TABLE `cinema`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

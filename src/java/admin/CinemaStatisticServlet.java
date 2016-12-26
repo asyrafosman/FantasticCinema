@@ -66,7 +66,7 @@ private JDBCUtility jdbcUtility;
         Cinema cinema = null;
         
         try {                    
-            ResultSet rs = jdbcUtility.getPsSelectAllFromCinemaAvailable().executeQuery();
+            ResultSet rs = jdbcUtility.getPsSelectAllFromCinema().executeQuery();
             
             while (rs.next()) {                
                 cinema = new Cinema();
