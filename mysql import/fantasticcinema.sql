@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2016 at 10:12 AM
+-- Generation Time: Dec 26, 2016 at 10:10 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -45,24 +45,12 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`id`, `username`, `cinema`, `moviename`, `moviedate`, `movietime`, `bookingdate`, `seat`, `status`) VALUES
-(1, '000', 'Dataran Pahlawan', 'War Dogs', '2016-11-24', '8PM', '2016-11-24 12:03:14', '', 1),
-(2, '000', 'Alamanda', 'War Dogs', '2016-11-24', '4PM', '2016-11-24 12:03:45', '', 3),
-(3, '000', 'Dataran Pahlawan', 'War Dogs', '2016-11-24', '10PM', '2016-11-24 12:14:35', '', 1),
-(4, '000', 'Setia City Mall', 'Peter', '2016-11-24', '10PM', '2016-11-24 12:14:49', '', 0),
-(5, '000', '1Borneo', 'Civil War', '2016-11-24', '6PM', '2016-11-24 12:16:24', '', 0),
-(6, '000', 'Bintang Megamall', 'Civil War', '2016-11-24', '2PM', '2016-11-24 14:46:34', '', 0),
-(7, '000', 'Aeon Bandaraya Melaka', 'Civil War', '2016-11-26', '2PM', '2016-11-26 11:18:09', '', 0),
-(8, '000', 'Aeon Bandaraya Melaka', 'The Jungle Book', '2016-11-26', '10PM', '2016-11-26 11:21:15', '', 0),
-(9, '000', 'Aeon Bandaraya Melaka', 'JACK REACHER: NEVER GO BACK', '2016-11-26', '6PM', '2016-11-26 22:44:30', '', 0),
-(10, '000', 'Alamanda', 'Marvelâ??s Doctor Strange', '2016-11-29', '2PM', '2016-11-29 16:33:54', '', 0),
-(11, '000', 'Aeon Bandaraya Melaka', 'FALLEN', '2016-12-15', '4PM', '2016-12-15 10:49:55', '', 0),
 (13, '000', 'Aeon Bandaraya Melaka', 'FALLEN', '2016-12-15', '4PM', '2016-12-15 11:03:12', 'R4 S10', 0),
 (14, 'asyraf', '1Borneo', 'FALLEN', '2016-12-15', '6PM', '2016-12-15 17:12:47', 'R6 S10', 3),
 (15, 'asyraf', 'Alamanda', 'FALLEN', '2016-12-15', '4PM', '2016-12-15 17:40:33', 'R1 S10', 2),
-(16, 'asyraf', 'Klang Parade', 'FALLEN', '2016-12-15', '8PM', '2016-12-15 22:22:26', 'R4 S10', 0),
-(17, 'asyraf', 'Klang Parade', 'FALLEN', '2016-12-15', '8PM', '2016-12-15 22:24:08', 'R6 S2', 0),
-(18, 'asyraf', 'Alamanda', 'FALLEN', '2016-12-16', '10PM', '2016-12-16 10:09:24', 'R4 S1', 0),
-(19, 'asyraf', 'UMall', 'FALLEN', '2016-12-16', '4PM', '2016-12-16 15:55:44', 'R4 S8', 0);
+(16, 'asyraf', 'Klang Parade', 'FALLEN', '2016-12-15', '8PM', '2016-12-15 22:22:26', 'R4 S10', 1),
+(20, 'asyraf', 'UMall', 'Moana', '2016-12-17', '8PM', '2016-12-17 00:32:11', 'R6 S10', 0),
+(21, 'asyraf', 'AEON Bukit Indah', 'Captain America: Civil War', '2016-12-26', '12PM', '2016-12-26 14:09:34', 'R4 S10', 0);
 
 -- --------------------------------------------------------
 
@@ -103,9 +91,9 @@ CREATE TABLE `movie` (
 
 INSERT INTO `movie` (`id`, `moviename`, `image`, `status`) VALUES
 (1, 'Central Intelligence', 'm9.jpg', 1),
-(2, 'Assassin''s Creed', 'm22.jpg', 1),
 (3, 'Mechanic: Resurrection', 'm6.jpg', 1),
-(4, 'Moana', 'c1.jpg', 1);
+(4, 'Moana', 'c1.jpg', 1),
+(5, 'Captain America: Civil War', 'm19.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -127,8 +115,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `userType`, `fullName`, `email`, `mobileNum`) VALUES
-('asyraf', '1234', 'client', 'Mohamad Asyraf Osman', 'a@e.com', '1234'),
-('fantastic', 'cinema', 'admin', 'Miss Fantastic', '', '');
+('asyraf', '12345', 'customer', 'Mohamad Asyraf Osman', 'a@e.com', '0172364838'),
+('fantastic', 'cinema', 'admin', 'Miss Fantastic', '', ''),
+('nat', '12345', 'customer', 'natalie', 'nat@gmail.com', '1234');
 
 --
 -- Indexes for dumped tables
@@ -167,7 +156,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `cinema`
 --
@@ -177,7 +166,7 @@ ALTER TABLE `cinema`
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

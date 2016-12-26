@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author FANTASTIC CINEMA
  */
 public class Cinema implements Serializable {
-    private int id, status;
+    private int id, status, total;
     private String cinemaname;
 
     /**
@@ -55,5 +55,19 @@ public class Cinema implements Serializable {
      */
     public void setCinemaname(String cinemaname) {
         this.cinemaname = cinemaname;
+    }
+
+    /**
+     * @return the total
+     */
+    public int getTotal() {
+        return total;
+    }
+
+    /**
+     * @param total the total to set
+     */
+    public void setTotal(int total) {
+        this.total = total;
     }
 }

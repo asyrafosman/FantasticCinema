@@ -1,11 +1,10 @@
 <%-- 
-    Document   : viewbookings
+    Document   : viewcustomer
     Created on : Nov 15, 2016, 1:49 AM
     Author     : FANTASTIC CINEMA
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="bean.Booking" %>
 <%@ page import="bean.User" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -91,6 +90,7 @@
                                 <li><a href="ViewMovieServlet">Movies</a></li>
                                 <li><a href="ViewBookingServlet">Bookings</a></li>
                                 <li class="active"><a>Customers</a></li>
+                                <li><a href="CinemaStatisticServlet">Statistic</a></li>
                             </ul>
                         </nav>
                     </div>

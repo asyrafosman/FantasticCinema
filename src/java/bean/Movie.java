@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author FANTASTIC CINEMA
  */
 public class Movie implements Serializable {
-    private int id, status;
+    private int id, status, total;
     private String moviename, image;
 
     /**
@@ -69,5 +69,19 @@ public class Movie implements Serializable {
      */
     public void setImage(String image) {
         this.image = image;
+    }
+
+    /**
+     * @return the total
+     */
+    public int getTotal() {
+        return total;
+    }
+
+    /**
+     * @param total the total to set
+     */
+    public void setTotal(int total) {
+        this.total = total;
     }
 }

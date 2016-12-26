@@ -91,6 +91,7 @@
                                 <li><a href="ViewMovieServlet">Movies</a></li>
                                 <li><a href="ViewBookingServlet">Bookings</a></li>
                                 <li><a href="ViewCustomerServlet">Customers</a></li>
+                                <li><a href="CinemaStatisticServlet">Statistic</a></li>
                             </ul>
                         </nav>
                     </div>

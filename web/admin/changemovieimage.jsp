@@ -101,6 +101,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <li class="active"><a>Movies</a></li>
                                 <li><a href="ViewBookingServlet">Bookings</a></li>
                                 <li><a href="ViewCustomerServlet">Customers</a></li>
+                                <li><a href="CinemaStatisticServlet">Statistic</a></li>
                             </ul>
                         </nav>
                     </div>
