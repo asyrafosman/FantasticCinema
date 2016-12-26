@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
     private String username, password, userType, fullName, email, mobileNum;
+    private int total;
 
     /**
      * @return the username
@@ -96,5 +97,19 @@ public class User implements Serializable {
      */
     public void setMobileNum(String mobileNum) {
         this.mobileNum = mobileNum;
+    }
+
+    /**
+     * @return the total
+     */
+    public int getTotal() {
+        return total;
+    }
+
+    /**
+     * @param total the total to set
+     */
+    public void setTotal(int total) {
+        this.total = total;
     }
 }

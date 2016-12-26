@@ -9,6 +9,7 @@ import bean.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -75,6 +76,14 @@ private JDBCUtility jdbcUtility;
                 customer.setFullName(rs.getString("fullName"));             
                 customer.setEmail(rs.getString("email"));
                 customer.setMobileNum(rs.getString("mobileNum"));
+                
+                PreparedStatement preparedStatement = jdbcUtility.getPsSelectCountAllFromBookingByUsername();
+                preparedStatement.setString(1, customer.getUsername());
+                ResultSet rs2 = preparedStatement.executeQuery();
+
+                while (rs2.next()) {
+                    customer.setTotal(rs2.getInt("COUNT(*)"));
+                }
                 
                 customers.add(customer);
             }

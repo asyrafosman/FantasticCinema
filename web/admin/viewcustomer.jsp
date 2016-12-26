@@ -114,6 +114,7 @@
                                         <th>Full Name</th>
                                         <th>Email</th>
                                         <th>Mobile Number</th>
+                                        <th>Total Bookings</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -124,6 +125,7 @@
                                             <td><c:out value="${currentcustomer.fullName}" /></td>
                                             <td><c:out value="${currentcustomer.email}" /></td>
                                             <td><c:out value="${currentcustomer.mobileNum}" /></td>
+                                            <td><c:out value="${currentcustomer.total}" /></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

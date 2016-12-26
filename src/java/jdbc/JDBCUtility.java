@@ -43,6 +43,7 @@ public class JDBCUtility
    PreparedStatement psSelectAllCustomer = null;
    PreparedStatement psSelectCountAllFromBookingByCinema = null;
    PreparedStatement psSelectCountAllFromBookingByMovie = null;
+   PreparedStatement psSelectCountAllFromBookingByUsername = null;
 
    //use this constructor if using ConnectionPool
    public JDBCUtility()
@@ -204,12 +205,16 @@ public class JDBCUtility
             psUpdateMovieImage = con.prepareStatement(sqlUpdateMovieImage);
             
             //count all from booking by cinema
-            String sqlSelectCountAllFromBookingByCinema = "SELECT * FROM booking WHERE cinema = ?";
+            String sqlSelectCountAllFromBookingByCinema = "SELECT COUNT(*) FROM booking WHERE cinema = ?";
             psSelectCountAllFromBookingByCinema = con.prepareStatement(sqlSelectCountAllFromBookingByCinema);
             
-            //count all from booking by cinema
-            String sqlSelectCountAllFromBookingByMovie = "SELECT * FROM booking WHERE moviename = ?";
+            //count all from booking by movie
+            String sqlSelectCountAllFromBookingByMovie = "SELECT COUNT(*) FROM booking WHERE moviename = ?";
             psSelectCountAllFromBookingByMovie = con.prepareStatement(sqlSelectCountAllFromBookingByMovie);
+            
+            //count all from booking by username
+            String sqlSelectCountAllFromBookingByUsername = "SELECT COUNT(*) FROM booking WHERE username = ?";
+            psSelectCountAllFromBookingByUsername = con.prepareStatement(sqlSelectCountAllFromBookingByUsername);
         }
 	catch (SQLException ex)
 	{
@@ -356,5 +361,10 @@ public class JDBCUtility
     public PreparedStatement getPsSelectCountAllFromBookingByMovie()
     {
         return psSelectCountAllFromBookingByMovie;
+    }
+    
+    public PreparedStatement getPsSelectCountAllFromBookingByUsername()
+    {
+        return psSelectCountAllFromBookingByUsername;
     }
 }

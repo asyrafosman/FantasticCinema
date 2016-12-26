@@ -79,7 +79,7 @@ private JDBCUtility jdbcUtility;
                 ResultSet rs2 = preparedStatement.executeQuery();
 
                 while (rs2.next()) {
-                    cinema.setTotal(rs.getInt("status"));
+                    cinema.setTotal(rs2.getInt("COUNT(*)"));
                 }
                 cinemas.add(cinema);
             }

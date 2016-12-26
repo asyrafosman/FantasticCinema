@@ -79,7 +79,7 @@ public class MovieStatisticServlet extends HttpServlet {
                 ResultSet rs2 = preparedStatement.executeQuery();
 
                 while (rs2.next()) {
-                    movie.setTotal(rs.getInt("status"));
+                    movie.setTotal(rs2.getInt("COUNT(*)"));
                 }
                 
                 movies.add(movie);
