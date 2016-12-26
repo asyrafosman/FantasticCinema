@@ -146,19 +146,19 @@ public class JDBCUtility
             psDeleteBookingViaId = con.prepareStatement(sqlDeleteBookingViaId); 
             
             //select all from movie
-            String sqlSelectAllFromMovie = "SELECT * FROM movie";
+            String sqlSelectAllFromMovie = "SELECT * FROM movie ORDER BY moviename";
             psSelectAllFromMovie = con.prepareStatement(sqlSelectAllFromMovie);
             
             //select all from movie available
-            String sqlSelectAllFromMovieAvalaible = "SELECT * FROM movie WHERE status = 1";
+            String sqlSelectAllFromMovieAvalaible = "SELECT * FROM movie WHERE status = 1 ORDER BY moviename";
             psSelectAllFromMovieAvailable = con.prepareStatement(sqlSelectAllFromMovieAvalaible);
             
             //select all from cinema
-            String sqlSelectAllFromCinema = "SELECT * FROM cinema";
+            String sqlSelectAllFromCinema = "SELECT * FROM cinema ORDER BY cinemaname";
             psSelectAllFromCinema = con.prepareStatement(sqlSelectAllFromCinema);
             
             //select all from cinema available
-            String sqlSelectAllFromCinemaAvalaible = "SELECT * FROM cinema WHERE status = 1";
+            String sqlSelectAllFromCinemaAvalaible = "SELECT * FROM cinema WHERE status = 1 ORDER BY cinemaname";
             psSelectAllFromCinemaAvailable = con.prepareStatement(sqlSelectAllFromCinemaAvalaible);
             
             String sqlSelectCustomerViaLoginPassword = "SELECT * FROM user WHERE username = ? AND password = ? AND userType = 'customer'";
