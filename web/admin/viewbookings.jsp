@@ -1,7 +1,7 @@
 <%-- 
     Document   : viewbookings
     Created on : Nov 15, 2016, 1:49 AM
-    Author     : MSI
+    Author     : FANTASTIC CINEMA
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -62,7 +62,7 @@
                 <div class="fc_sign_in_register">
                     <ul>
                         <li><i aria-hidden="true"></i>Hi, <jsp:getProperty name="adminprofile" property="fullName"/>!</li>
-                        <li><a href="adminlogout.jsp">Logout</a></li>
+                        <li><a href="adminlogout.jsp" title="Logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
                     </ul>
                 </div>
                 <!--  //Sign in & sign up  -->
@@ -90,6 +90,7 @@
                                 <li><a href="ViewCinemaServlet">Cinemas</a></li>
                                 <li><a href="ViewMovieServlet">Movies</a></li>
                                 <li class="active"><a>Bookings</a></li>
+                                <li><a href="ViewCustomerServlet">Customers</a></li>
                             </ul>
                         </nav>
                     </div>

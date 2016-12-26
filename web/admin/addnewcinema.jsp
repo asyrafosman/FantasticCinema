@@ -87,6 +87,7 @@
                                 <li class="active"><a>Cinemas</a></li>
                                 <li><a href="ViewMovieServlet">Movies</a></li>
                                 <li><a href="ViewBookingServlet">Bookings</a></li>
+                                <li><a href="ViewCustomerServlet">Customers</a></li>
                             </ul>
                         </nav>
                     </div>

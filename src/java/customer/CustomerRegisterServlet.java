@@ -69,7 +69,7 @@ public class CustomerRegisterServlet extends HttpServlet {
        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String userType = "client";
+        String userType = "customer";
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String mobileNum = request.getParameter("mobileNum");

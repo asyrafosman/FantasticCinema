@@ -40,6 +40,7 @@ public class JDBCUtility
    PreparedStatement psUpdateMovieName = null;
    PreparedStatement psUpdateCinemaName = null;
    PreparedStatement psUpdateMovieImage = null;
+   PreparedStatement psSelectAllCustomer = null;
 
    //use this constructor if using ConnectionPool
    public JDBCUtility()
@@ -157,11 +158,14 @@ public class JDBCUtility
             String sqlSelectAllFromCinemaAvalaible = "SELECT * FROM cinema WHERE status = 1";
             psSelectAllFromCinemaAvailable = con.prepareStatement(sqlSelectAllFromCinemaAvalaible);
             
-            String sqlSelectCustomerViaLoginPassword = "SELECT * FROM user WHERE username = ? AND password = ? AND userType = 'client'";
+            String sqlSelectCustomerViaLoginPassword = "SELECT * FROM user WHERE username = ? AND password = ? AND userType = 'customer'";
             psSelectCustomerViaLoginPassword = con.prepareStatement(sqlSelectCustomerViaLoginPassword);
             
             String sqlSelectAdminViaLoginPassword = "SELECT * FROM user WHERE username = ? AND password = ? AND userType = 'admin'";
             psSelectAdminViaLoginPassword = con.prepareStatement(sqlSelectAdminViaLoginPassword);
+            
+            String sqlSelectAllCustomer = "SELECT * FROM user WHERE userType = 'customer'";
+            psSelectAllCustomer = con.prepareStatement(sqlSelectAllCustomer);
             
             String sqlInsertMovie = "INSERT INTO movie(moviename) VALUES(?)";
             psInsertMovie = con.prepareStatement(sqlInsertMovie);
@@ -327,5 +331,10 @@ public class JDBCUtility
     public PreparedStatement getPsUpdateMovieImage()
     {
         return psUpdateMovieImage;
+    }
+    
+    public PreparedStatement getPsSelectAllCustomer()
+    {
+        return psSelectAllCustomer;
     }
 }

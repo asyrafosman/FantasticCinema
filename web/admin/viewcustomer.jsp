@@ -1,12 +1,12 @@
 <%-- 
-    Document   : managecinema
-    Created on : Dec 16, 2016, 2:32:50 PM
-    Author     : admin
+    Document   : viewbookings
+    Created on : Nov 15, 2016, 1:49 AM
+    Author     : FANTASTIC CINEMA
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="bean.Booking" %>
 <%@ page import="bean.User" %>
-<%@ page import="bean.Cinema" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -86,11 +86,11 @@
                     <!--  Collect the nav links, forms, and other content for toggling  -->
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
-                            <ul class="nav navbar-nav">            
-                                <li class="active"><a>Cinemas</a></li>
+                            <ul class="nav navbar-nav">
+                                <li><a href="ViewCinemaServlet">Cinemas</a></li>
                                 <li><a href="ViewMovieServlet">Movies</a></li>
                                 <li><a href="ViewBookingServlet">Bookings</a></li>
-                                <li><a href="ViewCustomerServlet">Customers</a></li>
+                                <li class="active"><a>Customers</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -100,52 +100,31 @@
             <!--  //Container  -->
         </div>
         <!-- ********************************************** //Navigation ********************************************** -->
-        <!--  Display movie list  -->
         <div class="general">
             <div class="container">
                 <div class="well" id="wellhome">
-                    <h1>View Cinemas</h1>
-                    <a href="addnewcinema.jsp" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Cinema</a> 
+                    <h1>View Customers</h1>
                     <div class="row">
                         <div class="col-md-12">
                             <table class="table table-striped table-hover ">
                                 <thead>
                                     <tr>
-                                        <th>No.</th>
-                                        <th>Cinema Name</th>
-                                        <th>Delete</th>
-                                        <th>Enable/Disable</th>
+                                        <th>#</th>
+                                        <th>Username</th>
+                                        <th>Full Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile Number</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${sessionScope.cinemas}" var="currentcinema" varStatus="loop">
-                                    <tr>
-                                        <td><c:out value="${loop.index + 1}" /></td>
-
-                                        <c:url value="editcinema.jsp" var="editCinemaURL">
-                                            <c:param name="id"   value="${currentcinema.id}" />
-                                            <c:param name="cinemaname"   value="${currentcinema.cinemaname}" />
-                                        </c:url>
-                                        <td><a href="<c:out value='${editCinemaURL}' />"><c:out value="${currentcinema.cinemaname}" /></a></td>
-
-                                        <c:url value="DeleteCinemaServlet" var="deleteCinemaURL">
-                                            <c:param name="id"   value="${currentcinema.id}" />
-                                        </c:url>
-                                        <td><a href="<c:out value='${deleteCinemaURL}' />"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete"></span></a></td>
-
-                                        <c:url value="CinemaActivationServlet" var="CinemaActivationURL">
-                                            <c:param name="id"   value="${currentcinema.id}" />
-                                            <c:param name="status"   value="${currentcinema.status}" />
-                                        </c:url>
-                                        <c:choose>
-                                            <c:when test="${currentcinema.status == 0}">
-                                                <td><a href="<c:out value='${CinemaActivationURL}' />"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>&nbsp;<c:out value="Deactivate" /></a></td>
-                                            </c:when>
-                                            <c:when test="${currentcinema.status == 1}">
-                                                <td><a href="<c:out value='${CinemaActivationURL}' />"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;<c:out value="Active" /></a></td>
-                                            </c:when>    
-                                        </c:choose>    
-                                    </tr>
+                                    <c:forEach items="${sessionScope.customers}" var="currentcustomer" varStatus="loop">
+                                        <tr>
+                                            <td><c:out value="${loop.index + 1}" /></td>
+                                            <td><c:out value="${currentcustomer.username}" /></td>
+                                            <td><c:out value="${currentcustomer.fullName}" /></td>
+                                            <td><c:out value="${currentcustomer.email}" /></td>
+                                            <td><c:out value="${currentcustomer.mobileNum}" /></td>
+                                        </tr>
                                     </c:forEach>
                                 </tbody>
                             </table>
@@ -154,7 +133,6 @@
                 </div> <!-- /well -->
             </div> <!-- /container -->
         </div>
-
         <!-- ********************************************** Footer ********************************************** -->
         <div class="footer">
             <!--  Container  -->
@@ -179,8 +157,6 @@
             <!--  //Container  -->
         </div>
         <!-- ********************************************** //Footer ********************************************** -->
-        <!--  ********************************************** Wajib **********************************************  -->
-        <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
         <script>
         $(document).ready(function(){
@@ -196,7 +172,5 @@
             );
         });
         </script>
-        <!-- //Bootstrap Core JavaScript -->
-        <!--  ********************************************** //Wajib **********************************************  -->
     </body>
 </html>
