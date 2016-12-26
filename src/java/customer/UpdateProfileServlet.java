@@ -67,18 +67,18 @@ public class UpdateProfileServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User customer = (User)session.getAttribute("customerprofile");
         String username = customer.getUsername();
-        String password = customer.getPassword();
-        
+        String password = request.getParameter("password");
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String mobileNum = request.getParameter("mobileNum");
                 
         try {                    
             PreparedStatement preparedStatement = jdbcUtility.getPsUpdateCustomerViaUsername();
-            preparedStatement.setString(1, fullName);
-            preparedStatement.setString(2, email);
-            preparedStatement.setString(3, mobileNum);
-            preparedStatement.setString(4, username);
+            preparedStatement.setString(1, password);
+            preparedStatement.setString(2, fullName);
+            preparedStatement.setString(3, email);
+            preparedStatement.setString(4, mobileNum);
+            preparedStatement.setString(5, username);
             preparedStatement.executeUpdate();
             
             customer = new User();

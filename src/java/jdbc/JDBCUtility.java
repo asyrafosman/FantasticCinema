@@ -123,7 +123,7 @@ public class JDBCUtility
                                       "VALUES(?, ?, ?, ?, ?, ?)";
             psInsertCustomer = con.prepareStatement(sqlInsertCustomer);
             
-            String sqlUpdateCustomerViaUsername = "UPDATE user SET fullName = ?, email = ?, mobileNum = ? WHERE username = ?";
+            String sqlUpdateCustomerViaUsername = "UPDATE user SET password = ?, fullName = ?, email = ?, mobileNum = ? WHERE username = ?";
             psUpdateCustomerViaUsername = con.prepareStatement(sqlUpdateCustomerViaUsername);
             
             //select all from booking

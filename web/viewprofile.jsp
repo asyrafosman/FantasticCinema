@@ -190,6 +190,18 @@ profile
                         <fieldset>
                             <legend>Customer Profile</legend>
                             <div class="form-group">
+                                <label for="select" class="col-lg-2 control-label">Username</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" name="username" placeholder="Username" type="text" value="<jsp:getProperty name="customerprofile" property="username"/>" required="" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="select" class="col-lg-2 control-label">Password</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" name="password" placeholder="Password" type="password" value="<jsp:getProperty name="customerprofile" property="password"/>" required="">
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="select" class="col-lg-2 control-label">Full Name</label>
                                 <div class="col-lg-10">
                                     <input class="form-control" name="fullName" placeholder="Full Name" type="text" value="<jsp:getProperty name="customerprofile" property="fullName"/>" required="">
@@ -198,7 +210,7 @@ profile
                             <div class="form-group">
                                 <label for="select" class="col-lg-2 control-label">Email Address</label>
                                 <div class="col-lg-10">
-                                    <input class="form-control" name="email" placeholder="Email Address" type="text" value="<jsp:getProperty name="customerprofile" property="email"/>" required="">
+                                    <input class="form-control" name="email" placeholder="Email Address" type="email" value="<jsp:getProperty name="customerprofile" property="email"/>" required="">
                                 </div>
                             </div>
                             <div class="form-group">
