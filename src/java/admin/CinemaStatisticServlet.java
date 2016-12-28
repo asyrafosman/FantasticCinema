@@ -66,21 +66,13 @@ private JDBCUtility jdbcUtility;
         Cinema cinema = null;
         
         try {                    
-            ResultSet rs = jdbcUtility.getPsSelectAllFromCinema().executeQuery();
+            ResultSet rs = jdbcUtility.getPsSelectCountAllFromBookingByCinema().executeQuery();
             
             while (rs.next()) {                
                 cinema = new Cinema();
-                cinema.setId(rs.getInt("id"));
-                cinema.setCinemaname(rs.getString("cinemaname"));
-                cinema.setStatus(rs.getInt("status"));
+                cinema.setCinemaname(rs.getString("cinema"));
+                cinema.setTotal(rs.getInt("COUNT(*)"));
                 
-                PreparedStatement preparedStatement = jdbcUtility.getPsSelectCountAllFromBookingByCinema();
-                preparedStatement.setString(1, cinema.getCinemaname());
-                ResultSet rs2 = preparedStatement.executeQuery();
-
-                while (rs2.next()) {
-                    cinema.setTotal(rs2.getInt("COUNT(*)"));
-                }
                 cinemas.add(cinema);
             }
         }

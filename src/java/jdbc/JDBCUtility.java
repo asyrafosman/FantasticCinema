@@ -205,11 +205,11 @@ public class JDBCUtility
             psUpdateMovieImage = con.prepareStatement(sqlUpdateMovieImage);
             
             //count all from booking by cinema
-            String sqlSelectCountAllFromBookingByCinema = "SELECT COUNT(*) FROM booking WHERE cinema = ?";
+            String sqlSelectCountAllFromBookingByCinema = "SELECT cinema, COUNT(*) FROM booking GROUP BY cinema";
             psSelectCountAllFromBookingByCinema = con.prepareStatement(sqlSelectCountAllFromBookingByCinema);
             
             //count all from booking by movie
-            String sqlSelectCountAllFromBookingByMovie = "SELECT COUNT(*) FROM booking WHERE moviename = ?";
+            String sqlSelectCountAllFromBookingByMovie = "SELECT moviename, COUNT(*) FROM booking GROUP BY moviename";
             psSelectCountAllFromBookingByMovie = con.prepareStatement(sqlSelectCountAllFromBookingByMovie);
             
             //count all from booking by username

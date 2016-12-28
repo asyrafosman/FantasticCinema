@@ -67,20 +67,12 @@ public class MovieStatisticServlet extends HttpServlet {
         Movie movie = null;
         
         try {                    
-            ResultSet rs = jdbcUtility.getPsSelectAllFromMovie().executeQuery();
+            ResultSet rs = jdbcUtility.getPsSelectCountAllFromBookingByMovie().executeQuery();
             
             while (rs.next()) {                
                 movie = new Movie();
-                movie.setId(rs.getInt("id"));
                 movie.setMoviename(rs.getString("moviename"));
-                
-                PreparedStatement preparedStatement = jdbcUtility.getPsSelectCountAllFromBookingByMovie();
-                preparedStatement.setString(1, movie.getMoviename());
-                ResultSet rs2 = preparedStatement.executeQuery();
-
-                while (rs2.next()) {
-                    movie.setTotal(rs2.getInt("COUNT(*)"));
-                }
+                movie.setTotal(rs.getInt("COUNT(*)"));
                 
                 movies.add(movie);
             }
