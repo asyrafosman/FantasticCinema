@@ -118,14 +118,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <c:set var="total" value="${0}"/>
                                     <c:forEach items="${sessionScope.cinemas}" var="currentcinema" varStatus="loop">
                                     <tr>
                                         <td><c:out value="${loop.index + 1}" /></td>
                                         <td><c:out value="${currentcinema.cinemaname}" /></td>
                                         <td><c:out value="${currentcinema.total}" /></td>
+                                        <c:set var="total" value="${total + currentcinema.total}" />
                                     </tr>
                                     </c:forEach>
                                 </tbody>
+                                <tfoot>
+                                    <tr style="font-weight: bold">
+                                        <td></td>
+                                        <td style="text-align:right">Total</td>
+                                        <td><c:out value="${total}" /></td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div> <!-- /row -->
@@ -143,14 +152,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <c:set var="total" value="${0}"/>
                                     <c:forEach items="${sessionScope.movies}" var="currentmovie" varStatus="loop">
                                     <tr>
                                         <td><c:out value="${loop.index + 1}" /></td>
                                         <td><c:out value="${currentmovie.moviename}" /></td>
                                         <td><c:out value="${currentmovie.total}" /></td>
+                                        <c:set var="total" value="${total + currentmovie.total}" />
                                     </tr>
                                     </c:forEach>
                                 </tbody>
+                                <tfoot>
+                                    <tr style="font-weight: bold">
+                                        <td></td>
+                                        <td style="text-align:right">Total</td>
+                                        <td><c:out value="${total}" /></td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div> <!-- /row -->

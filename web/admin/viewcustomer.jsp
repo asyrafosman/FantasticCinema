@@ -118,6 +118,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <c:set var="total" value="${0}"/>
                                     <c:forEach items="${sessionScope.customers}" var="currentcustomer" varStatus="loop">
                                         <tr>
                                             <td><c:out value="${loop.index + 1}" /></td>
@@ -126,9 +127,20 @@
                                             <td><c:out value="${currentcustomer.email}" /></td>
                                             <td><c:out value="${currentcustomer.mobileNum}" /></td>
                                             <td><c:out value="${currentcustomer.total}" /></td>
+                                            <c:set var="total" value="${total + currentcustomer.total}" />
                                         </tr>
                                     </c:forEach>
                                 </tbody>
+                                <tfoot>
+                                    <tr style="font-weight: bold">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="text-align:right">Total</td>
+                                        <td><c:out value="${total}" /></td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div> <!-- /row -->
